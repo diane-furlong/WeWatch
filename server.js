@@ -1,9 +1,19 @@
+//dotenv for hiding api key
+require ("dotenv").config()
+const fetch = require("node-fetch");
+const convert = require("xml-js");
+
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+
+// Enable if you're behind a reverse proxy (Heroku, Bluemix, AWS ELB, Nginx, etc)
+// see https://expressjs.com/en/guide/behind-proxies.html
+app.set('trust proxy', 1);
 
 // Bodyparser middleware
 app.use(
