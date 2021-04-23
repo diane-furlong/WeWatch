@@ -1,7 +1,7 @@
 {
   "name": "wewatch",
   "version": "0.1.0",
-  "description": "WeWatch is a social app for sharing media streaming",
+  "description": "weWatch is a social app for sharing media streaming",
   "main": "server.js",
   "private": true,
   "dependencies": {
