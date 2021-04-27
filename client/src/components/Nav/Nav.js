@@ -1,10 +1,13 @@
-import React from 'react'
+import React from 'react';
+
 
 const Nav = () => {
     return (
-        <div>
-            
-        </div>
+        <nav className="navbar navbar-expand-lg navbar-light  bg-dark">
+            <div className="container">
+           
+            </div>
+        </nav>
     )
 }
 
