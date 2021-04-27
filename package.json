@@ -17,6 +17,7 @@
     "is-empty": "^1.2.0",
     "jquery": "^3.6.0",
     "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
     "mongoose": "^5.12.5",
     "node-fetch": "^2.6.1",
     "passport": "^0.4.1",
