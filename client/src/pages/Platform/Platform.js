@@ -3,46 +3,42 @@ import React, { useState, useEffect } from 'react'
 //import API from "./"
 import './Platform.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+const _ = require('lodash');
 
 const Platform = () => {
 
-    //1. API Request to display platforms/networks: https://api.watchmode.com/v1/networks/?apiKey={apiKey}. how to choose only 5 most popular ones? choose only ones in US:  "origin_country": "US" (a prop in the networks search)
-    //2. User checks boxes of platforms they use
-    //3. Get networks, which is every chosen platform, and enter them into API request to retreive shows on that network for the next page
-    //4. Route to the next page
+    //1. User checks boxes of platforms they use
+    //2. Get networks, which is every chosen platform, and enter them into API request to retreive shows on that network for the next page (or do this on the next page?)
+    //3. Route to the next page
 
     //const [allNetworks, setAllNetworks] = useState([])
     const [networks] = useState([])
 
-    // //1. need API request to display (top 5?) networks
-    // useEffect(() => {
-    //     API.getAllNetworks()
-    //         .then(res => setAllNetworks(res.data))
-    //         .catch(err => console.log(err))
-    // }, [])
-
-
     //checking/unchecking box
     const handleInputChange = (event) => {
         const target = event.target
+        const targetPlatform = target.value
         if(target.checked) {
             console.log("checked")
-            networks.push(target.value)
+            networks.push(targetPlatform)
             console.log(networks)
-        } else {
-            console.log("not checked")
+        } else if (!target.checked) {
+            let removed = _.remove(networks, function(e) {
+                return e === targetPlatform               
+            })
+            console.log("removed "+ removed)
+            console.log(networks)
         }
     }
 
     //submit button
     const handleSubmit = () => {
         console.log("submitted "+networks)
-        //3. add API request to GET the shows for the networks selected
+        //2. add API request to GET the shows for the networks selected
         // CODE HERE
-        //4. route to next page
+        //3. route to next page
         window.location.href='/Watching'
     }
-
 
     return (
         <div className="form-check">
