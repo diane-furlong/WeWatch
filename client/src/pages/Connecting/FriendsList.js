@@ -18,4 +18,4 @@ const FriendsList = ({ contacts }) => {
     );
 }
 
-export default FriendsList;
+// export default FriendsList;

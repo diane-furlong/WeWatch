@@ -7,10 +7,13 @@ import { BrowserRouter as Router, Route,Switch } from "react-router-dom";
 import Login from './components/Login/Login';
 import Platform from './pages/Platform/Platform'
 import Watching from './pages/Watching/Watching'
+import { Provider } from 'react-redux';
+import store from './store'
 
 
 function App() {
   return (
+    <Provider store={store}>
     <Router>
     <div className="App">
       <Nav />
@@ -32,7 +35,8 @@ function App() {
       </Route>
       </Switch>
     </div>
-    </Router >
+    </Router>
+    </Provider>
   );
 }
 
