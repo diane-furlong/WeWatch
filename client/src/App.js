@@ -7,6 +7,9 @@ import { BrowserRouter as Router, Route,Switch } from "react-router-dom";
 import Login from './components/Login/Login';
 import Platform from './pages/Platform/Platform'
 import Watching from './pages/Watching/Watching'
+import Connecting from './pages/Connecting/Connecting'
+import Friend from './pages/Connecting/Friend'
+import FriendsList from './pages/Connecting/FriendsList'
 
 
 function App() {

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-//need to import API request to get the Platforms
-//import API from "./"
+import React, { useState } from 'react'
+//import user API to POST networks to the current user
+import usersAPI from "../../utils/usersAPI"
 import './Platform.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 const _ = require('lodash');
@@ -8,7 +8,7 @@ const _ = require('lodash');
 const Platform = () => {
 
     //1. User checks boxes of platforms they use
-    //2. Get networks, which is every chosen platform, and enter them into API request to retreive shows on that network for the next page (or do this on the next page?)
+    //2. POST chosen networks to users API
     //3. Route to the next page
 
     //const [allNetworks, setAllNetworks] = useState([])
@@ -33,9 +33,11 @@ const Platform = () => {
 
     //submit button
     const handleSubmit = () => {
-        console.log("submitted "+networks)
-        //2. add API request to GET the shows for the networks selected
-        // CODE HERE
+        console.log("submitted "+[networks])
+        //2. add API request to POST the selected networks to the users API
+        usersAPI.postNetworks({
+            networks: [networks]
+        })
         //3. route to next page
         window.location.href='/Watching'
     }
