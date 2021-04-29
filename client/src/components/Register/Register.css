@@ -1,3 +1,21 @@
-.row {
-    margin-left: 2.1rem;
+.row  {
+    /* margin-left: 4.1rem; */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px; */
+}
+
+.register {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+
+.btn-info {
+margin-left: 750px;
 }
