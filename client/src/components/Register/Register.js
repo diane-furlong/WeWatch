@@ -16,6 +16,7 @@ function Register(props) {
         resetEmail();
         resetPassword();
         resetPassword2();
+        window.location.href='/Platform'
     }
     
       
@@ -32,7 +33,7 @@ function Register(props) {
                     </div>
                 </div>
             <form onSubmit={handleSubmit}>
-                <button type="submit" value="Submit" className="btn-info">Register</button>
+                
                 <label className="row">
                     Name:
                     <input onChange={useInput} type="text" {...bindName} />
@@ -49,6 +50,7 @@ function Register(props) {
                     Password Verification:
                     <input onChange={useInput}  type="text" {...bindPassword2} />
                 </label>
+                <button type="submit" value="Submit" className="btn-info">Register</button>
             </form>
             </div>
         );

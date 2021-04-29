@@ -3,6 +3,7 @@ import axios from "axios"
 const BASEURL = "https://api.watchmode.com/v1/"
 const APIkey = process.env.REACT_APP_API_KEY
 
+console.log(APIkey)
 
 
 export default {
