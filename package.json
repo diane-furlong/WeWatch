@@ -17,8 +17,10 @@
     "is-empty": "^1.2.0",
     "jquery": "^3.6.0",
     "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
     "mongoose": "^5.12.5",
     "node-fetch": "^2.6.1",
+    "particles-bg": "^2.5.5",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "validator": "^13.6.0",
@@ -27,10 +29,11 @@
   },
   "scripts": {
     "client-install": "npm install --prefix client",
-    "start": "node server.js",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "server": "nodemon server.js",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start"
   },
   "browserslist": {
     "production": [
