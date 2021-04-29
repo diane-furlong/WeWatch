@@ -24,3 +24,5 @@ yarn-error.log*
 
 #keys.js
 /config/keys2.js
+package-lock.json
+

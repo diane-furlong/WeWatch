@@ -1,0 +1,22 @@
+/* .btn {
+    height: 20x;
+    position: relative;
+} */
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+
+    /* margin: 0;
+    position: absolute;
+    /* top: 40%;
+    left: 40%; */ 
+    /* -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
+}
+ .btn{
+     margin-top: 10px;
+     margin-left: 120px;
+ }
