@@ -3,18 +3,25 @@ import axios from "axios"
 const BASEURL = "https://api.watchmode.com/"
 const APIkey = process.env.REACT_APP_API_KEY
 
-export default {
-    //GET shows from a specific platform to display in search on Watching.js
-    getShows: function() {
-        return axios.get(BASEURL+"networks/?"+APIkey)
-    }
+
+// GET platforms to display on Platforms.js
+export function getPlatforms() {
+    return axios.get()
+
 }
 
 // export function LoginPost(LoginData) {
 //     return axios.post("/api/login", LoginData )
 // }
 
-// export default {getPlatforms, LoginPost}
+
+export function RegisterPost(RegisterData) {
+    return axios.post("/api/register", RegisterData)
+}
+
+
+export default {getPlatforms, LoginPost, RegisterPost}
+
 
 
 

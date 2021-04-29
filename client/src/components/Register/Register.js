@@ -1,7 +1,8 @@
 import React from 'react';
 import { useInput } from './InputHook'
 import { Link } from 'react-router-dom';
-import './Register.css'
+import './Register.css';
+import API from "../../API";
 
 function Register(props) {
     const { value: name, bind:bindName, reset:resetName } = useInput("")
@@ -11,7 +12,8 @@ function Register(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        alert(`Submitting Name ${name} email ${email} password ${password} password verification ${password2} `);
+        API.RegisterPost({ email: email, password: password, name: name, password2: password2 }).then(res => { console.log(res.data)})
+        // alert(`Submitting Name ${name} email ${email} password ${password} password verification ${password2} `);
         resetName();
         resetEmail();
         resetPassword();
@@ -27,13 +29,13 @@ function Register(props) {
                         <Link to="/" className="btn">Back to Home</Link>
                     </div>
                     <div className="col-sm-12">
-                        <h4>
+                        <h4 className="register"> 
                             <b>Register</b> below
                     </h4>
                     </div>
                 </div>
             <form onSubmit={handleSubmit}>
-                
+
                 <label className="row">
                     Name:
                     <input onChange={useInput} type="text" {...bindName} />
