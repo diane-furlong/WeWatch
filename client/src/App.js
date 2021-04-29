@@ -7,9 +7,14 @@ import { BrowserRouter as Router, Route,Switch } from "react-router-dom";
 import Login from './components/Login/Login';
 import Platform from './pages/Platform/Platform';
 import Watching from './pages/Watching/Watching';
+import Connecting from './pages/Connecting/Connecting'
+import Friend from './pages/Connecting/Friend'
+import FriendsList from './pages/Connecting/FriendsList'
+require('dotenv').config()
 
 
 function App() {
+  console.log(process.env.REACT_APP_API_KEY)
   return (
     <Router>
     <div className="App">
@@ -29,6 +34,15 @@ function App() {
       </Route>  
       <Route exact path="/Watching">
         <Watching/>
+      </Route>
+      <Route exact path="/Connecting">
+        <Connecting/>
+      </Route>
+      <Route exact path="/Friend">
+        <Friend/>
+      </Route>
+      <Route exact path="/FriendsList">
+        <FriendsList/>
       </Route>
       </Switch>
     </div>
