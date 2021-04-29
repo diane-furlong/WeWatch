@@ -9,8 +9,7 @@ import './Connecting.css'
 //   classNames="test-class"
 // />
 
-import React from "react";
-import ReactDOM from "react-dom";
+
 
 
 function App() {

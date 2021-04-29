@@ -1,6 +1,6 @@
 import React from 'react';
 import  "./Landing.css"
-
+import ParticlesBg from 'particles-bg'
 
 
 const Landing = () => {
@@ -12,7 +12,8 @@ const Landing = () => {
     }
 
     return (
-        <div className="container">
+        <>
+        <div className="container center">
             <div className = "row">
                 <div className = "col-sm-12 center-align">
                     <h4>
@@ -25,6 +26,8 @@ const Landing = () => {
             </div>
             
         </div>
+        <ParticlesBg type="cobweb" bg={true} />
+        </>
     )
 }
 
