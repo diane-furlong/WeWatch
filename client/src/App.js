@@ -5,8 +5,8 @@ import Landing from './components/Landing/Landing';
 import Register from './components/Register/Register';
 import { BrowserRouter as Router, Route,Switch } from "react-router-dom";
 import Login from './components/Login/Login';
-import Platform from './pages/Platform/Platform'
-import Watching from './pages/Watching/Watching'
+import Platform from './pages/Platform/Platform';
+import Watching from './pages/Watching/Watching';
 
 
 function App() {

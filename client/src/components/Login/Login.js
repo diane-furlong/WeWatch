@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { useInput } from '../Register/InputHook'
+import API from "../../API";
 
 function Login(props){
     const { value: email, bind: bindEmail, reset: resetEmail } = useInput("")
@@ -8,6 +9,7 @@ function Login(props){
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        API.LoginPost({ email: email, password: password }).then(res => { console.log(res.data)})
     }
 
     const onChangeLogin = (event) => {
