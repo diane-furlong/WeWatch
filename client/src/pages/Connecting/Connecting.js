@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import './Connecting.css'
-// import SearchField from "react-search-field";
+import SearchField from "react-search-field";
+import ReactDOM from "react-dom";
 
-// <SearchField
-//   placeholder="Search..."
+
+<SearchField
+  placeholder="Search..."
 //   onChange={onChange}
-//   searchText="This is initial search text"
-//   classNames="test-class"
-// />
+  searchText="This is initial search text"
+  classNames="test-class"
+/>
 
-// import React from "react";
-// import ReactDOM from "react-dom";
+
 
 
 // function App() {
@@ -50,7 +51,7 @@ import './Connecting.css'
 
 // }
 
-// const FriendsList = () => {
+const Connecting = () => {
 //     const [name, email] = useStoreContext();
   
 //     const getFriends = () => {
@@ -69,7 +70,8 @@ import './Connecting.css'
 //       getFriends();
 //     }, []);
   
-//     return (
+    return (
+        <SearchField/>
 //       <div className="container mb-5 mt-5">
 //         <h1 className="text-center">Here's All of Your Friends</h1>
 //         {state.friends.length ? (
@@ -93,7 +95,7 @@ import './Connecting.css'
 //           <Link to="home">Back to home</Link>
 //         </div>
 //       </div>
-//     );
-//   };
+    );
+  };
   
-// export default FriendsList;
+export default Connecting;
