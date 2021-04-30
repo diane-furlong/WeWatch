@@ -6,12 +6,53 @@ import ReactDOM from "react-dom";
 
 <SearchField
   placeholder="Search..."
-//   onChange={onChange}
+  onChange={onChange}
   searchText="This is initial search text"
   classNames="test-class"
 />
 
+//Getting friends to populate from Search bar
+import React, {useState} from "react";
 
+const FriendSearch = props => (
+    <>
+        <input type="search" onChange={e => props.saveSearchInput(e.target.value)} />
+        <button type="button" onClick={() => props.handleSearch()}>
+            Search
+        </button>
+    </>
+);
+
+const getFriends = props => {
+  return [' '];
+}
+
+const MovieList = props => (
+    <ul>
+        {props.foundMovies.map(thisMovie=><li>{thisMovie}</li>)}
+    </ul>
+);
+
+const App = () => {
+  const [searchInput, setSearchInput] = useState("");
+  const [foundMovies, setFoundMovies] = useState([]);
+
+  const friendSearch = ()=> {
+    if (searchInput == null) return;
+    const foundFriends = getFriends(searchInput);
+    setFoundFriends(foundFriends);
+  }
+
+  return (
+    <div>
+      <h1 id="title">My Friends</h1>
+      <FriendlistSearch saveSearchInput={setSearchInput} handleSearch={friendsSearch} />
+      <FriendList foundFriends={foundFriends} />
+    </div>
+  )
+}
+
+ReactDOM.render(<App />, document.getElementById(' '))
 
 
 // function App() {

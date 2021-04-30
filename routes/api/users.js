@@ -102,4 +102,16 @@ router.post("/login", (req, res) => {
     });
 });
 
+router.get("/connecting", (req, res) => {
+    User.findOne({ email: req.body.email }).then(user => {
+        if (user) {
+            return res.status(400).json({ email: "Email cannot be found" });
+        } else {
+            const newFriend = new Friend({
+                email: req.body.email,
+            });
+        }
+    });
+});
+
 module.exports = router;
