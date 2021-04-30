@@ -9,10 +9,15 @@ import Platform from './pages/Platform/Platform'
 import Watching from './pages/Watching/Watching'
 import { Provider } from 'react-redux';
 import store from './store'
+// import { Container } from '@material-ui/core';
+import useStyles from './styles';
 
 
 function App() {
+  // const classes = useStyles();
+
   return (
+
     <Provider store={store}>
     <Router>
     <div className="App">

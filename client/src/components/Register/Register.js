@@ -1,7 +1,11 @@
 import React from 'react';
 import { useInput } from './InputHook'
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { registerUser } from '../../actions/authActions';
+// import classnames from classnames;
 import './Register.css'
+import { render } from 'react-dom';
 
 function Register(props) {
     const { value: name, bind:bindName, reset:resetName } = useInput("")
@@ -17,7 +21,23 @@ function Register(props) {
         resetPassword();
         resetPassword2();
     }
-    
+
+    const componentWillReceiveProps = (props) => {
+        if (props.erros) {
+            this.setState({
+                errors: this.errors
+            });
+        }
+    }
+
+    const newUser ={
+        name: name,
+        email: email,
+        password: password,
+        password2: password2
+    };
+
+    this.props.registerUser(newUser, this.props.history)
       
         return (
             <div>
@@ -53,8 +73,20 @@ function Register(props) {
             </div>
         );
 }
+
+// Register.propTypes = {
+//     registerUser: PropTypes.func.isRequired,
+//     auth: PropTypes.object.isRequired,
+//     errors: PropTypes.object.isRequired
+// };
         
     
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+});
 
-
-export default Register
+export default connect(
+    mapStateToProps,
+    { registerUser }
+)(withRouter(Register));
