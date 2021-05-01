@@ -2,17 +2,56 @@ import React, { useState, useEffect } from 'react'
 import './Connecting.css'
 import SearchField from "react-search-field";
 import ReactDOM from "react-dom";
-
+import FilterResults from 'react-filter-search';
 
 <SearchField
   placeholder="Search..."
-  onChange={onChange}
+  // onChange={onChange}
   searchText="This is initial search text"
   classNames="test-class"
 />
 
+// class App extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       data: [],
+//       value: ''
+//     };
+//   }
+//   componentWillMount() {
+//     fetch('https://jsonplaceholder.typicode.com/users')
+//       .then(response => response.json())
+//       .then(json => this.setState({ data: json }));
+//   }
+//   handleChange = event => {
+//     const { value } = event.target;
+//     this.setState({ value });
+//   };
+//   render() {
+//     const { data, value } = this.state;
+//     return (
+//       <div>
+//         <input type="text" value={value} onChange={this.handleChange} />
+//         <SearchResults
+//           value={value}
+//           data={data}
+//           renderResults={results => (
+//             <div>
+//               {results.map(el => (
+//                 <div>
+//                   <span>{el.name}</span>
+//                   <span>{el.email}</span>
+//                 </div>
+//               ))}
+//             </div>
+//           )}
+//         />
+//       </div>
+//     );
+//   }
+// }
 //Getting friends to populate from Search bar
-import React, {useState} from "react";
 
 const FriendSearch = props => (
     <>
@@ -40,19 +79,17 @@ const App = () => {
   const friendSearch = ()=> {
     if (searchInput == null) return;
     const foundFriends = getFriends(searchInput);
-    setFoundFriends(foundFriends);
+    // setFoundFriends(foundFriends);
   }
 
   return (
     <div>
-      <h1 id="title">My Friends</h1>
-      <FriendlistSearch saveSearchInput={setSearchInput} handleSearch={friendsSearch} />
-      <FriendList foundFriends={foundFriends} />
-    </div>
+  {/* //     <h1 id="title">My Friends</h1>
+  //     <FriendlistSearch saveSearchInput={setSearchInput} handleSearch={friendsSearch} />
+  //     <FriendList foundFriends={foundFriends} /> */}
+  //   </div>
   )
 }
-
-ReactDOM.render(<App />, document.getElementById(' '))
 
 
 // function App() {

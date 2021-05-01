@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
 body {
-    background-color: #282c34;
-    color: blueviolet;
+    background-color: #F77F00;
+    color: white;
+    font-family: 'Poppins';
     padding: 40px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
 }
