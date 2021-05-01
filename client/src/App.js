@@ -11,6 +11,7 @@ import Connecting from './pages/Connecting/Connecting'
 import Friend from './pages/Connecting/Friend'
 import FriendsList from './pages/Connecting/FriendsList'
 import Footer from './components/Footer/Footer'
+
 require('dotenv').config()
 
 
