@@ -2,7 +2,8 @@ import React from 'react';
 import  "./Landing.css"
 import Particles from 'react-particles-js';
 import particlesConfig from '../../config/particlesConfig';
-
+import background from "../../img/movie-popcorn.jpg"
+import img from "../../img/popcorn1.png"
 
 const Landing = () => {
     const onClickRegister = () => {
@@ -34,13 +35,13 @@ const Landing = () => {
                 "nb_sides": 6
               },
               "image": {
-                "src": "https://purepng.com/public/uploads/large/purepng.com-popcornpopcorncorndent-cornflint-corn-1411528650914waqb4.png",
+                "src": `${img}`,
                 "width": 500,
                 "height": 500
               }
             },
             "opacity": {
-              "value": 0.5,
+              "value": 0.9,
               "random": false,
               "anim": {
                 "enable": false,
@@ -105,7 +106,7 @@ const Landing = () => {
                 "distance": 400,
                 "size": 40,
                 "duration": 2,
-                "opacity": 8,
+                "opacity": 9,
                 "speed": 3
               },
               "repulse": {
@@ -124,8 +125,8 @@ const Landing = () => {
         }
     
     return (
-        <div style={{ 
-            backgroundImage: `url("https://northernvirginiamag.com/wp-content/uploads/2020/08/movie-popcorn.jpg")` 
+        <div className="image" style={{ 
+            backgroundImage: `url(${background})` 
           }}>
          
         <div style={{ position: 'relative', overflow: "hidden"}}>
@@ -135,9 +136,9 @@ const Landing = () => {
         <div className="container center">
             <div className = "row">
                 <div className = "col-sm-12 center-align">
-                    <h4>
-                        <b>weWatch...</b> share what you are watching!
-                    </h4>
+                    <div className="text">
+                        <h1>weWatch</h1> <h4>Share what you are watching!</h4>
+                    </div>
                         <button onClick={event => onClickRegister(event)} className="btn btn-primary btn-lg">Register</button>
                         <br></br>
                     <button onClick={event => onClickLogin(event)} className="btn btn-success btn-lg">Login</button>
