@@ -10,13 +10,16 @@ import Watching from './pages/Watching/Watching';
 import Connecting from './pages/Connecting/Connecting'
 import Friend from './pages/Connecting/Friend'
 import FriendsList from './pages/Connecting/FriendsList'
+
 require('dotenv').config()
+
 
 
 function App() {
   console.log(process.env.REACT_APP_API_KEY)
   return (
     <Router>
+      
     <div className="App">
       <Nav />
       <Switch>

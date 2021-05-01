@@ -11,7 +11,7 @@ const User = require("../../models/User");
 
 
 const routes = (app) => {
-    app.route('/?')
+    app.route('/api/register')
     .get((req, res) => 
     res.send('GET request success'))
 }

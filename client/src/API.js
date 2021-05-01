@@ -10,9 +10,9 @@ export function getPlatforms() {
 
 }
 
-// export function LoginPost(LoginData) {
-//     return axios.post("/api/login", LoginData )
-// }
+export function LoginPost(LoginData) {
+    return axios.post("/api/login", LoginData )
+}
 
 
 export function RegisterPost(RegisterData) {
