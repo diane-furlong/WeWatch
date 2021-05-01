@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useInput } from '../Register/InputHook'
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
+import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
+import useStyles from './loginStyles';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
+import Input from './Input';
 
-function Login(props){
+const Login = () => {
+    const classes = useStyles();
+    const [showPassword, setShowPassword] = useState(false);
+
+    const isSignup = false;
+
+    const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword)
+
     const { value: email, bind: bindEmail, reset: resetEmail } = useInput("")
     const { value: password, bind: bindPassword, reset: resetPassword } = useInput("")
 
@@ -14,7 +25,7 @@ function Login(props){
         event.preventDefault();
     }
 
-    const onChangeLogin = (event) => {
+    const handleChange = (event) => {
         this.useInput({ [event.target.id]: event.target.value })
     }
 
@@ -39,34 +50,33 @@ function Login(props){
     this.props.loginUser(userData); // since we handle the redirect within our component, we don't need to pass in this.props.history as a parameter
 
     return (
-        <div>
-            <div className="Container">
-                <div className="row sm-10">
-                    <Link  to="/" className="btn">Back to Home</Link>
-                </div>
-                <div className="col-sm-12">
-                    <h4>
-                        <b>Login</b> below
-                    </h4>
-                    <div className="col-sm-12">
-                    <p className="grey-text text-darken-1">Don't have and account?
-                    <Link to="/register">Register</Link></p>
-                    </div>
-                </div>
-            </div>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Email:
-                    <input onChange={onChangeLogin} type="text" {...bindEmail} />
-                </label>
-                <label>
-                    Password:
-                    <input onChange={onChangeLogin} type="text" {...bindPassword} />
-                </label>
-                <button type="submit" value="Submit" className="btn btn-large">Login</button>
+        <Container component ="main" maxWidth="xs">
+            <Paper className={classes.paper} elevation={3}>
+                <Avatar className={classes.avatar}>
+                    <LockOutlinedIcon />
+                </Avatar>
+                <Typography variant="h5">{isSignup ? 'Sign up' : 'Login'} </Typography>
+                <form className= {classes.form} onSubmit={handleSubmit}>
+                    <Grid container spacing ={2}>
+                        {
+                            isSignup && (
+                                <>
+                                    <Input name ="fullName" label="Full Name" handleChange={handleChange} autoFocus half />
+                                    <Input name="fullName" label="Full Name" handleChange={handleChange} half />
+                                </>
+                            )}
+                                    <Input name="email" label="Email Address" handleChange={handleChange} type="email"/>
+                                    <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />
+                                    {isSignup && <Input name ="password2" label="Confirm Password" handleChange={handleChange} type="password2"/>}
+                    </Grid>
+                    <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+                        {isSignup ? 'Sign Up' : 'Login'}
+                    </Button>
+                </form>
+            </Paper>
 
-            </form>
-        </div>
+        </Container>
+
     )
 
 }
