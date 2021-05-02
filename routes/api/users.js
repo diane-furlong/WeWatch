@@ -1,5 +1,4 @@
-const express = require("express");
-const router = express.Router();
+const router = require('express').Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys2 = require("../../config/keys2");
@@ -7,15 +6,15 @@ const keys2 = require("../../config/keys2");
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 // Load User model
-const User = require("../../models/User");
-const login = require('../controllers/users.js')
-const signup = require('../controllers/users.js')
+const DB = require("../../models");
+const usersController = require("../../controllers/usersController")
 
-const routes = (app) => {
-    app.route('/?')
-    .get((req, res) => 
-    res.send('GET request success'))
-}
+
+// // const routes = (app) => {
+// //     app.route('/?')
+// //     .get((req, res) => 
+// //     res.send('GET request success'))
+// // }
 
 // New code 
 
@@ -27,6 +26,41 @@ router.post('./signup', signup)
 
 
 // old code
+// //GET user by ID
+// router.get("/:id", (req, res) => {
+//     DB.User.find({}).then(dbUser => {
+//         return res.json(dbUser)
+//     })
+// })
+
+
+// const routes = (app) => {
+//     app.route('/?')
+//     .get((req, res) => 
+//     res.send('GET request success'))
+// }
+
+// //POST to user's shows
+// router.post("/:id/shows", (req, res) => {
+//     req.json()
+// })
+
+// router.get("/:id/shows", (req, res) => {
+//     DB.User.find({id}).then(data => {
+//         return res.json(data)
+//     })
+// })
+
+
+//matches with '/api/users'
+router.route("/")
+.get(usersController.findAll)
+.post(usersController.create)
+
+//matches with '/api/users/:id'
+router.route("/:id")
+.get(usersController.findById)
+.put(usersController.update)
 
 // @route POST api/users/register
 // @desc Register user
@@ -38,11 +72,11 @@ router.post("/register", (req, res) => {
     if (!isValid) {
         return res.status(400).json(errors);
     }
-    User.findOne({ email: req.body.email }).then(user => {
+    DB.User.findOne({ email: req.body.email }).then(user => {
         if (user) {
             return res.status(400).json({ email: "Email already exists" });
         } else {
-            const newUser = new User({
+            const newUser = new DB.User({
                 name: req.body.name,
                 email: req.body.email,
                 password: req.body.password
@@ -75,7 +109,7 @@ router.post("/login", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
     // Find user by email
-    User.findOne({ email }).then(user => {
+    DB.User.findOne({ email }).then(user => {
         // Check if user exists
         if (!user) {
             return res.status(404).json({ emailnotfound: "Email is not found" });

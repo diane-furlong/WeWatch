@@ -5,7 +5,10 @@ import { connect } from 'react-redux';
 import { registerUser } from '../../actions/authActions';
 // import classnames from classnames;
 import './Register.css'
-import { render } from 'react-dom';
+// import { render } from 'react-dom';
+
+import './Register.css';
+import API from "../../utils/usersAPI";
 
 function Register(props) {
     const { value: name, bind:bindName, reset:resetName } = useInput("")
@@ -15,11 +18,15 @@ function Register(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        alert(`Submitting Name ${name} email ${email} password ${password} password verification ${password2} `);
+        API.postUser({ 
+            email: email.toLowerCase(), password: password, name: name, password2: password2 
+        }).then(res => {console.log(res.data)})
+        // alert(`Submitting Name ${name} email ${email} password ${password} password verification ${password2} `);
         resetName();
         resetEmail();
         resetPassword();
         resetPassword2();
+        window.location.href='/Platform'
     }
 
     const componentWillReceiveProps = (props) => {
@@ -46,13 +53,13 @@ function Register(props) {
                         <Link to="/" className="btn">Back to Home</Link>
                     </div>
                     <div className="col-sm-12">
-                        <h4>
+                        <h4 className="register"> 
                             <b>Register</b> below
                     </h4>
                     </div>
                 </div>
             <form onSubmit={handleSubmit}>
-                <button type="submit" value="Submit" className="btn-info">Register</button>
+
                 <label className="row">
                     Name:
                     <input onChange={useInput} type="text" {...bindName} />
@@ -69,6 +76,7 @@ function Register(props) {
                     Password Verification:
                     <input onChange={useInput}  type="text" {...bindPassword2} />
                 </label>
+                <button type="submit" value="Submit" className="btn-info">Register</button>
             </form>
             </div>
         );

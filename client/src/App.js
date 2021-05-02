@@ -11,6 +11,13 @@ import { Provider } from 'react-redux';
 import store from './store'
 // import { Container } from '@material-ui/core';
 import useStyles from './styles';
+import Connecting from './pages/Connecting/Connecting'
+import Friend from './pages/Connecting/Friend'
+import FriendsList from './pages/Connecting/FriendsList'
+import Footer from './components/Footer/Footer'
+
+require('dotenv').config()
+
 
 
 function App() {
@@ -20,6 +27,7 @@ function App() {
 
     <Provider store={store}>
     <Router>
+      
     <div className="App">
       <Nav />
       <Switch>
@@ -38,7 +46,17 @@ function App() {
       <Route exact path="/Watching">
         <Watching/>
       </Route>
+      <Route exact path="/Connecting">
+        <Connecting/>
+      </Route>
+      <Route exact path="/Friend">
+        <Friend/>
+      </Route>
+      <Route exact path="/FriendsList">
+        <FriendsList/>
+      </Route>
       </Switch>
+      <Footer />
     </div>
     </Router>
     </Provider>
