@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { AppBar, Typography, Toolbar, Button, Avatar } from '@material-ui/core';
 import useStyles from './NavStyle';
 import popcorn from '../../images/popcorn.jpg';
@@ -7,8 +7,9 @@ import { Link } from 'react-router-dom';
 
 const Nav = () => {
     const classes= useStyles();
+        const[user, setUser ] = useState(JSON.parse(localStorage.getItem('profile')))
 
-    const user = null;
+        console.log(user)
 
     return (
        <AppBar className={classes.appBar} position='static' color = 'inherit'>
