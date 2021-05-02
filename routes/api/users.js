@@ -10,19 +10,12 @@ const DB = require("../../models");
 const usersController = require("../../controllers/usersController")
 
 
-<<<<<<< HEAD
-const routes = (app) => {
-    app.route('/api/register')
-    .get((req, res) => 
-    res.send('GET request success'))
-}
-=======
 // // const routes = (app) => {
 // //     app.route('/?')
 // //     .get((req, res) => 
 // //     res.send('GET request success'))
 // // }
->>>>>>> dianes_branch
+
 
 // //GET user by ID
 // router.get("/:id", (req, res) => {
@@ -30,6 +23,13 @@ const routes = (app) => {
 //         return res.json(dbUser)
 //     })
 // })
+
+
+// const routes = (app) => {
+//     app.route('/?')
+//     .get((req, res) => 
+//     res.send('GET request success'))
+// }
 
 // //POST to user's shows
 // router.post("/:id/shows", (req, res) => {
@@ -41,6 +41,7 @@ const routes = (app) => {
 //         return res.json(data)
 //     })
 // })
+
 
 //matches with '/api/users'
 router.route("/")

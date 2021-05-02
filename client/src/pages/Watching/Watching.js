@@ -39,7 +39,9 @@ const Watching = () => {
         .then(res => {
             // console.log(res.data.title)
             setResult(res.data.title)
+
             setResultQueue(res.data.plot_overview)
+
             
             // return result, resultQueue
         })
@@ -63,8 +65,10 @@ const Watching = () => {
                 <button onClick={test}>Search</button>
             </form>
             <ul>
+
                 { result !== false ? <li onChange={event => console.log(event)}>Title: {result}  
                 <br/>Description: {resultQueue}
+
                 <button className="addBtn" onClick={addingShow}>Add</button></li> : null }
             </ul>
          </>

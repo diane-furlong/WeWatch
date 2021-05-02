@@ -45,5 +45,6 @@ export default {
     //GET shows that the user is watching
     getShows: function(id) {
         return axios.get("/api/users/" + id + "/shows")
+
     }
 }
