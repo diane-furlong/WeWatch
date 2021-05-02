@@ -1,5 +1,4 @@
-const express = require("express");
-const router = express.Router();
+const router = require('express').Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys2 = require("../../config/keys2");
@@ -7,15 +6,31 @@ const keys2 = require("../../config/keys2");
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 // Load User model
-const User = require("../../models/User");
+const DB = require("../../models");
 
 
-const routes = (app) => {
-    app.route('/?')
-    .get((req, res) => 
-    res.send('GET request success'))
-}
+// const routes = (app) => {
+//     app.route('/?')
+//     .get((req, res) => 
+//     res.send('GET request success'))
+// }
 
+//GET all users
+router.get("/", (req, res) => {
+    DB.User.find().then(dbUsers => {
+        return res.json(dbUsers)
+    })
+})
+
+router.post("/shows", (req, res) => {
+    req.json()
+})
+
+router.get("/shows", (req, res) => {
+    DB.User.find({}).then(data => {
+        return res.json(data)
+    })
+})
 
 
 // @route POST api/users/register
@@ -28,11 +43,11 @@ router.post("/register", (req, res) => {
     if (!isValid) {
         return res.status(400).json(errors);
     }
-    User.findOne({ email: req.body.email }).then(user => {
+    DB.User.findOne({ email: req.body.email }).then(user => {
         if (user) {
             return res.status(400).json({ email: "Email already exists" });
         } else {
-            const newUser = new User({
+            const newUser = new DB.User({
                 name: req.body.name,
                 email: req.body.email,
                 password: req.body.password
@@ -65,7 +80,7 @@ router.post("/login", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
     // Find user by email
-    User.findOne({ email }).then(user => {
+    DB.User.findOne({ email }).then(user => {
         // Check if user exists
         if (!user) {
             return res.status(404).json({ emailnotfound: "Email is not found" });

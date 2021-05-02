@@ -1,27 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-import { useInput } from '../Register/InputHook'
-import API from "../../API";
+// import { useInput } from '../Register/InputHook'
+import API from "../../utils/usersAPI";
 
-function Login(props){
-    const { value: email, bind: bindEmail, reset: resetEmail } = useInput("")
-    const { value: password, bind: bindPassword, reset: resetPassword } = useInput("")
+function Login(){
+    // const { value: email, bind: bindEmail, reset: resetEmail } = useInput("")
+    // const { value: password, bind: bindPassword, reset: resetPassword } = useInput("")
+
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        API.LoginPost({ email: email, password: password }).then(res => { console.log(res.data)})
+        API.postLogin({ email: userData.email.toLowerCase(), password: userData.password }).then(res => { console.log(res)})
+        console.log(userData)
+        window.location.href='/Watching'
     }
 
-    const onChangeLogin = (event) => {
-        this.useInput({ [event.target.id]: event.target.value })
-    }
+    // const onChangeLogin = (event) => {
+    //     this.useInput({ [event.target.id]: event.target.value })
+    // }
 
     const userData = {
-        email: email.email,
-        password: password.password
+        email: email,
+        password: password
     };
 
-    console.log(userData)
+    
 
     return (
         <div>
@@ -39,16 +44,20 @@ function Login(props){
                     </div>
                 </div>
             </div>
-            <form onSubmit={handleSubmit}>
+            <form>
                 <label>
                     Email:
-                    <input onChange={onChangeLogin} type="text" {...bindEmail} />
+                    <input onChange={event => setEmail(event.target.value)} type="text" 
+                    // {...bindEmail} 
+                    />
                 </label>
                 <label>
                     Password:
-                    <input onChange={onChangeLogin} type="text" {...bindPassword} />
+                    <input onChange={event => setPassword(event.target.value)} type="text" 
+                    // {...bindPassword} 
+                    />
                 </label>
-                <button type="submit" value="Submit" className="btn btn-large">Login</button>
+                <button type="submit" value="Submit" onClick={handleSubmit} className="btn btn-large">Login</button>
 
             </form>
         </div>

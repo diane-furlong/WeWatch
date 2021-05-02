@@ -2,9 +2,24 @@ import axios from "axios"
 
 
 export default {
+    //GET all users
+    getUsers: function() {
+        return axios.get("/api/users/")
+    },
+
     //POST user information at signup
-    postUser: function(id) {
-        return axios.post("/api/users/" + id)
+    postUser: function(signUpData) {
+        return axios.post("/api/users/register", signUpData)
+    },
+
+    //POST user information at login
+    postLogin: function(loginData) {
+        return axios.post("/api/users/login", loginData)
+    },
+
+    //GET login info
+    getLogin: function(loginData) {
+        return axios.get("/api/users/login", loginData)
     },
 
     //GET user information
@@ -14,11 +29,21 @@ export default {
 
     //POST networks chosen by the user
     postNetworks:function(id) {
-        return axios.post("/api/users/networks" + id)
+        return axios.post("/api/users/networks/" + id)
     },
 
     //GET networks chosen by the user
     getNetworks: function(id) {
-        return axios.get("/api/users/networks" + id)
+        return axios.get("/api/users/networks/" + id)
+    },
+
+    //POST shows selected by user as 'watching'
+    postShow: function(showData) {
+        return axios.post("/api/users/shows", showData)
+    },
+
+    //GET shows that the user is watching
+    getShows: function() {
+        return axios.get("/api/users/shows")
     }
 }

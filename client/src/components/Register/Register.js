@@ -2,7 +2,7 @@ import React from 'react';
 import { useInput } from './InputHook'
 import { Link } from 'react-router-dom';
 import './Register.css';
-import API from "../../API";
+import API from "../../utils/usersAPI";
 
 function Register(props) {
     const { value: name, bind:bindName, reset:resetName } = useInput("")
@@ -12,7 +12,9 @@ function Register(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        API.RegisterPost({ email: email, password: password, name: name, password2: password2 }).then(res => { console.log(res.data)})
+        API.postUser({ 
+            email: email.toLowerCase(), password: password, name: name, password2: password2 
+        }).then(res => {console.log(res.data)})
         // alert(`Submitting Name ${name} email ${email} password ${password} password verification ${password2} `);
         resetName();
         resetEmail();
