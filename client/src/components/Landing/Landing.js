@@ -2,6 +2,7 @@ import React from 'react';
 import  "./Landing.css"
 import Particles from 'react-particles-js';
 import particlesConfig from '../../config/particlesConfig';
+// import Particles from 'particles.js'
 import background from "../../img/movie-popcorn.jpg"
 import img from "../../img/popcorn1.png"
 

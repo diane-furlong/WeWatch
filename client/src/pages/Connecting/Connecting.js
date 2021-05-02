@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './Connecting.css'
 import SearchField from "react-search-field";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 
 
 <SearchField
