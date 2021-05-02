@@ -7,6 +7,22 @@ const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 // Load User model
 const DB = require("../../models");
+const usersController = require("../../controllers/usersController")
+
+
+// // const routes = (app) => {
+// //     app.route('/?')
+// //     .get((req, res) => 
+// //     res.send('GET request success'))
+// // }
+
+
+// //GET user by ID
+// router.get("/:id", (req, res) => {
+//     DB.User.find({}).then(dbUser => {
+//         return res.json(dbUser)
+//     })
+// })
 
 
 // const routes = (app) => {
@@ -15,23 +31,27 @@ const DB = require("../../models");
 //     res.send('GET request success'))
 // }
 
-//GET all users
-router.get("/", (req, res) => {
-    DB.User.find().then(dbUsers => {
-        return res.json(dbUsers)
-    })
-})
+// //POST to user's shows
+// router.post("/:id/shows", (req, res) => {
+//     req.json()
+// })
 
-router.post("/shows", (req, res) => {
-    req.json()
-})
+// router.get("/:id/shows", (req, res) => {
+//     DB.User.find({id}).then(data => {
+//         return res.json(data)
+//     })
+// })
 
-router.get("/shows", (req, res) => {
-    DB.User.find({}).then(data => {
-        return res.json(data)
-    })
-})
 
+//matches with '/api/users'
+router.route("/")
+.get(usersController.findAll)
+.post(usersController.create)
+
+//matches with '/api/users/:id'
+router.route("/:id")
+.get(usersController.findById)
+.put(usersController.update)
 
 // @route POST api/users/register
 // @desc Register user
