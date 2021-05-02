@@ -1,24 +1,51 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Nav from './components/Nav/Nav';
+import Landing from './components/Landing/Landing';
+import Register from './components/Register/Register';
+import { BrowserRouter as Router, Route,Switch } from "react-router-dom";
+import Login from './components/Login/Login';
+import Platform from './pages/Platform/Platform';
+import Watching from './pages/Watching/Watching';
+import Connecting from './pages/Connecting/Connecting'
+import Friend from './pages/Connecting/Friend'
+import FriendsList from './pages/Connecting/FriendsList'
+require('dotenv').config()
+
 
 function App() {
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Nav />
+      <Switch>
+      <Route exact path="/">
+        <Landing />
+      </Route>
+      <Route exact path="/register">
+      <Register />
+        </Route>
+      <Route exact path="/login">
+      <Login />
+      </Route>
+      <Route exact path="/Platform">
+        <Platform/>
+      </Route>  
+      <Route exact path="/Watching">
+        <Watching/>
+      </Route>
+      <Route exact path="/Connecting">
+        <Connecting/>
+      </Route>
+      <Route exact path="/Friend">
+        <Friend/>
+      </Route>
+      <Route exact path="/FriendsList">
+        <FriendsList/>
+      </Route>
+      </Switch>
     </div>
+    </Router >
   );
 }
 
