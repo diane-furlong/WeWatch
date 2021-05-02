@@ -10,12 +10,16 @@ import Watching from './pages/Watching/Watching';
 import Connecting from './pages/Connecting/Connecting'
 import Friend from './pages/Connecting/Friend'
 import FriendsList from './pages/Connecting/FriendsList'
+import Footer from './components/Footer/Footer'
+
 require('dotenv').config()
+
 
 
 function App() {
   return (
     <Router>
+      
     <div className="App">
       <Nav />
       <Switch>
@@ -44,6 +48,7 @@ function App() {
         <FriendsList/>
       </Route>
       </Switch>
+      <Footer />
     </div>
     </Router >
   );
