@@ -37,13 +37,13 @@ export default {
         return axios.get("/api/users/networks/" + id)
     },
 
-    //POST shows selected by user as 'watching'
-    postShow: function(showData) {
-        return axios.post("/api/users/shows", showData)
+    //PUT shows selected by user into user's myShows
+    postShow: function(id, showData) {
+        return axios.put("/api/users/" + id + "/shows", showData)
     },
 
     //GET shows that the user is watching
-    getShows: function() {
-        return axios.get("/api/users/shows")
+    getShows: function(id) {
+        return axios.get("/api/users/" + id + "/shows")
     }
 }
