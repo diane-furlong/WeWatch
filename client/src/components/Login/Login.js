@@ -13,6 +13,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Input from './Input';
 import Icon from './icon';
 import { useDispatch } from 'react-redux'
+import { login, signup } from '../../actions/authActions'
 
 
 const initialState = { name: '', email: '', password: '', password2: ''}

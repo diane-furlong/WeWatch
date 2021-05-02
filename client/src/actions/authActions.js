@@ -1,6 +1,8 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
+import { AUTH } from '../constants/actionTypes';
+import * as api from '../API'; // not sure if I need this yet
 import {
     GET_ERRORS,
     SET_CURRENT_USER,
@@ -19,6 +21,7 @@ export const registerUser = (userData, history) => dispatch => {
         );
 };
 // Login - get user token
+// 24-45 is login user but may all get deleted
 export const loginUser = userData => dispatch => {
     axios
         .post("/api/users/login", userData)
@@ -63,3 +66,29 @@ export const logoutUser = () => dispatch => {
     // Set current user to empty object {} which will set isAuthenticated to false
     dispatch(setCurrentUser({}));
 };
+
+// all below code is for JWT form data
+
+export const login = (formData, histroy) => async (dispatch) => {
+    try {
+        // login the user..
+
+        histroy.push('/')
+
+    } catch (error) {
+        console.log(error)
+
+    }
+}
+
+export const signup = (formData, histroy) => async (dispatch) => {
+    try {
+        // signup the user..
+
+        histroy.push('/')
+
+    } catch (error) {
+        console.log(error)
+
+    }
+}
