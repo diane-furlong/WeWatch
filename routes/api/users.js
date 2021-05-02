@@ -8,7 +8,8 @@ const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 // Load User model
 const User = require("../../models/User");
-
+const login = require('../controllers/users.js')
+const signup = require('../controllers/users.js')
 
 const routes = (app) => {
     app.route('/?')
@@ -16,7 +17,16 @@ const routes = (app) => {
     res.send('GET request success'))
 }
 
+// New code 
 
+router.post('/login', login)
+router.post('./signup', signup)
+
+
+
+
+
+// old code
 
 // @route POST api/users/register
 // @desc Register user
