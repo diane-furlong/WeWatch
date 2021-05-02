@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useInput } from '../Register/InputHook'
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
@@ -13,11 +14,16 @@ import Input from './Input';
 import Icon from './icon';
 import { useDispatch } from 'react-redux'
 
+
+const initialState = { name: '', email: '', password: '', password2: ''}
+
 const Login = () => {
     const classes = useStyles();
     const [showPassword, setShowPassword] = useState(false);
     const [isSignup, setIsSignup] = useState(false);
+    const [formData, setFormData] = useState(initialState);
     const dispatch = useDispatch();
+    const history = useHistory();
 
 
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword)
@@ -27,10 +33,15 @@ const Login = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        if(isSignup) {
+            dispatch(signup(formData, history))
+        } else {
+            dispatch(login(formData, history))
+        }
     }
 
     const handleChange = (event) => {
-        this.useInput({ [event.target.id]: event.target.value })
+        setFormData({ ...formData, [event.target.name]: event.target.value })
     }
 
     const switchMode = () => {
@@ -44,6 +55,7 @@ const Login = () => {
 
         try {
             dispatch({ type: 'AUTH', data: { result, token } });
+            history.push('/');
         } catch(error) {
             console.log(error)
         }
@@ -86,8 +98,7 @@ const Login = () => {
                         {
                             isSignup && (
                                 <>
-                                    <Input name ="fullName" label="Full Name" handleChange={handleChange} autoFocus half />
-                                    <Input name="fullName" label="Full Name" handleChange={handleChange} half />
+                                    <Input name ="fullName" label="Full Name" handleChange={handleChange} autoFocus />
                                 </>
                             )}
                                     <Input name="email" label="Email Address" handleChange={handleChange} type="email"/>
