@@ -3,8 +3,8 @@ import { AppBar, Typography, Toolbar, Button, Avatar } from '@material-ui/core';
 import useStyles from './NavStyle';
 import popcorn from '../../images/popcorn.jpg';
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import { LOGOUT } from '../../constants/actionTypes';
 import { useDispatch } from 'react-redux';
+import decode from 'jwt-decode';
 
 
 const Nav = () => {
@@ -22,15 +22,17 @@ const Nav = () => {
 
         console.log(user)
 
-        useEffect(() => {
-            const token = user?.token;
-        
+    useEffect(() => {
+        const token = user?.token;
 
-        //JWT ...
+        if (token) {
+            const decodedToken = decode(token);
+
+            if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+        }
 
         setUser(JSON.parse(localStorage.getItem('profile')));
-            
-         }, [location] );
+    }, [location]);
 
     return (
        <AppBar className={classes.appBar} position='static' color = 'inherit'>

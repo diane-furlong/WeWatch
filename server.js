@@ -6,6 +6,7 @@ const convert = require("xml-js");
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const helmet = require("helmet")
 const passport = require("passport");
 
 const users = require("./routes/api/users");
@@ -24,6 +25,7 @@ app.use(
     })
 );
 app.use(bodyParser.json());
+app.use(helmet())
 
 // DB Config
 const db = require("./config/keys2").mongoURI;

@@ -13,4 +13,4 @@ const Friend = ({ name, email, id }) => {
     );
 }
 
-// export default Friend;
+export default Friend;

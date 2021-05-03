@@ -1,11 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-import { useInput } from '../Register/InputHook'
-import PropTypes from 'prop-types';
-import { connect } from "react-redux";
-import { loginUser } from "../../actions/authActions";
-import classnames from "classnames";
 import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
 import { GoogleLogin } from 'react-google-login';
 import useStyles from './loginStyles';
@@ -29,8 +23,6 @@ const Login = () => {
 
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword)
 
-    const { value: email, bind: bindEmail, reset: resetEmail } = useInput("")
-    const { value: password, bind: bindPassword, reset: resetPassword } = useInput("")
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -47,7 +39,7 @@ const Login = () => {
 
     const switchMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);
-        handleShowPassword(false);
+        setShowPassword(false);
     }
 
     const googleSuccess = async (res) => {
@@ -66,47 +58,6 @@ const Login = () => {
         console.log(error)
         console.log("Google Login was unsucessful. Try Again");
     }
-// import { useInput } from '../Register/InputHook'
-// import API from "../../utils/usersAPI";
-
-// function Login(){
-//     // const { value: email, bind: bindEmail, reset: resetEmail } = useInput("")
-//     // const { value: password, bind: bindPassword, reset: resetPassword } = useInput("")
-
-//     const [email, setEmail] = useState()
-//     const [password, setPassword] = useState()
-
-//     const handleSubmit = (event) => {
-//         event.preventDefault();
-//         API.postLogin({ email: userData.email.toLowerCase(), password: userData.password }).then(res => { console.log(res)})
-//         console.log(userData)
-//         window.location.href='/Watching'
-//     }
-
-//     // const onChangeLogin = (event) => {
-//     //     this.useInput({ [event.target.id]: event.target.value })
-//     // }
-
-    const userData = {
-        email: email,
-        password: password
-    };
-
-    // const componentWillReceiveProps = (nextProps) => {
-    //     if (nextProps.auth.isAuthenticated) {
-    //         this.props.history.push("/dashboard"); // push user to dashboard when they login
-    //     }
-    //     if (nextProps.errors) {
-    //         this.setState({
-    //             errors: nextProps.errors
-    //         });
-    //     }
-    // }
-
-    console.log(userData)
-    
-
-    // this.props.loginUser(userData); // since we handle the redirect within our component, we don't need to pass in this.props.history as a parameter
 
     return (
         <Container component ="main" maxWidth="xs">
@@ -125,7 +76,7 @@ const Login = () => {
                             )}
                                     <Input name="email" label="Email Address" handleChange={handleChange} type="email"/>
                                     <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />
-                                    {isSignup && <Input name ="password2" label="Confirm Password" handleChange={handleChange} type="password2"/>}
+                                    { isSignup && <Input name ="password2" label="Confirm Password" handleChange={handleChange} type="password"/>}
                     </Grid>
                     <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
                         {isSignup ? 'Sign Up' : 'Login'}
@@ -162,53 +113,9 @@ const Login = () => {
 
         </Container>
 
-        // <div>
-        //     <div className="Container">
-        //         <div className="row sm-10">
-        //             <Link  to="/" className="btn">Back to Home</Link>
-        //         </div>
-        //         <div className="col-sm-12">
-        //             <h4>
-        //                 <b>Login</b> below
-        //             </h4>
-        //             <div className="col-sm-12">
-        //             <p className="grey-text text-darken-1">Don't have an account? 
-        //             <Link to="/register">Register</Link></p>
-        //             </div>
-        //         </div>
-        //     </div>
-        //     <form>
-        //         <label>
-        //             Email:
-        //             <input onChange={event => setEmail(event.target.value)} type="text" 
-        //             // {...bindEmail} 
-        //             />
-        //         </label>
-        //         <label>
-        //             Password:
-        //             <input onChange={event => setPassword(event.target.value)} type="text" 
-        //             // {...bindPassword} 
-        //             />
-        //         </label>
-        //         <button type="submit" value="Submit" onClick={handleSubmit} className="btn btn-large">Login</button>
-
-        //     </form>
-        // </div>
     )
 
 }
 
 
-Login.propTypes = {
-    loginUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
-    errors: PropTypes.object.isRequired
-};
-const mapStateToProps = state => ({
-    auth: state.auth,
-    errors: state.errors
-});
-export default connect(
-    mapStateToProps,
-    { loginUser }
-)(Login);
+export default Login
