@@ -20,8 +20,9 @@ const usersController = require("../../controllers/usersController")
 
 // New code 
 
-router.post('/login', usersController.login)
-router.post('/signup', usersController.signup)
+router.route ('/login').post(usersController.login)
+
+router.route ('/signup').post(usersController.signup)
 
 
 

@@ -26,6 +26,7 @@ const Login = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log(formData)
         if(isSignup) {
             dispatch(signup(formData, history))
         } else {
@@ -71,7 +72,7 @@ const Login = () => {
                         {
                             isSignup && (
                                 <>
-                                    <Input name ="fullName" label="Full Name" handleChange={handleChange} autoFocus />
+                                    <Input name ="name" label="Full Name" handleChange={handleChange} autoFocus />
                                 </>
                             )}
                                     <Input name="email" label="Email Address" handleChange={handleChange} type="email"/>
