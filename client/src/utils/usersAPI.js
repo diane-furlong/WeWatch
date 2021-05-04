@@ -23,13 +23,13 @@ export default {
     },
 
     //GET user information
-    getUser: function(id) {
-        return axios.get("/api/users/" + id)
+    getUser: function(networks) {
+        return axios.get("/api/users/networks", networks)
     },
 
     //POST networks chosen by the user
-    postNetworks:function(id) {
-        return axios.post("/api/users/networks/" + id)
+    postNetworks:function(token, networks) {
+        return axios.post("/api/users/networks/", networks)
     },
 
     //GET networks chosen by the user

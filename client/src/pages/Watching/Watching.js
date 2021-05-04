@@ -3,6 +3,7 @@ import usersAPI from '../../utils/usersAPI'
 // import watchModeAPI from '../../utils/watchModeAPI'
 import axios from "axios"
 import './Watching.css'
+import background from "../../img/watching.png"
 
 const Watching = () => {
 
@@ -58,20 +59,24 @@ const Watching = () => {
     }
 
     return (
-        <>
-        <h2>What are you currently watching?</h2>
+        <div
+        className="watching-image" style={{ 
+            backgroundImage: `url(${background})` 
+          }}
+        >
+        <h2 className="watching-text">What are you currently watching?</h2>
             <form>
-                <input className="searchVal" onChange={event => setSearchVal(event.target.value)}></input>
-                <button onClick={test}>Search</button>
+                <input className="watching-search" onChange={event => setSearchVal(event.target.value)}></input>
+                <button onClick={test} className="watching-search watching-search-btn">Search</button>
             </form>
-            <ul>
+            <ul className="watching-results">
 
                 { result !== false ? <li onChange={event => console.log(event)}>Title: {result}  
                 <br/>Description: {resultQueue}
 
                 <button className="addBtn" onClick={addingShow}>Add</button></li> : null }
             </ul>
-         </>
+         </div>
     )
 }
 

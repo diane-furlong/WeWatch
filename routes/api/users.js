@@ -10,6 +10,18 @@ const DB = require("../../models");
 const usersController = require("../../controllers/usersController")
 
 
+
+router.post("/networks", (req, res) => {
+
+    // find the currently loggedin user through req.user
+    DB.User.findOneAndUpdate({ _id: req.userId }, req.body).then(user => {
+        res.send("POST request")
+
+    })
+})
+
+
+
 // // const routes = (app) => {
 // //     app.route('/?')
 // //     .get((req, res) => 
