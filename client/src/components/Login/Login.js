@@ -14,9 +14,15 @@ function Login(){
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        API.postLogin({ email: userData.email.toLowerCase(), password: userData.password }).then(res => { console.log(res)})
+        API.postLogin({ email: userData.email.toLowerCase(), password: userData.password })
+            .then(res => { 
+                console.log(res)
+                if (res.data.success===true){
+                    window.location.href='/Watching'
+                    localStorage.setItem("token", res.data.token)
+                }
+            })
         console.log(userData)
-        window.location.href='/Watching'
     }
 
     // const onChangeLogin = (event) => {

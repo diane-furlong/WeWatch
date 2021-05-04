@@ -7,25 +7,26 @@ import background from "../../img/watching.png"
 
 const Watching = () => {
 
-    // const [networks, setNetworks] = useState({})
+    // const [platforms, setPlatforms] = useState({})
     const [searchVal, setSearchVal] = useState({})
     const [result, setResult] = useState(false)
     const [resultQueue, setResultQueue] = useState()
     const [myShows] = useState([])
 
-    //1. GET request from users API to import networks array from Platform.js
-    // const getShows = (id) => {
-    //     //get networks stored in user's id
-    //     usersAPI.getNetworks(id)
-    //     // V code for testing to see what the response needs to be V
-    //     .then(res => console.log(res[0].data.title))
-    //     // V actual code V
-    //     //.then(res => setNetworks(res.data))
-    // } 
-
-    //2. Enter selected networks into API request to retreive shows on that network
-    //3. Display shows from each network. dropdown list? search only? Start typing and it brings up results right away?
+    //using token to find user's db id
+    let usertoken = localStorage.getItem("token")
+    usertoken = usertoken.split(" ")
+    let usertokenArray = []
+    for(let i =0; i < usertoken.length; i++){
+        usertokenArray.push(usertoken[i])
+        if(i != usertoken.length-1){
+            usertokenArray.push(" ");
+        }
+    }
+    const id = usertokenArray[2] 
+    console.log(id)
     
+
 
     const test = (event) => {
         event.preventDefault()
@@ -53,8 +54,11 @@ const Watching = () => {
         event.preventDefault()
         myShows.push(resultQueue)
         console.log(myShows)
-         //PUSH myShows to the user's profile in the database
-        //  usersAPI.postShow(myShows)
+         //2. PUT myShows to the user's profile in the database- need to figure out how to add on instead of overwrite. make myShows an array of objects with id and title?
+        usersAPI.putShow(id, {myShows: result})
+        .then(console.log(`done`))
+        //3. route to next page- which is newsfeed?
+        // window.location.href='/Newsfeed'
        
     }
 
