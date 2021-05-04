@@ -21,11 +21,17 @@ const UserSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    platforms: {
+    platforms: [{
         type: String
-    },
-    myShows: {
+    }],
+    myShows: [{
         type: String
-    }
+    }],
+    following: [{
+        type: mongoose.Schema.ObjectId, ref: 'User'
+    }],
+    followers: [{
+        type: mongoose.Schema.ObjectId, ref: 'User'
+    }]
 });
 module.exports = User = mongoose.model("users", UserSchema);
