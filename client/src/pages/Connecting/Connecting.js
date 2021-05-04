@@ -11,85 +11,85 @@ import FilterResults from 'react-filter-search';
   classNames="test-class"
 />
 
-// class App extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       data: [],
-//       value: ''
-//     };
-//   }
-//   componentWillMount() {
-//     fetch('https://jsonplaceholder.typicode.com/users')
-//       .then(response => response.json())
-//       .then(json => this.setState({ data: json }));
-//   }
-//   handleChange = event => {
-//     const { value } = event.target;
-//     this.setState({ value });
-//   };
-//   render() {
-//     const { data, value } = this.state;
-//     return (
-//       <div>
-//         <input type="text" value={value} onChange={this.handleChange} />
-//         <SearchResults
-//           value={value}
-//           data={data}
-//           renderResults={results => (
-//             <div>
-//               {results.map(el => (
-//                 <div>
-//                   <span>{el.name}</span>
-//                   <span>{el.email}</span>
-//                 </div>
-//               ))}
-//             </div>
-//           )}
-//         />
-//       </div>
-//     );
-//   }
-// }
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+      value: ''
+    };
+  }
+  componentWillMount() {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(json => this.setState({ data: json }));
+  }
+  handleChange = event => {
+    const { value } = event.target;
+    this.setState({ value });
+  };
+  render() {
+    const { data, value } = this.state;
+    return (
+      <div>
+        <input type="text" value={value} onChange={this.handleChange} />
+        <SearchResults
+          value={value}
+          data={data}
+          renderResults={results => (
+            <div>
+              {results.map(el => (
+                <div>
+                  <span>{el.name}</span>
+                  <span>{el.email}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        />
+      </div>
+    );
+  }
+}
 //Getting friends to populate from Search bar
 
-const FriendSearch = props => (
-    <>
-        <input type="search" onChange={e => props.saveSearchInput(e.target.value)} />
-        <button type="button" onClick={() => props.handleSearch()}>
-            Search
-        </button>
-    </>
-);
+// const FriendSearch = props => (
+//     <>
+//         <input type="search" onChange={e => props.saveSearchInput(e.target.value)} />
+//         <button type="button" onClick={() => props.handleSearch()}>
+//             Search
+//         </button>
+//     </>
+// );
 
-const getFriends = props => {
-  return [' '];
-}
+// const getFriends = props => {
+//   return [' '];
+// }
 
-const MovieList = props => (
-    <ul>
-        {props.foundMovies.map(thisMovie=><li>{thisMovie}</li>)}
-    </ul>
-);
+// const MovieList = props => (
+//     <ul>
+//         {props.foundMovies.map(thisMovie=><li>{thisMovie}</li>)}
+//     </ul>
+// );
 
-const App = () => {
-  const [searchInput, setSearchInput] = useState("");
-  const [foundMovies, setFoundMovies] = useState([]);
+// const App = () => {
+//   const [searchInput, setSearchInput] = useState("");
+//   const [foundMovies, setFoundMovies] = useState([]);
 
-  const friendSearch = ()=> {
-    if (searchInput == null) return;
-    const foundFriends = getFriends(searchInput);
-    // setFoundFriends(foundFriends);
-  }
+//   const friendSearch = ()=> {
+//     if (searchInput == null) return;
+//     const foundFriends = getFriends(searchInput);
+//     // setFoundFriends(foundFriends);
+//   }
 
-  return (
-    <div>
-  {/* //     <h1 id="title">My Friends</h1>
-  //     <FriendlistSearch saveSearchInput={setSearchInput} handleSearch={friendsSearch} />
-  //     <FriendList foundFriends={foundFriends} /> */}
-  //   </div>
-  )
-}
+//   return (
+//     <div>
+//   {/* //     <h1 id="title">My Friends</h1>
+//   //     <FriendlistSearch saveSearchInput={setSearchInput} handleSearch={friendsSearch} />
+//   //     <FriendList foundFriends={foundFriends} /> */}
+//   //   </div>
+//   )
+// }
 
 
 // function App() {

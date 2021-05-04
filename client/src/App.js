@@ -8,8 +8,8 @@ import Login from './components/Login/Login';
 import Platform from './pages/Platform/Platform';
 import Watching from './pages/Watching/Watching';
 import Connecting from './pages/Connecting/Connecting'
-import Friend from './pages/Connecting/Friend'
-import FriendsList from './pages/Connecting/FriendsList'
+import filterFriends from './pages/Connecting/filterFriends'
+import friendsIndex from './pages/Connecting/friendsIndex'
 import Footer from './components/Footer/Footer'
 
 require('dotenv').config()
@@ -41,11 +41,11 @@ function App() {
       <Route exact path="/Connecting">
         <Connecting/>
       </Route>
-      <Route exact path="/Friend">
-        <Friend/>
+      <Route exact path="/filterFriends">
+        <filterFriends/>
       </Route>
-      <Route exact path="/FriendsList">
-        <FriendsList/>
+      <Route exact path="/friendsIndex">
+        <friendsIndex/>
       </Route>
       </Switch>
       <Footer />
