@@ -28,9 +28,10 @@ export default {
     },
 
     //GET user information
-    getUser: function(id) {
-        return axios.get("/api/users/" + id)
+    getUser: function(networks) {
+        return axios.get("/api/users/networks", networks)
     },
+
 
     //PUT platforms chosen by the user
     putPlatforms:function(id, platforms) {

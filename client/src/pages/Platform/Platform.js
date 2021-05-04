@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import usersAPI from "../../utils/usersAPI"
 import './Platform.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import background from "../../img/platform.png"
 const _ = require('lodash');
 
 const Platform = () => {
@@ -47,15 +48,20 @@ const Platform = () => {
 
     //submit button
     const handleSubmit = () => {
+
         console.log(`submitted ${networks} for ${id}`)
         //2. add API request to PUT the selected platforms to the users API
         usersAPI.putPlatforms(id, {platforms: networks})
-        .then(console.log(`done`))
+        .then(console.log(`done`)
         //3. route to next page
         window.location.href='/Watching'
     }
 
     return (
+        <div className="image" style={{ 
+            backgroundImage: `url(${background})` 
+          }}>
+
         <div className="form-check">
             <h1>Let's Get Started!</h1>
             <h2>What platforms do you use?</h2>
@@ -68,6 +74,7 @@ const Platform = () => {
                 </li>
             </ul>
             <button className="btn btn-dark submitPlatform" onClick={event => handleSubmit(event)}>Submit</button>
+        </div>
         </div>
     )
 }

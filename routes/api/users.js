@@ -8,8 +8,6 @@ const validateLoginInput = require("../../validation/login");
 // Load User model
 const DB = require("../../models");
 const usersController = require("../../controllers/usersController")
-// const auth = require("../../middleware/auth");
-
 
 //matches with '/api/users'
 router.route("/")
