@@ -23,6 +23,8 @@ const usersController = require("../../controllers/usersController")
 router.route ('/login').post(usersController.login)
 
 router.route ('/signup').post(usersController.signup)
+// router.route ('/signup').post ((req,res) => console.log ) 
+
 
 
 

@@ -27,11 +27,13 @@ const Login = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(formData)
-        if(isSignup) {
-            dispatch(signup(formData, history))
-        } else {
-            dispatch(login(formData, history))
-            console.log(formData)
+        fetch('localhost:3000/login')
+        // if(isSignup) {
+        //     console.log(isSignup)
+        //     dispatch(signup(formData, history))
+        // } else {
+        //     dispatch(login(formData, history))
+        //     console.log(formData)
         }
     }
 

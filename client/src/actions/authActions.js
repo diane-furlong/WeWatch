@@ -69,13 +69,13 @@ import {
 
 // all below code is for JWT form data
 
-export const login = (formData, histroy) => async (dispatch) => {
+export const login = (formData, history) => async (dispatch) => {
     try {
         const { data } = await api.login(formData);
 
         dispatch({ type: AUTH, data})
 
-        histroy.push('/')
+        history.push('/')
 
     } catch (error) {
         console.log(error)
@@ -83,13 +83,14 @@ export const login = (formData, histroy) => async (dispatch) => {
     }
 }
 
-export const signup = (formData, histroy) => async (dispatch) => {
+export const signup = async (formData, history, dispatch)  => {
     try {
-        const { data } = await api.signup(formData);
+        console.log(formData, history, dispatch)
+        // const { data } = await api.signup(formData);
 
-        dispatch({ type: AUTH, data })
+        // dispatch({ type: AUTH, data })
 
-        histroy.push('/')
+        // histroy.push('/')
 
     } catch (error) {
         console.log(error)

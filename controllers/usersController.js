@@ -52,6 +52,7 @@ module.exports = {
         }
     },
     signup: function(req, res) {
+        console.log(req)
         const { name, email, password, password2 } = req.body;
         try {
             const existingUser =  User.User.findOne({ email });
