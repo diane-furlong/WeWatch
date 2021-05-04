@@ -18,7 +18,7 @@ const UserSchema = new Schema({
         validate: [({ length }) => length >= 6, "Password must be at least 6 characters."]
     },
     id: {
-        type: String,
+        type: String
     },
     date: {
         type: Date,

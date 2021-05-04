@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const helmet = require("helmet")
 const passport = require("passport");
+const cors = require("cors")
 
 const users = require("./routes/api/users");
 // const routes = require("./routes");
@@ -19,12 +20,16 @@ const app = express();
 app.set('trust proxy', 1);
 
 // Bodyparser middleware
-app.use(
-    bodyParser.urlencoded({
-        extended: false
-    })
-);
-app.use(bodyParser.json());
+app.use(express.json({limit: '30mb'}))
+app.use(express.urlencoded({ extended: false, limit: '30mb'}))
+// app.use(
+//     bodyParser.urlencoded({
+//         extended: false
+//     })
+// );
+// app.use(bodyParser.json({ limit: '30mb', extended: true}));
+// app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
+app.use(cors)
 app.use(helmet())
 
 // DB Config

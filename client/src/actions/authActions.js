@@ -2,7 +2,7 @@ import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 import { AUTH } from '../constants/actionTypes';
-import * as api from '../API'; // not sure if I need this yet
+import * as api from '../API'; 
 import {
     GET_ERRORS,
     SET_CURRENT_USER,

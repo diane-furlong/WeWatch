@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; //all of this is needed for the google sign in
 
 const icon = () => (
     <svg style={{ width: '20px', height: '20px' }} viewBox="0 0 24 24">

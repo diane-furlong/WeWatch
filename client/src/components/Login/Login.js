@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom';
-import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
-import { GoogleLogin } from 'react-google-login';
+import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core'; //we will also need to download material ui core and add 
+import { GoogleLogin } from 'react-google-login'; //this is for google login
 import useStyles from './loginStyles';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Input from './Input';
-import Icon from './icon';
-import { useDispatch } from 'react-redux'
+import Icon from './icon'; //import the icon svg fo the google login
+import { useDispatch } from 'react-redux' // we will have to have this for the google button we will also need 
 import { login, signup } from '../../actions/authActions'
 
 
@@ -31,6 +31,7 @@ const Login = () => {
             dispatch(signup(formData, history))
         } else {
             dispatch(login(formData, history))
+            console.log(formData)
         }
     }
 
@@ -43,7 +44,7 @@ const Login = () => {
         setShowPassword(false);
     }
 
-    const googleSuccess = async (res) => {
+    const googleSuccess = async (res) => {  // googleSuccess and google failure will need to be added for the google button
         const result = res?.profileObj; 
         const token = res?.tokenId;
 
@@ -82,16 +83,16 @@ const Login = () => {
                     <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
                         {isSignup ? 'Sign Up' : 'Login'}
                     </Button>
-                    <GoogleLogin 
-                        clientId='660891343423-bf25c65irnt4b1q1mc519tjlebukqtqk.apps.googleusercontent.com'
+                    <GoogleLogin  //this is the google login aspect
+                        clientId='660891343423-bf25c65irnt4b1q1mc519tjlebukqtqk.apps.googleusercontent.com' // this is from the google site we will also need to know how to deploy this
                         render={(renderProps) => (
                             <Button
                                  className ={classes.googleButton}
-                                 color='primary'
+                                 color='primary' // we will also need loginstyles at least the google button part
                                  fullWidth 
                                  onClick={renderProps.onClick}
                                  disabled={renderProps.disabled}
-                                 startIcon={<Icon />}
+                                 startIcon={<Icon />} //icon needs to be imported
                                  variant='contained'
                                 >
                                     Google Login
