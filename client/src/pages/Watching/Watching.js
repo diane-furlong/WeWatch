@@ -14,18 +14,19 @@ const Watching = () => {
 
     //using token to find user's db id
     let usertoken = localStorage.getItem("token")
-    usertoken = usertoken.split(" ")
+    usertoken = usertoken?.split(" ")
     let usertokenArray = []
-    for(let i =0; i < usertoken.length; i++){
-        usertokenArray.push(usertoken[i])
-        if(i != usertoken.length-1){
-            usertokenArray.push(" ");
+    if(usertoken){
+        for(let i =0; i < usertoken.length; i++){
+            usertokenArray.push(usertoken[i])
+            if(i != usertoken.length-1){
+                usertokenArray.push(" ");
+            }
         }
     }
     const id = usertokenArray[2] 
     console.log(id)
     
-
 
     const test = (event) => {
         event.preventDefault()
@@ -40,9 +41,7 @@ const Watching = () => {
         .then(res => {
             // console.log(res.data.title)
             setResult(res.data.title)
-
             setResultQueue(res.data.plot_overview)
-
             
             // return result, resultQueue
         })
@@ -56,8 +55,8 @@ const Watching = () => {
          //2. PUT myShows to the user's profile in the database- need to figure out how to add on instead of overwrite. make myShows an array of objects with id and title?
         usersAPI.putShow(id, {myShows: result})
         .then(console.log(`done`))
-        //3. route to next page- which is newsfeed?
-        // window.location.href='/Newsfeed'
+        //3. route to next page
+        // window.location.href='/SearchUsers'
        
     }
 
