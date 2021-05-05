@@ -4,6 +4,7 @@ import usersAPI from '../../utils/usersAPI'
 import axios from "axios"
 import './Watching.css'
 import background from "../../img/watching.png"
+import { Link } from 'react-router-dom';
 
 const Watching = () => {
 
@@ -32,6 +33,7 @@ const Watching = () => {
 
     const test = (event) => {
         event.preventDefault()
+        
         let titleID
         const BASEURL = "https://api.watchmode.com/v1/"
         const APIkey = process.env.REACT_APP_API_KEY
@@ -46,8 +48,12 @@ const Watching = () => {
             setResultQueue(res.data.plot_overview)
             
             // return result, resultQueue
-        })
-        // .then(console.log(resultQueue, result))
+            
+        }).catch((err) => {
+            console.log(err)
+            window.alert("Title not recognized. Please try again.")
+         })
+ // .then(console.log(resultQueue, result))
     }
 
     const addingShow = (event) => {
@@ -66,8 +72,10 @@ const Watching = () => {
         <div
         className="watching-image" style={{ 
             backgroundImage: `url(${background})` 
-          }}
-        >
+          }}>
+        <div className="">
+                    <Link  to="/" className="watching-home-btn">Back to Home</Link>
+                </div>
         <h2 className="watching-text">What are you currently watching?</h2>
             <form>
                 <input className="watching-search" onChange={event => setSearchVal(event.target.value)}></input>

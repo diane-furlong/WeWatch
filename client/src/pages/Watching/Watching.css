@@ -15,13 +15,13 @@
 
 .watching-text{
     color: #003049;
-    margin-left: 450px;
+    margin-left: 500px;
 }
 
 .watching-search{
     background-color: #003049;
     color: #D62828;
-    margin-left: 60vh;
+    margin-left: 65vh;
     margin-bottom: 20px;
     margin-top: 20px;
     font-size: 20px;
@@ -43,4 +43,11 @@
 .addBtn{
     background-color: #003049;
     color: #D62828; 
+}
+
+.watching-home-btn{
+    color: #D62828;
+    background-color: #003049;
+    font-size: 35px;
+    margin-left: 580px;
 }

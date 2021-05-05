@@ -37,10 +37,19 @@
 .login-below{
     color: #003049;
     font-size:25px !important;
+    margin-left: 50px;
 }
 
 .login-home-btn{
     color: #D62828;
     background-color: #003049;
     font-size: 35px;
+}
+
+.register-link{
+    margin-left: 520px; 
+}
+
+.login-account{
+    color: #D62828;
 }

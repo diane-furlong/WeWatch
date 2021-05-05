@@ -30,7 +30,7 @@ const Nav = () => {
 
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light  bg-dark">
+        <nav className="navbar navbar-expand-lg">
             <div className="container">
                 <h3>Hi, {name}</h3>
             </div>

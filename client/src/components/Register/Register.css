@@ -21,15 +21,15 @@
 
 
 .btn-info {
-    color: #D62828 !important;
+    color:  #D62828 !important;
     margin-left: 50%;
     background-color: #003049 !important;
     font-size: 30px;
 }
 
 .btn {
-    color: #D62828 !important;
-    background-color: #003049 !important;
+    color: #003049 !important;  
+    background-color:  #D62828 !important;
 
 }
 
@@ -43,6 +43,5 @@
 
 .register-btn{
     color: #D62828 !important;
-    background-color: #003049 !important;
     font-size: 30px;
 }

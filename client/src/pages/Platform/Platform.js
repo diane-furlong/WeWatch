@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 //import user API to POST platforms to the current user
 import usersAPI from "../../utils/usersAPI"
 import './Platform.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import background from "../../img/platform.png"
 const _ = require('lodash');
 
@@ -61,19 +60,31 @@ const Platform = () => {
     }
 
     return (
-        <div className="image" style={{ 
+        <div className="platform-image" style={{ 
             backgroundImage: `url(${background})` 
           }}>
 
         <div className="form-check">
-            <h1>Let's Get Started!</h1>
-            <h2>What platforms do you use?</h2>
+            <h1 className="platform-text">Let's Get Started!</h1>
+            <h2 className="platform-text">What platforms do you use?</h2>
             <ul>
                 <li>
                     <input className="form-check-input" type="checkbox" value="Netflix" id="check1" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check1">Netflix</label>
                 </li>
                 <li>
                     <input className="form-check-input" type="checkbox" value="Peacock" id="check2" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check2">Peacock</label>
+                </li>
+                <li>
+                    <input className="form-check-input" type="checkbox" value="HBO Max" id="check1" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check1">HBO Max</label>
+                </li>
+                <li>
+                    <input className="form-check-input" type="checkbox" value="Hulu" id="check1" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check1">Hulu</label>
+                </li>
+                <li>
+                    <input className="form-check-input" type="checkbox" value="Disney+" id="check1" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check1">Disney+</label>
+                </li>
+                <li>
+                    <input className="form-check-input" type="checkbox" value="Amazon Prime Video" id="check1" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check1">Amazon Prime Video</label>
                 </li>
             </ul>
             <button className="btn btn-dark submitPlatform" onClick={event => handleSubmit(event)}>Submit</button>
