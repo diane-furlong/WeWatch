@@ -13,6 +13,7 @@ import friendsIndex from './pages/Connecting/friendsIndex'
 import Footer from './components/Footer/Footer'
 import axios from 'axios'
 import UserContext from './context/userContext'
+import SearchUsers from './pages/SearchUsers/SearchUsers'
 
 // require('dotenv').config()
 
@@ -73,6 +74,9 @@ function App() {
         </Route>
         <Route exact path="/FriendsList">
           <FriendsList/>
+        </Route>
+        <Route exact path="/SearchUsers">
+          <SearchUsers/>
         </Route>
       </Switch>
       <Footer />
