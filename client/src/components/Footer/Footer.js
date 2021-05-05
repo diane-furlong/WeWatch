@@ -5,7 +5,8 @@ const Footer = () => {
     return (
         <div>
     <div className="footer">
-        <p>weWatch 2021</p>
+        <p> Made with <span class="heart">♥</span> 2021
+        </p>
     </div>
         </div>
     )
