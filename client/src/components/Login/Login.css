@@ -1,0 +1,46 @@
+
+.login-image {
+    min-height: 100%;
+    height: 93vh;
+    /* width: 100vw; */
+    background-size: cover;
+    background-position: top;
+    position: relative;
+}
+
+.login-container{
+    margin-left: 550px;
+    
+}
+
+.login-btn {
+    color: #D62828;
+    background-color: #003049;
+    font-size: 28px;
+}
+
+.login-form{
+    margin-left: 300px;
+}
+
+.login-info{
+    color: #D62828;
+    background-color: #003049;
+    font-size: 20px;
+}
+ 
+.login-account{
+    color: #003049;
+    font-size:25px !important;
+    margin-right: 25px !important;
+}
+.login-below{
+    color: #003049;
+    font-size:25px !important;
+}
+
+.login-home-btn{
+    color: #D62828;
+    background-color: #003049;
+    font-size: 35px;
+}

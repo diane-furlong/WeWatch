@@ -9,40 +9,6 @@ const validateLoginInput = require("../../validation/login");
 const DB = require("../../models");
 const usersController = require("../../controllers/usersController")
 
-
-// // const routes = (app) => {
-// //     app.route('/?')
-// //     .get((req, res) => 
-// //     res.send('GET request success'))
-// // }
-
-
-// //GET user by ID
-// router.get("/:id", (req, res) => {
-//     DB.User.find({}).then(dbUser => {
-//         return res.json(dbUser)
-//     })
-// })
-
-
-// const routes = (app) => {
-//     app.route('/?')
-//     .get((req, res) => 
-//     res.send('GET request success'))
-// }
-
-// //POST to user's shows
-// router.post("/:id/shows", (req, res) => {
-//     req.json()
-// })
-
-// router.get("/:id/shows", (req, res) => {
-//     DB.User.find({id}).then(data => {
-//         return res.json(data)
-//     })
-// })
-
-
 //matches with '/api/users'
 router.route("/")
 .get(usersController.findAll)
@@ -51,11 +17,20 @@ router.route("/")
 //matches with '/api/users/:id'
 router.route("/:id")
 .get(usersController.findById)
-.put(usersController.update)
+.put(usersController.update) //this updates a user- purpose: adding platforms and shows to a user
 
+// //matches with '/api/platforms'
+// router.route("/platforms")
+// .get(usersController.findById)
+// .put(usersController.update)
+
+
+
+
+//--------------------------------------------------------------------
+
+//vvvvvvvvvvvvvvvv-LOGIN AND SIGNUP LOGIC-vvvvvvvvvvvvvvvvv
 // @route POST api/users/register
-// @desc Register user
-// @access Public
 router.post("/register", (req, res) => {
     // Form validation
     const { errors, isValid } = validateRegisterInput(req.body);
@@ -111,7 +86,7 @@ router.post("/login", (req, res) => {
                 // User matched
                 // Create JWT Payload
                 const payload = {
-                    id: user.id,
+                    id: user._id,
                     name: user.name
                 };
                 // Sign token
@@ -124,10 +99,20 @@ router.post("/login", (req, res) => {
                     (err, token) => {
                         res.json({
                             success: true,
-                            token: "Bearer " + token
+                            token: token + " " + user._id
                         });
                     }
                 );
+                const token = jwt.sign({ id: user._id }, 
+                    process.env.JWT_SECRET
+                    )
+                res.json({
+                    token,
+                    user: {
+                        id: user._id,
+                        name: user.name
+                    }
+                })
             } else {
                 return res
                     .status(400)
@@ -147,6 +132,20 @@ router.get("/connecting", (req, res) => {
             });
         }
     });
+})
+// Check if token is valid
+router.post("/tokenIsValid", (req, res) => {
+    try {
+        const token = req.header("x-auth-token");
+    if (!token) return res.json(false);
+        const verified = jwt.verify(token, process.env.JWT_SECRET);
+    if (!verified) return res.json(false);
+        const user = User.findById(verified.id);
+    if (!user) return res.json(false);
+    return res.json(true);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
 });
 
 module.exports = router;
