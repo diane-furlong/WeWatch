@@ -15,14 +15,16 @@ const Watching = () => {
 
     //using token to find user's db id
     let usertoken = localStorage.getItem("token")
-    usertoken = usertoken.split(" ")
-    let usertokenArray = []
+    usertoken = usertoken?.split(" ")
+    let usertokenArray = [] 
+    if (usertoken) {
     for(let i =0; i < usertoken.length; i++){
         usertokenArray.push(usertoken[i])
         if(i != usertoken.length-1){
             usertokenArray.push(" ");
         }
     }
+}
     const id = usertokenArray[2] 
     console.log(id)
     

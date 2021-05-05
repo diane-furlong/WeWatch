@@ -18,14 +18,16 @@ const Platform = () => {
 
     //using token to find user's db id
     let usertoken = localStorage.getItem("token")
-    usertoken = usertoken.split(" ")
-    let usertokenArray = []
+    usertoken = usertoken?.split(" ")
+    let usertokenArray = [] 
+    if (usertoken) {
     for(let i =0; i < usertoken.length; i++){
         usertokenArray.push(usertoken[i])
         if(i != usertoken.length-1){
             usertokenArray.push(" ");
         }
     }
+}
     const id = usertokenArray[2] 
     console.log(id)
 
@@ -52,7 +54,7 @@ const Platform = () => {
         console.log(`submitted ${networks} for ${id}`)
         //2. add API request to PUT the selected platforms to the users API
         usersAPI.putPlatforms(id, {platforms: networks})
-        .then(console.log(`done`)
+        .then(console.log(`done`))
         //3. route to next page
         window.location.href='/Watching'
     }
