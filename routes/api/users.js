@@ -1,5 +1,4 @@
-const express = require("express");
-const router = express.Router();
+const router = require('express').Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys2 = require("../../config/keys2");
@@ -7,20 +6,37 @@ const keys2 = require("../../config/keys2");
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 // Load User model
-const User = require("../../models/User");
+const DB = require("../../models");
+const usersController = require("../../controllers/usersController")
+
+//matches with '/api/users'
+router.route("/")
+.get(usersController.findAll)
+.post(usersController.create)
+
+//matches with '/api/users/:id'
+router.route("/:id")
+.get(usersController.findById)
+.put(usersController.updateShows) //this updates a user- purpose: adding platforms and shows to a user
+
+//matches with '/api/users/:id/platforms'
+router.route("/:id/platforms")
+.get(usersController.findById)
+.put(usersController.updatePlatforms) //this updates a user- purpose: adding platforms and shows to a user
 
 
-const routes = (app) => {
-    app.route('/?')
-    .get((req, res) => 
-    res.send('GET request success'))
-}
+// //matches with '/api/platforms'
+// router.route("/platforms")
+// .get(usersController.findById)
+// .put(usersController.update)
 
 
 
+
+//--------------------------------------------------------------------
+
+//vvvvvvvvvvvvvvvv-LOGIN AND SIGNUP LOGIC-vvvvvvvvvvvvvvvvv
 // @route POST api/users/register
-// @desc Register user
-// @access Public
 router.post("/register", (req, res) => {
     // Form validation
     const { errors, isValid } = validateRegisterInput(req.body);
@@ -28,11 +44,11 @@ router.post("/register", (req, res) => {
     if (!isValid) {
         return res.status(400).json(errors);
     }
-    User.findOne({ email: req.body.email }).then(user => {
+    DB.User.findOne({ email: req.body.email }).then(user => {
         if (user) {
             return res.status(400).json({ email: "Email already exists" });
         } else {
-            const newUser = new User({
+            const newUser = new DB.User({
                 name: req.body.name,
                 email: req.body.email,
                 password: req.body.password
@@ -65,7 +81,7 @@ router.post("/login", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
     // Find user by email
-    User.findOne({ email }).then(user => {
+    DB.User.findOne({ email }).then(user => {
         // Check if user exists
         if (!user) {
             return res.status(404).json({ emailnotfound: "Email is not found" });
@@ -76,7 +92,7 @@ router.post("/login", (req, res) => {
                 // User matched
                 // Create JWT Payload
                 const payload = {
-                    id: user.id,
+                    id: user._id,
                     name: user.name
                 };
                 // Sign token
@@ -89,10 +105,20 @@ router.post("/login", (req, res) => {
                     (err, token) => {
                         res.json({
                             success: true,
-                            token: "Bearer " + token
+                            token: token + " " + user._id
                         });
                     }
                 );
+                const token = jwt.sign({ id: user._id }, 
+                    process.env.JWT_SECRET
+                    )
+                res.json({
+                    token,
+                    user: {
+                        id: user._id,
+                        name: user.name
+                    }
+                })
             } else {
                 return res
                     .status(400)
@@ -100,6 +126,22 @@ router.post("/login", (req, res) => {
             }
         });
     });
+});
+
+
+// Check if token is valid
+router.post("/tokenIsValid", (req, res) => {
+    try {
+        const token = req.header("x-auth-token");
+    if (!token) return res.json(false);
+        const verified = jwt.verify(token, process.env.JWT_SECRET);
+    if (!verified) return res.json(false);
+        const user = User.findById(verified.id);
+    if (!user) return res.json(false);
+    return res.json(true);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
 });
 
 module.exports = router;

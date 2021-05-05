@@ -1,57 +1,77 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-import { useInput } from '../Register/InputHook'
-import API from "../../API";
+// import { useInput } from '../Register/InputHook'
+import API from "../../utils/usersAPI";
+import background from "../../img/login.png"
+import './Login.css'
 
-function Login(props){
-    const { value: email, bind: bindEmail, reset: resetEmail } = useInput("")
-    const { value: password, bind: bindPassword, reset: resetPassword } = useInput("")
+function Login(){
+    // const { value: email, bind: bindEmail, reset: resetEmail } = useInput("")
+    // const { value: password, bind: bindPassword, reset: resetPassword } = useInput("")
+
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        API.LoginPost({ email: email, password: password }).then(res => { console.log(res.data)})
+        API.postLogin({ email: userData.email.toLowerCase(), password: userData.password })
+            .then(res => { 
+                console.log(res)
+                if (res.data.success===true){
+                    window.location.href='/Watching'
+                    localStorage.setItem("token", res.data.token)
+                }
+            })
+        console.log(userData)
     }
 
-    const onChangeLogin = (event) => {
-        this.useInput({ [event.target.id]: event.target.value })
-    }
+    // const onChangeLogin = (event) => {
+    //     this.useInput({ [event.target.id]: event.target.value })
+    // }
 
     const userData = {
-        email: email.email,
-        password: password.password
+        email: email,
+        password: password
     };
 
-    console.log(userData)
+    
 
     return (
-        <div>
-            <div className="Container">
-                <div className="row sm-10">
-                    <Link  to="/" className="btn">Back to Home</Link>
+        <div className="login-image" style={{ 
+            backgroundImage: `url(${background})` 
+          }}>
+            <div className="login-container">
+                <div className="">
+                    <Link  to="/" className="login-home-btn">Back to Home</Link>
                 </div>
-                <div className="col-sm-12">
-                    <h4>
+                <div className="">
+                    <h4 className="login-below">
                         <b>Login</b> below
                     </h4>
-                    <div className="col-sm-12">
-                    <p className="grey-text text-darken-1">Don't have and account?
-                    <Link to="/register">Register</Link></p>
+                    <div className="">
+                    <p className="login-account">Don't have an account? 
+                    <Link to="/register"> Register</Link></p>
                     </div>
                 </div>
             </div>
-            <form onSubmit={handleSubmit}>
-                <label>
+            <form className="login-form">
+                <label className="login-info">
                     Email:
-                    <input onChange={onChangeLogin} type="text" {...bindEmail} />
+                    <input onChange={event => setEmail(event.target.value)} type="text" 
+                    // {...bindEmail} 
+                    />
                 </label>
-                <label>
+                <label className="login-info">
                     Password:
-                    <input onChange={onChangeLogin} type="text" {...bindPassword} />
+                    <input onChange={event => setPassword(event.target.value)} type="text" 
+                    // {...bindPassword} 
+                    />
                 </label>
-                <button type="submit" value="Submit" className="btn btn-large">Login</button>
+                <button type="submit" value="Submit" onClick={handleSubmit} className="login-btn">Login</button>
 
             </form>
         </div>
+      
     )
 }
 

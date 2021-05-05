@@ -3,48 +3,55 @@ require ("dotenv").config()
 const fetch = require("node-fetch");
 const convert = require("xml-js");
 
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
+const express = require("express"); //express
+const mongoose = require("mongoose"); //server
+const bodyParser = require("body-parser"); //express
 const passport = require("passport");
+const cookieParser = require('cookie-parser')
+const session = require('express-session')
 
-const users = require("./routes/api/users");
-// const routes = require("./routes");
-const app = express();
+const users = require("./routes/api/users"); //routes-express 
+const app = express(); //express
 
 
 // Enable if you're behind a reverse proxy (Heroku, Bluemix, AWS ELB, Nginx, etc)
 // see https://expressjs.com/en/guide/behind-proxies.html
 app.set('trust proxy', 1);
 
-// Bodyparser middleware
+// Bodyparser middleware- parse body params and attach them to req.body
 app.use(
     bodyParser.urlencoded({
         extended: false
     })
 );
 app.use(bodyParser.json());
-
-// DB Config
-const db = require("./config/keys2").mongoURI;
-// Connect to MongoDB
-mongoose
-    .connect(
-        db,
-        { useNewUrlParser: true }
-    )
-    .then(() => console.log("MongoDB successfully connected"))
-    .catch(err => console.log(err));
-
-// Passport midleware
+app.use(cookieParser())
+app.use(session({ 
+    secret: 'schfifty five', 
+    resave: false ,
+    saveUninitialized: false
+}));
+// Passport middleware
 app.use(passport.initialize());
-
+app.use(passport.session());
 // Passport config
-require("./config/passport")(passport);
+// require("./config/passport")(passport);
 
 //Routes
 app.use("/api/users", users);
 
-const port = process.env.PORT || 3001 // process.env.port is Heroku's port if you choose to deploy the app there
+// DB Config
+const db = require("./config/keys2").mongoURI; //server
+// Connect to MongoDB
+mongoose
+    .connect(
+        db,
+        { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false }
+    )
+    .then(() => console.log("MongoDB successfully connected"))
+    .catch(err => console.log(err));
+
+
+const port = process.env.PORT || 3001; // process.env.port is Heroku's port if you choose to deploy the app there
 app.listen(port, () => console.log(`Server up and running (Hurray!) on port ${port} !`));
 

@@ -1,3 +1,48 @@
-.row {
-    margin-left: 2.1rem;
+.register-row  {
+    margin-left: 100px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: #D62828;
+    font-size: 23px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px; */
+}
+
+.register {
+    color: #D62828;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   
+}
+
+
+.btn-info {
+    color: #D62828 !important;
+    margin-left: 50%;
+    background-color: #003049 !important;
+    font-size: 30px;
+}
+
+.btn {
+    color: #D62828 !important;
+    background-color: #003049 !important;
+
+}
+
+.register-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat:no-repeat;
+    height: 93vh;
+    
+}
+
+.register-btn{
+    color: #D62828 !important;
+    background-color: #003049 !important;
+    font-size: 30px;
 }
