@@ -27,11 +27,15 @@ export default {
         return axios.get("/api/users/login", loginData)
     },
 
-    //GET user information
-    getUser: function(networks) {
-        return axios.get("/api/users/networks", networks)
+    //GET user information by ID
+    getUser: function(id) {
+        return axios.get("/api/users/" + id)
     },
 
+     //GET user information by email
+     getUserbyEmail: function(id) {
+        return axios.get("/api/users/" + id)
+    },
 
     //PUT platforms chosen by the user
     putPlatforms:function(id, platforms) {

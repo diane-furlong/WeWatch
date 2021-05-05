@@ -17,7 +17,13 @@ router.route("/")
 //matches with '/api/users/:id'
 router.route("/:id")
 .get(usersController.findById)
-.put(usersController.update) //this updates a user- purpose: adding platforms and shows to a user
+.put(usersController.updateShows) //this updates a user- purpose: adding platforms and shows to a user
+
+//matches with '/api/users/:id/platforms'
+router.route("/:id/platforms")
+.get(usersController.findById)
+.put(usersController.updatePlatforms) //this updates a user- purpose: adding platforms and shows to a user
+
 
 // //matches with '/api/platforms'
 // router.route("/platforms")
