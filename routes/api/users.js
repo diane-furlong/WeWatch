@@ -24,12 +24,9 @@ router.route("/:id/platforms")
 .get(usersController.findById)
 .put(usersController.updatePlatforms) //this updates a user- purpose: adding platforms and shows to a user
 
-
-// //matches with '/api/platforms'
-// router.route("/platforms")
-// .get(usersController.findById)
-// .put(usersController.update)
-
+//matches with '/api/users/email'
+router.route("/:id/email")
+.get(usersController.findByEmail)
 
 
 

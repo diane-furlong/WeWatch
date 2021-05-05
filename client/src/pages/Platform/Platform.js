@@ -50,8 +50,8 @@ const Platform = () => {
     }
 
     //submit button
-    const handleSubmit = () => {
-
+    const handleSubmit = (event) => {
+        event.preventDefault()
         console.log(`submitted ${networks} for ${id}`)
         //2. add API request to PUT the selected platforms to the users API
         usersAPI.putPlatforms(id, {platforms: networks})
@@ -74,6 +74,12 @@ const Platform = () => {
                 </li>
                 <li>
                     <input className="form-check-input" type="checkbox" value="Peacock" id="check2" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check2">Peacock</label>
+                </li>
+                <li>
+                    <input className="form-check-input" type="checkbox" value="Hulu" id="check3" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check3">Hulu</label>
+                </li>
+                <li>
+                    <input className="form-check-input" type="checkbox" value="HBO Max" id="check4" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check4">HBO Max</label>
                 </li>
             </ul>
             <button className="btn btn-dark submitPlatform" onClick={event => handleSubmit(event)}>Submit</button>

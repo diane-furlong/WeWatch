@@ -32,10 +32,10 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     },
     findByEmail: function(req, res) {
-        db.User.find({ email: req.params.email})
-        .then(dbUser => res.json(dbUser))
-        .catch(err =>{ console.log(req.params.email) 
-            return res.status(422).json(err)});
+        db.User.find({ 'email': req.params.email })
+        .then(dbUser => res.json(dbUser)) 
+        .then(console.log(req.params.id))
+        .catch(err =>{res.status(422).json(err)});
     },
     findById: function(req, res) {
         db.User.findById(req.params.id)

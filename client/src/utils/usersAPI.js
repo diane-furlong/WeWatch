@@ -33,13 +33,13 @@ export default {
     },
 
      //GET user information by email
-     getUserbyEmail: function(id) {
-        return axios.get("/api/users/" + id)
+     getUserbyEmail: function(id, email) {
+        return axios.get(`/api/users/${id}/email`)
     },
 
     //PUT platforms chosen by the user
     putPlatforms:function(id, platforms) {
-        return axios.put(`/api/users/${id}`, platforms)
+        return axios.put(`/api/users/${id}/platforms`, platforms)
     },
 
     //GET platforms chosen by the user
