@@ -14,6 +14,8 @@ import Footer from './components/Footer/Footer'
 import axios from 'axios'
 import UserContext from './context/userContext'
 import SearchUsers from './pages/SearchUsers/SearchUsers'
+import NewsFeed from './pages/NewsFeed/NewsFeed'
+import UserProfile from './pages/UserProfile/UserProfile'
 
 // require('dotenv').config()
 
@@ -77,6 +79,12 @@ function App() {
         </Route>
         <Route exact path="/SearchUsers">
           <SearchUsers/>
+        </Route>
+        <Route exact path="/Home">
+          <NewsFeed/>
+        </Route>
+        <Route exact path="/MyProfile">
+          <UserProfile/>
         </Route>
       </Switch>
       <Footer />

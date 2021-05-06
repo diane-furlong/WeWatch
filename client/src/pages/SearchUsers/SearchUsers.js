@@ -1,5 +1,6 @@
 import React, { useState, useEffect }  from 'react'
 import usersAPI from '../../utils/usersAPI'
+import './SearchUsers.css'
 
 const SearchUsers = () => {
     
@@ -49,7 +50,7 @@ const SearchUsers = () => {
     }
 
     return (
-        <>
+        <div className="all">
         <h2>Search for friends by email address:</h2>
             <form>
                 <input className="email-search" onChange={event => setSearchVal(event.target.value)}></input>
@@ -65,7 +66,7 @@ const SearchUsers = () => {
 
                 { result !== false && addedResult !== false ? <p>You now follow {result.name}! Search for another friend, or click "Begin" to go to your homepage.<br/><button onClick={nextPage}>Begin</button></p> : null }
             </ul>
-         </>
+         </div>
     )
 }
 

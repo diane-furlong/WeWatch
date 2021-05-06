@@ -43,10 +43,14 @@ module.exports = {
     },
     addFollowing: function(req, res) {
         db.User.findOneAndUpdate({_id: req.params.id}, {$push: {following: req.body.following}})
-        .then(console.log(req))
+        .then(dbUser => res.json(dbUser))
     },
     addFollower: function(req, res) {
         db.User.findOneAndUpdate({_id: req.params.id}, {$push: {followers: req.body.followers}})
-        .then(dbUser=> console.log(dbUser))
+        .then(dbUser => res.json(dbUser))
+    },
+    allFollowing: function(req, res) {
+        db.User.findById({ _id: req.params.id})
+        .then(dbUser => res.json(dbUser.following))
     }
 }

@@ -27,7 +27,7 @@ const Watching = () => {
     }
     const id = usertokenArray[2]
 
-    const test = (event) => {
+    const search = (event) => {
         event.preventDefault()
         let titleID
         const BASEURL = "https://api.watchmode.com/v1/"
@@ -66,7 +66,7 @@ const Watching = () => {
         <h2 className="watching-text">What are you currently watching?</h2>
             <form>
                 <input className="watching-search" onChange={event => setSearchVal(event.target.value)}></input>
-                <button onClick={test} className="watching-search watching-search-btn">Search</button>
+                <button onClick={search} className="watching-search watching-search-btn">Search</button>
             </form>
             <ul className="watching-results">
 
