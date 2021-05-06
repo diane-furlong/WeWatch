@@ -13,7 +13,7 @@ body {
 
 .watching-image{
     min-height: 100%;
-    height: 93vh;
+    height: 90vh;
     /* width: 100vw; */
     background-size: cover;
     background-position: top;
@@ -24,12 +24,13 @@ body {
 
 .watching-text{
     color: #003049;
-    margin-left: 450px;
+    margin-left: 400px;
+    font-size: 45px;
 }
 
 .watching-search{
-    background-color: #003049;
-    color: #D62828;
+    background-color: #ffffff;
+    color: #003049;
     margin-left: 60vh;
     margin-bottom: 20px;
     margin-top: 20px;
@@ -45,11 +46,19 @@ body {
 
 .watching-results{
     background-color: rgba(234, 226, 183, 0.8);
-    color: #D62828;
+    color: #003049;
     font-size: 23px;
 }
 
 .addBtn{
-    background-color: #003049;
-    color: #D62828; 
+    color: #003049; 
+}
+
+.next-btn{
+    color: #003049; 
+    font-size: 23px;
+}
+
+.add-text{
+    font-size: 23px !important;
 }

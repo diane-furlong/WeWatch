@@ -17,21 +17,25 @@ router.route("/")
 //matches with '/api/users/:id'
 router.route("/:id")
 .get(usersController.findById)
-.put(usersController.updateShows) //this updates a user- purpose: adding platforms and shows to a user
+.put(usersController.updateShows)
 
 //matches with '/api/users/:id/platforms'
 router.route("/:id/platforms")
 .get(usersController.findById)
-.put(usersController.updatePlatforms) //this updates a user- purpose: adding platforms and shows to a user
+.put(usersController.updatePlatforms)
 
+//matches with '/api/users/email/:email'
+router.route("/email/:email")
+.get(usersController.findByEmail)
 
-// //matches with '/api/platforms'
-// router.route("/platforms")
-// .get(usersController.findById)
-// .put(usersController.update)
+//matches with '/api/users/following/:id
+router.route("/following/:id")
+.put(usersController.addFollowing)
+.get(usersController.allFollowing)
 
-
-
+//matches with '/api/users/addfollower/:id
+router.route("/addfollower/:id")
+.put(usersController.addFollower)
 
 //--------------------------------------------------------------------
 
