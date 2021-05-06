@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import API from "../../utils/usersAPI"
 import './Nav.css'
-
+import { AppBar, Typography, Toolbar, Button } from '@material-ui/core'
+import { makeStyles } from '@material-ui/styles'
+import { Link } from 'react-router-dom'
+import useStyles from './NavStyle.js'
+import popcorn from '../../img/favicon_popcorn.png'
 
 const Nav = () => {
 
     const [name, setName] = useState()
+    const classes = useStyles();
 
     //using token to find user's db id
     let usertoken = localStorage.getItem("token")
@@ -30,11 +35,21 @@ const Nav = () => {
 
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light  bg-dark">
-            <div className="container">
-                <h3>Hi, {name}</h3>
-            </div>
-        </nav>
+        <>
+        <AppBar className={classes.appBar} position = 'static' color='inherit'>
+            <Toolbar>
+            <Typography className={classes.heading} variant='h2' align='center'>
+                <img className={classes.image} src={popcorn} alt='icon' height='60'></img>
+                <Link className={classes.linkStyle} to ='/'>
+                    weWatch
+                </Link>
+            </Typography>
+            <Typography variant="h4">
+                Welcome, {name}
+            </Typography>
+            </Toolbar>
+        </AppBar>
+        </>
     )
 }
 
