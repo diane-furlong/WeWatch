@@ -7,11 +7,11 @@ import background from "../../img/watching.png"
 
 const Watching = () => {
 
-    // const [platforms, setPlatforms] = useState({})
     const [searchVal, setSearchVal] = useState({})
     const [result, setResult] = useState(false)
     const [resultQueue, setResultQueue] = useState()
     const [myShows] = useState([])
+    const [addedResult, setAddedResult] = useState(false)
 
     //using token to find user's db id
     let usertoken = localStorage.getItem("token")
@@ -25,10 +25,7 @@ const Watching = () => {
             }
         }
     }
-
-    const id = usertokenArray[2] 
-    console.log(id)
-    
+    const id = usertokenArray[2]
 
     const test = (event) => {
         event.preventDefault()
@@ -41,26 +38,24 @@ const Watching = () => {
             return axios.get(BASEURL+"title/"+titleID+"/details/?apiKey="+APIkey)
         })
         .then(res => {
-            // console.log(res.data.title)
             setResult(res.data.title)
             setResultQueue(res.data.plot_overview)
-            
-            // return result, resultQueue
         })
-        // .then(console.log(resultQueue, result))
     }
 
     const addingShow = (event) => {
         event.preventDefault()
         myShows.push(resultQueue)
-        console.log(myShows)
          //2. PUT myShows to the user's profile in the database- need to figure out how to add on instead of overwrite. make myShows an array of objects with id and title?
         usersAPI.putShow(id, {myShows: result})
-        .then(console.log(`done`))
-        //3. route to next page
-        window.location.href='/SearchUsers'
-       
+        setAddedResult()
     }
+
+    //route to next page when user is done
+    const nextPage = () => {
+        window.location.href="/SearchUsers"
+    }
+
 
     return (
         <div
@@ -79,6 +74,8 @@ const Watching = () => {
                 <br/>Description: {resultQueue}
 
                 <button className="addBtn" onClick={addingShow}>Add</button></li> : null }
+                <br/>
+                { result !== false && addedResult !== false ? <p>{result} has been added to your watching list! Search for another title, or click "Next" to start following your friends.<br/><button onClick={nextPage}>Next</button></p> : null }
             </ul>
          </div>
     )

@@ -19,11 +19,9 @@ const SearchUsers = () => {
         .then(res=> setResult(res.data[0]))
     }
 
-    const handleInputChange = event => {
-        setSearchVal(event.target.value)
-    }
-
-  
+    // const handleInputChange = event => {
+    //     setSearchVal(event.target.value)
+    // }
 
     // using token to find user's db id
     let usertoken = localStorage.getItem("token")
@@ -37,11 +35,17 @@ const SearchUsers = () => {
     }
     const id = usertokenArray[2] 
 
+    //submit button function
     const addFriend = event => {
         event.preventDefault()
         console.log(result._id)
         usersAPI.putFollowing(id, {following: result._id})
         setAddedResult()
+        usersAPI.putFollower(result._id, {followers: id})
+    }
+
+    const nextPage = () => {
+        window.location.href="/home"
     }
 
     return (
@@ -59,7 +63,7 @@ const SearchUsers = () => {
 
                 <button className="addBtn" onClick={addFriend}>Add</button></li> : null }
 
-                { result !== false && addedResult !== false ? <p>You now follow {result.name}!</p> : null }
+                { result !== false && addedResult !== false ? <p>You now follow {result.name}! Search for another friend, or click "Begin" to go to your homepage.<br/><button onClick={nextPage}>Begin</button></p> : null }
             </ul>
          </>
     )

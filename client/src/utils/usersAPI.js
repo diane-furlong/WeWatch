@@ -57,8 +57,13 @@ export default {
         return axios.get(`/api/users/${id}`)
     },
 
-    //PUT new friend
+    //PUT new followee to follower's db
     putFollowing: function(id, result) {
         return axios.put(`api/users/addfollowing/${id}`, result)
+    },
+
+    //PUT new follower to followee's db
+    putFollower: function(id, followerID) {
+        return axios.put(`api/users/addfollower/${id}`, followerID)
     }
 }

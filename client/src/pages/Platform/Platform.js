@@ -8,13 +8,7 @@ const _ = require('lodash');
 
 const Platform = () => {
 
-    //1. User checks boxes of platforms they use
-    //2. POST chosen platforms to users API
-    //3. Route to the next page
-
-    //const [allPlatforms, setAllPlatforms] = useState([])
     const [networks] = useState([])
-
 
     //using token to find user's db id
     let usertoken = localStorage.getItem("token")
@@ -28,24 +22,19 @@ const Platform = () => {
             }
         }
     }
-
-    const id = usertokenArray[2] 
-    console.log(id)
+    const id = usertokenArray[2]
 
     //checking/unchecking box
     const handleInputChange = (event) => {
         const target = event.target
         const targetPlatform = target.value
         if(target.checked) {
-            console.log("checked")
             networks.push(targetPlatform)
-            console.log(networks)
         } else if (!target.checked) {
             let removed = _.remove(networks, function(e) {
                 return e === targetPlatform               
             })
             console.log("removed "+ removed)
-            console.log(networks)
         }
     }
 
@@ -55,7 +44,6 @@ const Platform = () => {
         console.log(`submitted ${networks} for ${id}`)
         //2. add API request to PUT the selected platforms to the users API
         usersAPI.putPlatforms(id, {platforms: networks})
-        .then(console.log(`done`))
         //3. route to next page
         window.location.href='/Watching'
     }

@@ -19,7 +19,6 @@ const Nav = () => {
             }
         }
     }
-
     const id = usertokenArray[2] 
 
     //GET request to display users name

@@ -24,14 +24,17 @@ router.route("/:id/platforms")
 .get(usersController.findById)
 .put(usersController.updatePlatforms) //this updates a user- purpose: adding platforms and shows to a user
 
-//matches with '/api/users/email'
+//matches with '/api/users/email/:email'
 router.route("/email/:email")
 .get(usersController.findByEmail)
 
+//matches with '/api/users/addfollowing/:id
 router.route("/addfollowing/:id")
 .put(usersController.addFollowing)
 
-
+//matches with '/api/users/addfollower/:id
+router.route("/addfollower/:id")
+.put(usersController.addFollower)
 
 //--------------------------------------------------------------------
 
