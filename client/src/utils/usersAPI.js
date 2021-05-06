@@ -33,8 +33,8 @@ export default {
     },
 
      //GET user information by email
-     getUserbyEmail: function(id, email) {
-        return axios.get(`/api/users/${id}/email`)
+     getUserbyEmail: function(email) {
+        return axios.get(`/api/users/email/${email}`)
     },
 
     //PUT platforms chosen by the user
@@ -55,6 +55,10 @@ export default {
     //GET shows that the user is watching
     getShows: function(id) {
         return axios.get(`/api/users/${id}`)
+    },
 
+    //PUT new friend
+    putFollowing: function(id, result) {
+        return axios.put(`api/users/addfollowing/${id}`, result)
     }
 }

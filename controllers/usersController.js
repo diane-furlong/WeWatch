@@ -33,13 +33,17 @@ module.exports = {
     },
     findByEmail: function(req, res) {
         db.User.find({ 'email': req.params.email })
-        .then(dbUser => res.json(dbUser)) 
-        .then(console.log(req.params.id))
+        .then(dbUser => res.json(dbUser))
         .catch(err =>{res.status(422).json(err)});
     },
     findById: function(req, res) {
         db.User.findById(req.params.id)
         .then(dbUser => res.json(dbUser))
         .catch(err => res.status(422).json(err));
+    },
+    addFollowing: function(req, res) {
+        db.User.findOneAndUpdate({_id: req.params.id}, {$push: {following: req.body.following}})
+        .then(console.log(req))
+        // .then(dbUser=> console.log(dbUser))
     }
 }

@@ -5,23 +5,25 @@ const SearchUsers = () => {
     
     const [searchVal, setSearchVal] = useState({})
     const [result, setResult] = useState(false)
-    const [resultQueue, setResultQueue] = useState()
+    const [addedResult, setAddedResult] = useState(false)
 
 
     // useEffect(() => {
     //     if(!searchVal){
     //         return
     //     }
+
     const search = event => {
         event.preventDefault()
         usersAPI.getUserbyEmail(searchVal)
-        .then(res => console.log(res))
+        .then(res=> setResult(res.data[0]))
     }
 
     const handleInputChange = event => {
         setSearchVal(event.target.value)
     }
 
+  
 
     // using token to find user's db id
     let usertoken = localStorage.getItem("token")
@@ -34,38 +36,30 @@ const SearchUsers = () => {
         }
     }
     const id = usertokenArray[2] 
-    console.log(id)
 
+    const addFriend = event => {
+        event.preventDefault()
+        console.log(result._id)
+        usersAPI.putFollowing(id, {following: result._id})
+        setAddedResult()
+    }
 
     return (
         <>
         <h2>Search for friends by email address:</h2>
             <form>
-                {/* <input
-                    // value=
-                    handleInputChange={handleInputChange}
-                    name="term"
-                    list="term"
-                    type="text"
-                    className="form-control"
-                    placeholder="Type in a friend's email address to begin"
-                    id="term"
-                /> */}
                 <input className="email-search" onChange={event => setSearchVal(event.target.value)}></input>
                 <button onClick={search}>Search</button>
             </form>
-            {/* <ul className="list-group search-results">
-                <li className="list-group-item">
-                    <h2>{props.title}</h2>
-                    <a href={props.url}>{props.url}</a>
-                </li>
-            </ul> */}
+
             <ul>
 
-                { result !== false ? <li onChange={event => console.log(event)}>Name: {}  
+                { result !== false ? <li onChange={event => console.log(event)}>Name: {result.name}  
                 <br/>Email address: {result.email}
 
-                <button className="addBtn">Add</button></li> : null }
+                <button className="addBtn" onClick={addFriend}>Add</button></li> : null }
+
+                { result !== false && addedResult !== false ? <p>You now follow {result.name}!</p> : null }
             </ul>
          </>
     )

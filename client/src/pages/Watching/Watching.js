@@ -58,7 +58,7 @@ const Watching = () => {
         usersAPI.putShow(id, {myShows: result})
         .then(console.log(`done`))
         //3. route to next page
-        // window.location.href='/SearchUsers'
+        window.location.href='/SearchUsers'
        
     }
 
