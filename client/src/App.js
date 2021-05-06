@@ -69,12 +69,12 @@ function App() {
         <Route exact path="/Connecting">
           <Connecting/>
         </Route>
-        <Route exact path="/Friend">
-          <Friend/>
-        </Route>
-        <Route exact path="/FriendsList">
+        {/* <Route exact path="/Friend">
+          <Friend/> */}
+        {/* </Route> */}
+        {/* <Route exact path="/FriendsList">
           <FriendsList/>
-        </Route>
+        </Route> */}
         <Route exact path="/SearchUsers">
           <SearchUsers/>
         </Route>
