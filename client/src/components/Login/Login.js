@@ -37,19 +37,16 @@ function Login(){
         <div className="login-image" style={{ 
             backgroundImage: `url(${background})` 
           }}>
+
             <div className="login-container">
                 <div className="">
                     <Link  to="/" className="login-home-btn">Back to Home</Link>
-                </div>
+                </div>  
                 <div className="">
                     <h4 className="login-below">
                         <b>Login</b> below
                     </h4>
-                    <div className="">
-                    <p className="login-account">Don't have an account? 
-                    <Link to="/register"> Register</Link></p>
-                    </div>
-                </div>
+                  </div>
             </div>
             <form className="login-form">
                 <label className="login-info">
@@ -67,6 +64,10 @@ function Login(){
                 <button type="submit" value="Submit" onClick={handleSubmit} className="login-btn">Login</button>
 
             </form>
+            <div className="register-link">
+                    <p className="login-account">Don't have an account? 
+                    <Link className="register" to="/register"> Register</Link></p>
+                    </div>
         </div>
       
     )

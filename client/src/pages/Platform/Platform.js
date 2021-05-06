@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 //import user API to POST platforms to the current user
 import usersAPI from "../../utils/usersAPI"
 import './Platform.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import background from "../../img/platform.png"
 const _ = require('lodash');
 
@@ -49,13 +48,13 @@ const Platform = () => {
     }
 
     return (
-        <div className="image" style={{ 
+        <div className="platform-image" style={{ 
             backgroundImage: `url(${background})` 
           }}>
 
         <div className="form-check">
-            <h1>Let's Get Started!</h1>
-            <h2>What platforms do you use?</h2>
+            <h1 className="platform-text">Let's Get Started!</h1>
+            <h2 className="platform-text">What platforms do you use?</h2>
             <ul>
                 <li>
                     <input className="form-check-input" type="checkbox" value="Netflix" id="check1" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check1">Netflix</label>
@@ -69,8 +68,20 @@ const Platform = () => {
                 <li>
                     <input className="form-check-input" type="checkbox" value="HBO Max" id="check4" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check4">HBO Max</label>
                 </li>
+                <li>
+                    <input className="form-check-input" type="checkbox" value="Amazon Prime Video" id="check5" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check5">Amazon Prime Video</label>
+                </li>
+                <li>
+                    <input className="form-check-input" type="checkbox" value="Disney+" id="check6" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check6">Disney+</label>
+                </li>
+                <li>
+                    <input className="form-check-input" type="checkbox" value="Apple TV Plus" id="check7" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check7">Apple TV Plus</label>
+                </li>
+                <li>
+                    <input className="form-check-input" type="checkbox" value="Paramount Plus" id="check8" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check8">Paramount Plus</label>
+                </li>
             </ul>
-            <button className="btn btn-dark submitPlatform" onClick={event => handleSubmit(event)}>Submit</button>
+            <button className="submitPlatform" onClick={event => handleSubmit(event)}>Submit</button>
         </div>
         </div>
     )
