@@ -33,13 +33,13 @@ export default {
     },
 
      //GET user information by email
-     getUserbyEmail: function(id) {
-        return axios.get("/api/users/" + id)
+     getUserbyEmail: function(email) {
+        return axios.get(`/api/users/email/${email}`)
     },
 
     //PUT platforms chosen by the user
     putPlatforms:function(id, platforms) {
-        return axios.put(`/api/users/${id}`, platforms)
+        return axios.put(`/api/users/${id}/platforms`, platforms)
     },
 
     //GET platforms chosen by the user
@@ -55,6 +55,20 @@ export default {
     //GET shows that the user is watching
     getShows: function(id) {
         return axios.get(`/api/users/${id}`)
+    },
 
+    //PUT new followee to follower's db
+    putFollowing: function(id, result) {
+        return axios.put(`api/users/following/${id}`, result)
+    },
+
+    //GET all followee's from user's db
+    getFollowing: function(id) {
+        return axios.get(`/api/users/following/${id}`)
+    },
+
+    //PUT new follower to followee's db
+    putFollower: function(id, followerID) {
+        return axios.put(`api/users/addfollower/${id}`, followerID)
     }
 }

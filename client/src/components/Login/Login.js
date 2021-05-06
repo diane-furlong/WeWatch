@@ -25,9 +25,6 @@ function Login(){
         console.log(userData)
     }
 
-    // const onChangeLogin = (event) => {
-    //     this.useInput({ [event.target.id]: event.target.value })
-    // }
 
     const userData = {
         email: email,
