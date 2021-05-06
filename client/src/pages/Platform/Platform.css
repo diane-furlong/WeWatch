@@ -10,5 +10,7 @@ ul {
 .image {
     background-repeat: no-repeat;
     height: 100vh;
-    background-size: cover
+    background-size: contain;
+    background-position: center;
+    background-color:#003049;
 }
