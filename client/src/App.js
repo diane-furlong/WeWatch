@@ -17,6 +17,7 @@ import SearchUsers from './pages/SearchUsers/SearchUsers'
 import NewsFeed from './pages/NewsFeed/NewsFeed'
 import UserProfile from './pages/UserProfile/UserProfile'
 
+
 // require('dotenv').config()
 
 function App() {
@@ -29,7 +30,6 @@ function App() {
     const checkLoggedIn = async () => {
     let token = localStorage.getItem("auth-token");
     if(token === null){
-    // localStorage.setItem("auth-token", "");
     token = "";
     }
     const tokenResponse = await axios.post('http://localhost:3000/api/users/tokenIsValid', null, {headers: {"x-auth-token": token}});
