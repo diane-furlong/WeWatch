@@ -6,3 +6,9 @@ ul {
    margin-left: 400px;
    
 }
+
+.image {
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-size: cover
+}

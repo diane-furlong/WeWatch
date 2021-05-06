@@ -23,7 +23,7 @@ export default makeStyles((theme) => ({
     toolbar: {
         display: 'flex',
         justifyContent: 'flex-end',
-        width: '400px',
+        // width: '400px',
     },
     profile: {
         display: 'flex',
@@ -45,5 +45,22 @@ export default makeStyles((theme) => ({
     linkStyle: {
         color: '#003049',
         textDecoration: 'none'
-    }
+    },
+    root: {
+        flexGrow: '1',
+    },
+    signOut: {
+        color:'#D62828',
+        flexGrow: '1'
+    },
+    login: {
+        color:'#F77F00',
+        flexGrow: '1',
+        textDecoration: 'none'
+    },
+    register: {
+        color: '#003049',
+        flexGrow: '1',
+        textDecoration: 'none'
+    },
 }));

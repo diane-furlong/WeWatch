@@ -3,7 +3,7 @@ import API from "../../utils/usersAPI"
 import './Nav.css'
 import { AppBar, Typography, Toolbar, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import useStyles from './NavStyle.js'
 import popcorn from '../../img/favicon_popcorn.png'
 
@@ -11,6 +11,7 @@ const Nav = () => {
 
     const [name, setName] = useState()
     const classes = useStyles();
+    const history = useHistory();
 
     //using token to find user's db id
     let usertoken = localStorage.getItem("token")
@@ -33,20 +34,40 @@ const Nav = () => {
         setName(res.data.name)
     })
 
+    const handleSignOut = () => {
+        //signOut the user
+        history.push('/login')
+    }
+
+
+
 
     return (
         <>
         <AppBar className={classes.appBar} position = 'static' color='inherit'>
-            <Toolbar>
-            <Typography className={classes.heading} variant='h2' align='center'>
+            <Toolbar className={classes.toolbar}>
+            <Typography className={classes.heading} variant='h3' align='center' className={classes.root}>
                 <img className={classes.image} src={popcorn} alt='icon' height='60'></img>
                 <Link className={classes.linkStyle} to ='/'>
                     weWatch
                 </Link>
             </Typography>
-            <Typography variant="h4">
+            <Typography variant="h4" className={classes.root}>
                 Welcome, {name}
             </Typography>
+            <Button className={classes.signOut} onClick = {() => handleSignOut}>
+                Sign Out
+            </Button>
+            <Button className={classes.login}>
+                <Link className={classes.login} to='/login'>
+                Login
+                </Link>
+            </Button>
+            <Button className={classes.register}>
+                <Link className={classes.register} to='/register'>
+                    Register
+                </Link>
+            </Button>
             </Toolbar>
         </AppBar>
         </>
