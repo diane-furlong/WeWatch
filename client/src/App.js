@@ -15,6 +15,7 @@ import axios from 'axios'
 import UserContext from './context/userContext'
 import SearchUsers from './pages/SearchUsers/SearchUsers'
 
+
 // require('dotenv').config()
 
 function App() {
@@ -27,7 +28,6 @@ function App() {
     const checkLoggedIn = async () => {
     let token = localStorage.getItem("auth-token");
     if(token === null){
-    localStorage.setItem("auth-token", "");
     token = "";
     }
     const tokenResponse = await axios.post('http://localhost:3000/api/users/tokenIsValid', null, {headers: {"x-auth-token": token}});
