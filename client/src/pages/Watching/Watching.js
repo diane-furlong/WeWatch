@@ -4,7 +4,7 @@ import usersAPI from '../../utils/usersAPI'
 import axios from "axios"
 import './Watching.css'
 import background from "../../img/watching.png"
-import { Link } from 'react-router-dom';
+
 
 const Watching = () => {
 
@@ -42,6 +42,9 @@ const Watching = () => {
         .then(res => {
             setResult(res.data.title)
             setResultQueue(res.data.plot_overview)
+        }).catch((err) => {
+            console.log(err)
+            window.alert("Title not recognized. Please search again.")
         })
     }
 
@@ -64,9 +67,6 @@ const Watching = () => {
         className="watching-image" style={{ 
             backgroundImage: `url(${background})` 
           }}>
-        <div className="">
-                    <Link  to="/" className="watching-home-btn">Back to Home</Link>
-                </div>
         <h2 className="watching-text">What are you currently watching?</h2>
             <form>
                 <input className="watching-search" onChange={event => setSearchVal(event.target.value)}></input>
@@ -79,7 +79,7 @@ const Watching = () => {
 
                 <button className="addBtn" onClick={addingShow}>Add</button></li> : null }
                 <br/>
-                { result !== false && addedResult !== false ? <p>{result} has been added to your watching list! Search for another title, or click "Next" to start following your friends.<br/><button onClick={nextPage}>Next</button></p> : null }
+                { result !== false && addedResult !== false ? <p className="add-text">{result} has been added to your watching list! Search for another title, or click "Next" to start following your friends.<br/><button className="next-btn"onClick={nextPage}>Next</button></p> : null }
             </ul>
          </div>
     )

@@ -14,8 +14,7 @@
 }
 
 .login-btn {
-    color: #D62828;
-    background-color: #003049;
+    color: #003049;
     font-size: 28px;
 }
 
@@ -41,8 +40,7 @@
 }
 
 .login-home-btn{
-    color: #D62828;
-    background-color: #003049;
+    color: #003049;
     font-size: 35px;
 }
 
@@ -52,4 +50,10 @@
 
 .login-account{
     color: #D62828;
+}
+
+.register{
+    color: #003049;
+    margin-top: -37px;
+    margin-right: 180px;
 }

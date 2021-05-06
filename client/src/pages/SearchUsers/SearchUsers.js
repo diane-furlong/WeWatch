@@ -1,6 +1,7 @@
 import React, { useState, useEffect }  from 'react'
 import usersAPI from '../../utils/usersAPI'
 import './SearchUsers.css'
+import background from "../../img/searchUsers2.png"
 
 const SearchUsers = () => {
     
@@ -18,6 +19,10 @@ const SearchUsers = () => {
         event.preventDefault()
         usersAPI.getUserbyEmail(searchVal)
         .then(res=> setResult(res.data[0]))
+        .catch((err) => {
+            console.log(err)
+            window.alert("Friend not found. Please search again.")
+        })
     }
 
     // const handleInputChange = event => {
@@ -50,22 +55,27 @@ const SearchUsers = () => {
     }
 
     return (
+        <div className="search-users-image" style={{ 
+            backgroundImage: `url(${background})` 
+          }}>
         <div className="all">
-        <h2>Search for friends by email address:</h2>
+        <h2 className="user-search-text">Search for friends by email address:</h2>
             <form>
                 <input className="email-search" onChange={event => setSearchVal(event.target.value)}></input>
-                <button onClick={search}>Search</button>
+                <button className="email-search-btn" onClick={search}>Search</button>
             </form>
-
-            <ul>
+            <ul className="friend-results">
+                <span className="span">
 
                 { result !== false ? <li onChange={event => console.log(event)}>Name: {result.name}  
                 <br/>Email address: {result.email}
 
                 <button className="addBtn" onClick={addFriend}>Add</button></li> : null }
 
-                { result !== false && addedResult !== false ? <p>You now follow {result.name}! Search for another friend, or click "Begin" to go to your homepage.<br/><button onClick={nextPage}>Begin</button></p> : null }
+                { result !== false && addedResult !== false ? <p>You now follow {result.name}! Search for another friend, or click "Begin" to go to your homepage.<br/><button className="begin-btn"onClick={nextPage}>Begin</button></p> : null }
+                </span>
             </ul>
+         </div>
          </div>
     )
 }
