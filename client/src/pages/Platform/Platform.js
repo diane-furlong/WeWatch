@@ -75,16 +75,16 @@ const Platform = () => {
                     <input className="form-check-input" type="checkbox" value="Peacock" id="check2" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check2">Peacock</label>
                 </li>
                 <li>
-                    <input className="form-check-input" type="checkbox" value="HBO Max" id="check1" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check1">HBO Max</label>
+                    <input className="form-check-input" type="checkbox" value="HBO Max" id="check3" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check3">HBO Max</label>
                 </li>
                 <li>
-                    <input className="form-check-input" type="checkbox" value="Hulu" id="check1" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check1">Hulu</label>
+                    <input className="form-check-input" type="checkbox" value="Hulu" id="check4" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check4">Hulu</label>
                 </li>
                 <li>
-                    <input className="form-check-input" type="checkbox" value="Disney+" id="check1" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check1">Disney+</label>
+                    <input className="form-check-input" type="checkbox" value="Disney+" id="check5" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check5">Disney+</label>
                 </li>
                 <li>
-                    <input className="form-check-input" type="checkbox" value="Amazon Prime Video" id="check1" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check1">Amazon Prime Video</label>
+                    <input className="form-check-input" type="checkbox" value="Amazon Prime Video" id="check6" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check6">Amazon Prime Video</label>
                 </li>
             </ul>
             <button className="btn btn-dark submitPlatform" onClick={event => handleSubmit(event)}>Submit</button>
