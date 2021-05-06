@@ -7,13 +7,7 @@ const _ = require('lodash');
 
 const Platform = () => {
 
-    //1. User checks boxes of platforms they use
-    //2. POST chosen platforms to users API
-    //3. Route to the next page
-
-    //const [allPlatforms, setAllPlatforms] = useState([])
     const [networks] = useState([])
-
 
     //using token to find user's db id
     let usertoken = localStorage.getItem("token")
@@ -27,34 +21,28 @@ const Platform = () => {
             }
         }
     }
-
-    const id = usertokenArray[2] 
-    console.log(id)
+    const id = usertokenArray[2]
 
     //checking/unchecking box
     const handleInputChange = (event) => {
         const target = event.target
         const targetPlatform = target.value
         if(target.checked) {
-            console.log("checked")
             networks.push(targetPlatform)
-            console.log(networks)
         } else if (!target.checked) {
             let removed = _.remove(networks, function(e) {
                 return e === targetPlatform               
             })
             console.log("removed "+ removed)
-            console.log(networks)
         }
     }
 
     //submit button
-    const handleSubmit = () => {
-
+    const handleSubmit = (event) => {
+        event.preventDefault()
         console.log(`submitted ${networks} for ${id}`)
         //2. add API request to PUT the selected platforms to the users API
         usersAPI.putPlatforms(id, {platforms: networks})
-        .then(console.log(`done`))
         //3. route to next page
         window.location.href='/Watching'
     }
@@ -75,16 +63,10 @@ const Platform = () => {
                     <input className="form-check-input" type="checkbox" value="Peacock" id="check2" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check2">Peacock</label>
                 </li>
                 <li>
-                    <input className="form-check-input" type="checkbox" value="HBO Max" id="check3" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check3">HBO Max</label>
+                    <input className="form-check-input" type="checkbox" value="Hulu" id="check3" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check3">Hulu</label>
                 </li>
                 <li>
-                    <input className="form-check-input" type="checkbox" value="Hulu" id="check4" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check4">Hulu</label>
-                </li>
-                <li>
-                    <input className="form-check-input" type="checkbox" value="Disney+" id="check5" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check5">Disney+</label>
-                </li>
-                <li>
-                    <input className="form-check-input" type="checkbox" value="Amazon Prime Video" id="check6" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check6">Amazon Prime Video</label>
+                    <input className="form-check-input" type="checkbox" value="HBO Max" id="check4" onChange={handleInputChange}/><label className="form-check-label" htmlFor="check4">HBO Max</label>
                 </li>
             </ul>
             <button className="btn btn-dark submitPlatform" onClick={event => handleSubmit(event)}>Submit</button>

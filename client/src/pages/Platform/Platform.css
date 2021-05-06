@@ -3,19 +3,14 @@ ul {
 }
 
 .form-check{
-   margin-left: 500px;
-   font-size:x-large;
+   margin-left: 400px;
+   
 }
 
-.platform-image{
-    min-height: 100%;
-    height: 93vh;
-    /* width: 100vw; */
-    background-size: cover;
-    background-position: top;
-    position: relative;
-}
-
-.platform-text{
-    font-size: 45px;
+.image {
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-size: contain;
+    background-position: center;
+    background-color:#003049;
 }

@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import API from "../../utils/usersAPI"
 import './Nav.css'
-
+import { AppBar, Typography, Toolbar, Button, } from '@material-ui/core'
+import { makeStyles } from '@material-ui/styles'
+import { Link, useHistory } from 'react-router-dom'
+import useStyles from './NavStyle.js'
+import popcorn from '../../img/favicon_popcorn.png'
 
 const Nav = () => {
 
     const [name, setName] = useState()
+    const classes = useStyles();
+    const history = useHistory();
 
     //using token to find user's db id
     let usertoken = localStorage.getItem("token")
@@ -19,7 +25,6 @@ const Nav = () => {
             }
         }
     }
-
     const id = usertokenArray[2] 
 
     //GET request to display users name
@@ -28,13 +33,43 @@ const Nav = () => {
         setName(res.data.name)
     })
 
+    const handleSignOut = () => {
+        //signOut the user
+        history.push('/login')
+    }
+
+
+
 
     return (
-        <nav className="navbar navbar-expand-lg">
-            <div className="container">
-                <h3>Hi, {name}</h3>
-            </div>
-        </nav>
+        <>
+        <AppBar className={classes.appBar} position = 'static' color='inherit'>
+            <Toolbar className={classes.toolbar}>
+            <Typography className={classes.heading} variant='h3' align='center' className={classes.root}>
+                <img className={classes.image} src={popcorn} alt='icon' height='60'></img>
+                <Link className={classes.linkStyle} to ='/'>
+                    weWatch
+                </Link>
+            </Typography>
+            <Typography variant="h4" className={classes.root}>
+                Welcome, {name}
+            </Typography>
+            <Button className={classes.signOut} onClick = {() => handleSignOut}>
+                Sign Out
+            </Button>
+            <Button className={classes.login}>
+                <Link className={classes.login} to='/login'>
+                Login
+                </Link>
+            </Button>
+            <Button className={classes.register}>
+                <Link className={classes.register} to='/register'>
+                    Register
+                </Link>
+            </Button>
+            </Toolbar>
+        </AppBar>
+        </>
     )
 }
 

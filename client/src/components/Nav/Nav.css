@@ -1,8 +1,3 @@
-/* h3{
-    color: white;
-} */
-
-.navbar{
-    color: #D62828;
-    background-color: #003049;
+.MuiTableHead-root {
+    width: 100vw;
 }

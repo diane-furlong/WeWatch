@@ -140,9 +140,9 @@ const Landing = () => {
                     <div className="landing-text">
                         <h1 className="weWatch">weWatch</h1> <h4 className="share">Share what you are watching!</h4>
                     </div>
-                        <button onClick={event => onClickRegister(event)} className="landing-btn btn-primary landing-btn-lg">Register</button>
+                        {/* <button onClick={event => onClickRegister(event)} className="landing-btn btn-primary landing-btn-lg">Register</button>
                         <br></br>
-                    <button onClick={event => onClickLogin(event)} className="landing-btn btn-success landing-btn-lg">Login</button>
+                    <button onClick={event => onClickLogin(event)} className="landing-btn btn-success landing-btn-lg">Login</button> */}
                 </div>
             </div>
             </div>
