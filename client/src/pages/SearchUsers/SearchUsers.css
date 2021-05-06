@@ -1,0 +1,41 @@
+.all {
+    height: 90vh;
+    width: 90vw;
+}
+
+.search-users-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat:no-repeat;
+    height: 90vh;
+    
+}
+
+.all{
+    margin-left: 55vh;
+    font-size: 22px;
+}
+
+.email-search-btn{
+    color: #003049;
+    margin-left: 40px;
+}
+
+.user-search-text{
+    font-size: 35px; 
+}
+
+.email-search{
+    margin-top: 20px;
+    color: #003049;
+    margin-left: 30px;
+}
+
+.friend-results{
+    color: #003049;
+    font-size: 25px;
+}
+
+.begin-btn{
+    margin-left: 340px;
+}

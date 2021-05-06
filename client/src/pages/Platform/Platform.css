@@ -3,14 +3,26 @@ ul {
 }
 
 .form-check{
-   margin-left: 400px;
-   
+   margin-left: 500px;
+   font-size: 20px;  
 }
 
-.image {
+.platform-image {
     background-repeat: no-repeat;
-    height: 100vh;
-    background-size: contain;
+    height: 87vh;
+    background-size: cover;
     background-position: center;
-    background-color:#003049;
+}
+
+.submitPlatform{
+    margin-left: 80px;
+}
+
+.form-check-label{
+    margin-left: 50px;
+}
+
+.form-check-input{
+    margin-left: 30px !important;
+    margin-top: 10px !important;
 }
