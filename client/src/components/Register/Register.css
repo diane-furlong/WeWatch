@@ -1,5 +1,5 @@
 .register-row  {
-    margin-left: 100px;
+    margin-left: center;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -44,4 +44,13 @@
     color: #003049;
     background-color: white;
     font-size: 30px;
+}
+
+.register-form {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 25%;
 }
