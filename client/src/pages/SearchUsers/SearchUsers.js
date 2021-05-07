@@ -65,7 +65,6 @@ const SearchUsers = () => {
                 <button className="email-search-btn" onClick={search}>Search</button>
             </form>
             <ul className="friend-results">
-                <span className="span">
 
                 { result !== false ? <li onChange={event => console.log(event)}>Name: {result.name}  
                 <br/>Email address: {result.email}
@@ -73,7 +72,6 @@ const SearchUsers = () => {
                 <button className="addBtn" onClick={addFriend}>Add</button></li> : null }
 
                 { result !== false && addedResult !== false ? <p>You now follow {result.name}! Search for another friend, or click "Begin" to go to your homepage.<br/><button className="begin-btn"onClick={nextPage}>Begin</button></p> : null }
-                </span>
             </ul>
          </div>
          </div>

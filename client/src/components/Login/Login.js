@@ -31,8 +31,6 @@ function Login(){
         password: password
     };
 
-    
-
     return (
         <div className="login-image" style={{ 
             backgroundImage: `url(${background})` 
@@ -57,10 +55,10 @@ function Login(){
                 </label>
                 <label className="login-info">
                     Password:
-                    <input onChange={event => setPassword(event.target.value)} type="text" 
+                    <input onChange={event => setPassword(event.target.value)} type="password" 
                     // {...bindPassword} 
                     />
-                </label>
+                  </label>
                 <button type="submit" value="Submit" onClick={handleSubmit} className="login-btn">Login</button>
 
             </form>
