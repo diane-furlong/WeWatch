@@ -32,14 +32,25 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     },
     findByEmail: function(req, res) {
-        db.User.find({ email: req.params.email})
+        db.User.find({ 'email': req.params.email })
         .then(dbUser => res.json(dbUser))
-        .catch(err =>{ console.log(req.params.email) 
-            return res.status(422).json(err)});
+        .catch(err =>{res.status(422).json(err)});
     },
     findById: function(req, res) {
         db.User.findById(req.params.id)
         .then(dbUser => res.json(dbUser))
         .catch(err => res.status(422).json(err));
+    },
+    addFollowing: function(req, res) {
+        db.User.findOneAndUpdate({_id: req.params.id}, {$push: {following: req.body.following}})
+        .then(dbUser => res.json(dbUser))
+    },
+    addFollower: function(req, res) {
+        db.User.findOneAndUpdate({_id: req.params.id}, {$push: {followers: req.body.followers}})
+        .then(dbUser => res.json(dbUser))
+    },
+    allFollowing: function(req, res) {
+        db.User.findById({ _id: req.params.id})
+        .then(dbUser => res.json(dbUser.following))
     }
 }
