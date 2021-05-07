@@ -68,9 +68,4 @@ export default makeStyles((theme) => ({
         marginRight: theme.spacing(2),
         color: '#F77F00'
     },
-    headerButtons: {
-        display: 'flex',
-        flex: 1,
-        justifyContent: 'space-evenly'
-    },
 }));

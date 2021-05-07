@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import API from "../../utils/usersAPI"
 import './Nav.css'
 import { AppBar, Typography, Toolbar, Button } from '@material-ui/core'
@@ -13,6 +13,7 @@ const Nav = () => {
 
     const [name, setName] = useState()
     const classes = useStyles();
+    const [loggedIn, setLogin] = useState(false)
 
     //using token to find user's db id
     let usertoken = localStorage.getItem("token")
@@ -32,15 +33,20 @@ const Nav = () => {
     API.getUser(id)
     .then(res=> {
         setName(res.data.name)
+        setLogin(true)
     })
 
     const handleSignOut = () => {
         localStorage.clear()
         window.location.href='/'
+        setName(null)
+        setLogin(false)
     }
 
     return (
         <>
+
+        {loggedIn === false ? <button>Login</button>:<button>Logout</button>}
         <AppBar className={classes.appBar} position = 'static' color='inherit'>
             <Toolbar className={classes.toolbar}>
             <Typography className={classes.heading} variant='h3' align='center' className={classes.root}>
