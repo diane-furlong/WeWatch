@@ -11,7 +11,7 @@ const Nav = () => {
 
     const [name, setName] = useState()
     const classes = useStyles();
-    const history = useHistory();
+    // const history = useHistory();
 
     //using token to find user's db id
     let usertoken = localStorage.getItem("token")
@@ -34,8 +34,8 @@ const Nav = () => {
     })
 
     const handleSignOut = () => {
-        //signOut the user
-        history.push('/login')
+        localStorage.clear()
+        window.location.href='/'
     }
 
 
@@ -54,7 +54,7 @@ const Nav = () => {
             <Typography variant="h4" className={classes.root}>
                 Welcome, {name}
             </Typography>
-            <Button className={classes.signOut} onClick = {() => handleSignOut}>
+            <Button className={classes.signOut} onClick = {handleSignOut}>
                 Sign Out
             </Button>
             <Button className={classes.login}>
