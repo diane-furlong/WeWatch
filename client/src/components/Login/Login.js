@@ -86,7 +86,7 @@ function Login(){
             backgroundImage: `url(${background})` 
           }}>
 
-            <div className="login-container"> 
+            <div className=" row justify-content-center login-container"> 
                 <div className="">
                     <h4 className="login-below">
                         <b>Login</b> below
