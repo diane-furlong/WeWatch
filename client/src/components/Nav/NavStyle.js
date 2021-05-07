@@ -64,4 +64,13 @@ export default makeStyles((theme) => ({
         flexGrow: '1',
         textDecoration: 'none'
     },
+    menuButton: {
+        marginRight: theme.spacing(2),
+        color: '#F77F00'
+    },
+    headerButtons: {
+        display: 'flex',
+        flex: 1,
+        justifyContent: 'space-evenly'
+    },
 }));

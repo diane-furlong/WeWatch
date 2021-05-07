@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import API from "../../utils/usersAPI"
 import './Nav.css'
-import { AppBar, Typography, Toolbar, Button, } from '@material-ui/core'
+import { AppBar, Typography, Toolbar, Button } from '@material-ui/core'
+import IconButton from '@material-ui/core/IconButton'
+import MenuIcon from '@material-ui/core/IconButton'
 import { makeStyles } from '@material-ui/styles'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import useStyles from './NavStyle.js'
 import popcorn from '../../img/favicon_popcorn.png'
 
@@ -11,7 +13,6 @@ const Nav = () => {
 
     const [name, setName] = useState()
     const classes = useStyles();
-    // const history = useHistory();
 
     //using token to find user's db id
     let usertoken = localStorage.getItem("token")
@@ -38,9 +39,6 @@ const Nav = () => {
         window.location.href='/'
     }
 
-
-
-
     return (
         <>
         <AppBar className={classes.appBar} position = 'static' color='inherit'>
@@ -54,9 +52,6 @@ const Nav = () => {
             <Typography variant="h4" className={classes.root}>
                 Welcome, {name}
             </Typography>
-            <Button className={classes.signOut} onClick = {handleSignOut}>
-                Sign Out
-            </Button>
             <Button className={classes.login}>
                 <Link className={classes.login} to='/login'>
                 Login
@@ -66,6 +61,9 @@ const Nav = () => {
                 <Link className={classes.register} to='/register'>
                     Register
                 </Link>
+            </Button>
+            <Button className={classes.signOut} onClick={handleSignOut}>
+                    Sign Out
             </Button>
             </Toolbar>
         </AppBar>
