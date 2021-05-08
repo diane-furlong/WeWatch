@@ -1,7 +1,5 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Share+Tech&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
 
 .addBtn{
     margin-left: 2%;
@@ -22,7 +20,7 @@
     color: #003049;
     margin-left: 400px;
     font-size: 45px;
-    font-family: 'Carrois Gothic SC', sans-serif;
+    font-family: 'Fascinate', cursive;
 }
 
 .watching-search{
@@ -32,21 +30,21 @@
     margin-bottom: 20px;
     margin-top: 20px;
     font-size: 20px;
-    font-family: 'Didact Gothic', sans-serif;
+    font-family: 'Source Code Pro', monospace;
 }
 
 .watching-search-btn{
     align-items: center;
     justify-content: center;
     margin-left: 50px;
-    font-family: 'Carrois Gothic SC', sans-serif;
+    font-family: 'Fascinate', cursive;
 }
 
 .watching-results{
     background-color: rgba(234, 226, 183, 0.8);
     color: #003049;
     font-size: 23px;
-    font-family: 'Didact Gothic', sans-serif;
+    font-family: 'Source Code Pro', monospace;
 }
 
 .addBtn{
@@ -56,10 +54,10 @@
 .next-btn{
     color: #003049; 
     font-size: 23px;
-    font-family: 'Carrois Gothic SC', sans-serif;;
+    font-family: 'Fascinate', cursive;
 }
 
 .add-text{
     font-size: 23px !important;
-    font-family: 'Carrois Gothic SC', sans-serif;;
+    font-family: 'Fascinate', cursive;
 }

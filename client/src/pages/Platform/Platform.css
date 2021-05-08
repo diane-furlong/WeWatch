@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
 
 ul {
     list-style-type: none;
@@ -8,11 +8,11 @@ ul {
 .form-check{
    margin-left: 500px;
    font-size: 20px;  
-   font-family: 'Didact Gothic', sans-serif;
+   font-family: 'Source Code Pro', monospace;
 }
 
 .platform-text{
-    font-family: 'Carrois Gothic SC', sans-serif;
+    font-family: 'Fascinate', cursive;
 }
 
 .platform-image {
@@ -24,6 +24,7 @@ ul {
 
 .submitPlatform{
     margin-left: 80px;
+    font-family: 'Fascinate', cursive;
 }
 
 .form-check-label{
