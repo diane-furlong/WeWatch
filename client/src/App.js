@@ -83,7 +83,7 @@ function App() {
         <Route exact path="/Home">
           <NewsFeed/>
         </Route>
-        <Route exact path="/MyProfile">
+        <Route exact path="/Profile">
           <UserProfile/>
         </Route>
       </Switch>

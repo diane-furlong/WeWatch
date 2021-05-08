@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useInput } from './InputHook'
-import { Link } from 'react-router-dom';
 import './Register.css';
 import API from "../../utils/usersAPI";
 import img from "../../img/movie.png";
@@ -40,28 +39,27 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-function Register(props) {
+function Register() {
     const { value: name, bind:bindName, reset:resetName } = useInput("")
     const { value: email, bind: bindEmail, reset: resetEmail } = useInput("")
     const { value: password, bind: bindPassword, reset: resetPassword } = useInput("")
     const { value: password2, bind: bindPassword2, reset: resetPassword2 } = useInput("")
+    const [checkErr, setErr] = useState(false)
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const data = {email: email.toLowerCase(), password: password, name: name, password2: password2 }
-        console.log(data)
+        const data = {email: email.toLowerCase(), password: password, name: name, password2: password2}
         API.postUser({ 
             email: email.toLowerCase(), password: password, name: name, password2: password2 
         }).then(res => {
-            console.log(res.data)
             resetName();
             resetEmail();
             resetPassword();
             resetPassword2();
             window.location.href='/Platform'
+        }).catch(err => {
+            setErr(err)
         })
-        // alert(`Submitting Name ${name} email ${email} password ${password} password verification ${password2} `);
-        
     }
 
     const classes = useStyles();
@@ -85,7 +83,7 @@ function Register(props) {
                 <div className="Container">
                     <div className="col-sm-12">
                         <h4 className="register-row"> 
-                            <b>Register</b>below
+                            Register below
                     </h4>
                     </div>
                 </div>
@@ -178,9 +176,14 @@ function Register(props) {
                 {/* <button type="submit" value="Submit" className="btn-info">Register</button> */}
                 <Button  className={clsx(classes.button)} type="submit" value="Submit" variant="contained">Register</Button>
             </form>
-            </div>
-            
-        );
+           
+        
+        <br/>
+        <br/>
+        {checkErr !== false ? <p className="err">Do you already have an account? If so, please <a href="/login">log in</a>. <br/> If not, confirm that your password is at least 6 characters and that password verification matches.</p>:null}
+        </div>
+       
+    )
 }
         
     
