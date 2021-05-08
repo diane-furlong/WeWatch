@@ -26,6 +26,7 @@
     "lodash": "^4.17.21",
     "mongoose": "^5.12.5",
     "node-fetch": "^2.6.1",
+    "react-scripts": "4.0.3",
     "particles-bg": "^2.5.5",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
