@@ -11,32 +11,44 @@ const UserProfile = () => {
     const [following, setFollowing] = useState()
     const [followers, setFollowers] = useState()
 
-    //using token to find user's db id
-    let usertoken = localStorage.getItem("token")
-    usertoken = usertoken?.split(" ")
-    let usertokenArray = []
-    if(usertoken){
-        for(let i =0; i < usertoken.length; i++){
-            usertokenArray.push(usertoken[i])
-            if(i != usertoken.length-1){
-                usertokenArray.push(" ");
+
+    const stuff = () => {
+        //using token to find user's db id
+        let usertoken = localStorage.getItem("token")
+        usertoken = usertoken?.split(" ")
+        let usertokenArray = []
+        if(usertoken){
+            for(let i =0; i < usertoken.length; i++){
+                usertokenArray.push(usertoken[i])
+                if(i != usertoken.length-1){
+                    usertokenArray.push(" ");
+                }
             }
         }
+        const id = usertokenArray[2]
+
+    
+        //GET requests to display user's info
+        usersAPI.getUser(id)
+        .then(res=> setName(res.data.name))
+        usersAPI.getUser(id)
+        .then(res=> setMyShows(res.data.myShows))
+
+        usersAPI.getUser(id)
+        .then(res=> setPlatforms(res.data.platforms))
+
+        usersAPI.getUser(id)
+        .then(res=> setFollowing(res.data.following))
+
+        usersAPI.getUser(id)
+        .then(res=> setFollowers(res.data.followers))
     }
-    const id = usertokenArray[2]
-
-    //GET request to display users info
-    // usersAPI.getUser(id)
-    // .then(res=> setUserInfo(res.data))
-    // .then(console.log(userInfo))
-
-    //get ids of all users that this person is following
-    // usersAPI.getFollowing(id)
-    // .then(res => setFollowing(res.data))
+    
      
 
     return (
         <div className="all">
+            <button onClick={stuff}>click</button>
             <h2>Hi, {name}!</h2>
             <br/>
             <br/>

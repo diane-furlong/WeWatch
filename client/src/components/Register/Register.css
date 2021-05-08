@@ -45,3 +45,8 @@
     background-color: white;
     font-size: 30px;
 }
+
+.err {
+    text-align: center;
+    color: white;
+}
