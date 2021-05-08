@@ -56,7 +56,7 @@ mongoose
     // }
 
 app.get('*', (request, response) => {
-	response.sendFile(path.join(__dirname, 'client/public', 'index.html'));
+	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 const port = process.env.PORT || 3001; // process.env.port is Heroku's port if you choose to deploy the app there
 app.listen(port, () => console.log(`Server up and running (Hurray!) on port ${port} !`));
