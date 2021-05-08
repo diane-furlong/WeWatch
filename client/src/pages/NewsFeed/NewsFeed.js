@@ -14,7 +14,7 @@
 //         if(usertoken){
 //             for(let i =0; i < usertoken.length; i++){
 //                 usertokenArray.push(usertoken[i])
-//                 if(i != usertoken.length-1){
+//                 if(i !== usertoken.length-1){
 //                     usertokenArray.push(" ");
 //                 }
 //             }
