@@ -86,8 +86,8 @@ function Login(){
             backgroundImage: `url(${background})` 
           }}>
 
-            <div className="login-container"> 
-                <div className="">
+            <div className="row justify-content-center login-container"> 
+                <div>
                     <h4 className="login-below">
                         <b>Login</b> below
                     </h4>
@@ -95,7 +95,7 @@ function Login(){
             </div>
             <form className="login-form" >
             <TextField
-                        label="Name"
+                        label="Email"
                         id="outlined-start-adornment"
                         className={clsx(classes.margin, classes.textField)}
                         variant="outlined"
@@ -137,7 +137,7 @@ function Login(){
                     />
                   </label> */}
 
-<Button onSubmit={handleSubmit} className={clsx(classes.button)} type="submit" value="Submit" variant="contained">Login</Button>
+<Button onClick={handleSubmit} className={clsx(classes.button)} type="submit" value="Submit" variant="contained">Login</Button>
                 {/* <button type="submit" value="Submit" onClick={handleSubmit} className="login-btn">Login</button> */}
 
             </form>
