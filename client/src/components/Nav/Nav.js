@@ -45,8 +45,6 @@ const Nav = () => {
 
     return (
         <>
-
-        {loggedIn === false ? <button>Login</button>:<button>Logout</button>}
         <AppBar className={classes.appBar} position = 'static' color='inherit'>
             <Toolbar className={classes.toolbar}>
             <Typography className={classes.heading} variant='h3' align='center' className={classes.root}>
@@ -55,22 +53,43 @@ const Nav = () => {
                     weWatch
                 </Link>
             </Typography>
-            <Typography variant="h4" className={classes.root}>
-                Welcome, {name}
-            </Typography>
-            <Button className={classes.login}>
+                     {loggedIn === false ?  <>
+                     <Button className={classes.login}>
                 <Link className={classes.login} to='/login'>
-                Login
+                            Login
                 </Link>
             </Button>
-            <Button className={classes.register}>
-                <Link className={classes.register} to='/register'>
-                    Register
+            <Button className={classes.navButton}>
+                <Link className={classes.navButton} to='/register'>
+                                Register
+                </Link>
+            </Button> </> : <> <Typography variant="h4" className={classes.root}>
+                        Welcome, {name}
+                </Typography>
+            <Button className={classes.navButton}>
+                <Link className={classes.navButton} to='/Platform'> 
+                    Platforms
                 </Link>
             </Button>
+                <Button className={classes.navButton}>
+                    <Link className={classes.navButton} to='/Watching'>
+                        Add a Show
+                    </Link>
+                </Button>
+                <Button className={classes.navButton}>
+                    <Link className={classes.navButton} to='/SearchUsers'>
+                        Find Friends
+                    </Link>
+                </Button>
+                <Button className={classes.navButton}>
+                    <Link className={classes.navButton} to='/Profile'>
+                        My Profile
+                    </Link>
+                </Button>
             <Button className={classes.signOut} onClick={handleSignOut}>
-                    Sign Out
+                        Sign Out
             </Button>
+                   </>  }
             </Toolbar>
         </AppBar>
         </>

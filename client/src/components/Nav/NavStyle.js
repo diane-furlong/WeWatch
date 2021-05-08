@@ -59,7 +59,7 @@ export default makeStyles((theme) => ({
         flexGrow: '1',
         textDecoration: 'none'
     },
-    register: {
+    navButton: {
         color: '#003049',
         flexGrow: '1',
         textDecoration: 'none'
