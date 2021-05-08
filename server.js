@@ -51,7 +51,13 @@ mongoose
     .then(() => console.log("MongoDB successfully connected"))
     .catch(err => console.log(err));
 
+    if (process.env.NODE_ENV === 'production') {
+        app.use(express.static('client/build'));
+    }
 
+app.get('*', (request, response) => {
+	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 const port = process.env.PORT || 3001; // process.env.port is Heroku's port if you choose to deploy the app there
 app.listen(port, () => console.log(`Server up and running (Hurray!) on port ${port} !`));
 
