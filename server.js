@@ -9,7 +9,7 @@ const bodyParser = require("body-parser"); //express
 const passport = require("passport");
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
-
+const path = require('path')
 const users = require("./routes/api/users"); //routes-express 
 const app = express(); //express
 
