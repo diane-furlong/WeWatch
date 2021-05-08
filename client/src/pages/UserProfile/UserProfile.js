@@ -8,6 +8,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import useWindowSize from "../../utils/useWindowSize"
 
 const useStyles = makeStyles({
   root: {
@@ -33,8 +34,6 @@ const useStyles = makeStyles({
     color: '#003049',
   },
 });
-
-
 
 export default function DataDisplayer() {
     const [name, setName] = useState([])

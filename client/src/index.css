@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap');
 
 body {
   margin: 0;
-  font-family: 'Dela Gothic One', cursive;
+  font-family: 'DM Serif Display', serif;
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif; */
@@ -11,7 +11,7 @@ body {
 }
 
 code {
-  font-family: 'Dela Gothic One', cursive;
+  font-family: 'DM Serif Display', serif;
   /* font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace; */
 }

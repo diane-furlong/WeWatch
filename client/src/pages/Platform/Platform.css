@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
 
 ul {
@@ -12,7 +12,7 @@ ul {
 }
 
 .platform-text{
-    font-family: 'Fascinate', cursive;
+    font-family: 'DM Serif Display', serif;
 }
 
 .platform-image {
@@ -24,7 +24,7 @@ ul {
 
 .submitPlatform{
     margin-left: 80px;
-    font-family: 'Fascinate', cursive;
+    font-family: 'DM Serif Display', serif;
 }
 
 .form-check-label{

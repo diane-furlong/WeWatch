@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap'); /*Input text font*/
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap'); /*Header text font*/
+
 
 .addBtn{
     margin-left: 2%;
@@ -20,7 +22,7 @@
     color: #003049;
     margin-left: 400px;
     font-size: 45px;
-    font-family: 'Fascinate', cursive;
+    font-family: 'DM Serif Display', serif;
 }
 
 .watching-search{
@@ -37,7 +39,7 @@
     align-items: center;
     justify-content: center;
     margin-left: 50px;
-    font-family: 'Fascinate', cursive;
+    font-family: 'DM Serif Display', serif;
 }
 
 .watching-results{
@@ -54,10 +56,10 @@
 .next-btn{
     color: #003049; 
     font-size: 23px;
-    font-family: 'Fascinate', cursive;
+    font-family: 'DM Serif Display', serif;
 }
 
 .add-text{
     font-size: 23px !important;
-    font-family: 'Fascinate', cursive;
+    font-family: 'DM Serif Display', serif;
 }

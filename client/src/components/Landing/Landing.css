@@ -2,6 +2,10 @@
     height: 20x;
     position: relative;
 } */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
+
 .landing-center {
     display: flex;
     justify-content: center;
@@ -20,6 +24,7 @@
      margin-left: 120px;
      font-size: 33px !important;
      background-color: #003049 !important;
+     font-family: 'Source Code Pro', monospace;
  }
 
 .landing-text{
@@ -28,16 +33,20 @@
     justify-content: center;
     align-items: center;
     font-size: 100px;
+    font-family: 'Source Code Pro', monospace;
     /* background-color: rgba(234, 226, 0, 0.15); */
     
 }
 .weWatch{
     font-size: 100px !important;
     font-weight: bold !important;
+    font-family: 'DM Serif Display', serif; 
+
 }
  .share{
      font-size: 40px !important;
      font-weight: bolder !important;
+     font-family: 'Source Code Pro', monospace;
  }
 
 .landing-image{

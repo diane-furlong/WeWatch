@@ -4,7 +4,7 @@ import usersAPI from '../../utils/usersAPI'
 import axios from "axios"
 import './Watching.css'
 import background from "../../img/watching.png"
-
+import useWindowSize from "../../utils/useWindowSize"
 
 const Watching = () => {
 

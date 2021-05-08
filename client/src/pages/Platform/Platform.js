@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import usersAPI from "../../utils/usersAPI"
 import './Platform.css'
 import background from "../../img/platform.png"
+import useWindowSize from "../../utils/useWindowSize"
+
 const _ = require('lodash');
 
 const Platform = () => {

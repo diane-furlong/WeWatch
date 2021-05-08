@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
 
 body{
-    font-family: 'Fascinate', cursive; 
+    font-family: 'DM Serif Display', serif; 
 }
 
 .all {
@@ -30,17 +30,20 @@ body{
 
 .user-search-text{
     font-size: 35px; 
+    font-family: 'Source Code Pro', monospace;
 }
 
 .email-search{
     margin-top: 20px;
     color: #003049;
     margin-left: 30px;
+    font-family: 'Source Code Pro', monospace;
 }
 
 .friend-results{
     color: #003049;
     font-size: 25px;
+    font-family: 'Source Code Pro', monospace;
 }
 
 .begin-btn{

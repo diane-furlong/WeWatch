@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap');
 
 .login-image {
     min-height: 100%;
@@ -10,22 +12,25 @@
 
 .login-container{
     margin-left: 550px;
-    
+
 }
 
 .login-btn {
     color: #003049;
     font-size: 28px;
+    font-family: 'DM Serif Display', serif;
 }
 
 .login-form{
     margin-left: 300px;
+    font-family: 'Source Code Pro', monospace;
 }
 
 .login-info{
     color: #D62828;
     background-color: #003049;
     font-size: 20px;
+    font-family: 'Source Code Pro', monospace;
 }
  
 .login-account{
@@ -38,12 +43,14 @@
     font-size:30px !important;
     margin-right: auto;
     margin-left: auto;
+    font-family: 'DM Serif Display', serif;
 
 }
 
 .login-home-btn{
     color: #003049;
     font-size: 35px;
+    font-family: 'DM Serif Display', serif;
 }
 
 .register-link{
@@ -58,4 +65,5 @@
     color: #003049;
     margin-top: -37px;
     margin-right: 180px;
+    font-family: 'DM Serif Display', serif;
 }

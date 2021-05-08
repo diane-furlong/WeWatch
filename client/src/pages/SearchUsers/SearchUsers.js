@@ -2,6 +2,7 @@ import React, { useState, useEffect }  from 'react'
 import usersAPI from '../../utils/usersAPI'
 import './SearchUsers.css'
 import background from "../../img/searchUsers2.png"
+import useWindowSize from "../../utils/useWindowSize"
 
 const SearchUsers = () => {
     
