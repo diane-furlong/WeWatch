@@ -49,20 +49,30 @@ export default makeStyles((theme) => ({
     },
     root: {
         flexGrow: '1',
+        marginLeft: '10px',
+        marginRight: '10px'
     },
     signOut: {
         color:'#D62828',
-        flexGrow: '1'
+        flexGrow: '1',
+        marginLeft: '10px',
+        marginRight: '10px'
     },
     login: {
         color:'#F77F00',
         flexGrow: '1',
-        textDecoration: 'none'
+        textDecoration: 'none',
+        marginLeft: '10px',
+        marginRight: '10px'
+        
     },
     navButton: {
         color: '#003049',
         flexGrow: '1',
-        textDecoration: 'none'
+        textDecoration: 'none',
+        marginRight: '10px',
+        marginLeft: '10px',
+        flexFlow: 'row nowrap'
     },
     menuButton: {
         marginRight: theme.spacing(2),
