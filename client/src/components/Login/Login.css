@@ -35,8 +35,10 @@
 }
 .login-below{
     color: #003049;
-    font-size:25px !important;
-    margin-left: 50px;
+    font-size:30px !important;
+    margin-right: auto;
+    margin-left: auto;
+
 }
 
 .login-home-btn{

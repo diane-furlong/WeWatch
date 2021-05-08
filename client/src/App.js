@@ -18,6 +18,7 @@ import NewsFeed from './pages/NewsFeed/NewsFeed'
 import UserProfile from './pages/UserProfile/UserProfile'
 
 
+
 // require('dotenv').config()
 
 function App() {
@@ -68,7 +69,7 @@ function App() {
         <Route exact path="/Watching">
           <Watching/>
         </Route>
-        <Route exact path="/Connecting">
+        {/* <Route exact path="/Connecting">
           <Connecting/>
         </Route>
         {/* <Route exact path="/Friend">
@@ -80,10 +81,10 @@ function App() {
         <Route exact path="/SearchUsers">
           <SearchUsers/>
         </Route>
-        <Route exact path="/Home">
+        {/* <Route exact path="/Home">
           <NewsFeed/>
-        </Route>
-        <Route exact path="/MyProfile">
+        </Route> */}
+        <Route exact path="/Profile">
           <UserProfile/>
         </Route>
       </Switch>
