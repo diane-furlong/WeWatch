@@ -1,10 +1,10 @@
 .register-row  {
-    margin-left: 100px;
+    margin-left: center;
     justify-content: center;
     align-items: center;
     display: flex;
     color: #D62828;
-    font-size: 23px;
+    font-size: 35px;
     /* display: flex;
     justify-content: center;
     align-items: center;
@@ -44,4 +44,18 @@
     color: #003049;
     background-color: white;
     font-size: 30px;
+}
+
+.err {
+    text-align: center;
+    color: white;
+}
+
+.register-form {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 25%;
 }
