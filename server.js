@@ -41,7 +41,7 @@ app.use(passport.session());
 app.use("/api/users", users);
 
 // DB Config
-const db = require("./config/keys2").mongoURI; //server
+const db = process.env.REACT_APP_MONGOURI; //server
 // Connect to MongoDB
 mongoose
     .connect(

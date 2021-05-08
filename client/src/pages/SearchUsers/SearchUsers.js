@@ -20,15 +20,12 @@ const SearchUsers = () => {
         event.preventDefault()
         usersAPI.getUserbyEmail(searchVal)
         .then(res=> setResult(res.data[0]))
-        try{
-            if(searchVal === " " ) throw "empty"
-            if(searchVal !== result) throw "Not a User"
-        }catch(err) {
+        .catch((err) => {
             console.log(err)
-            setErr(err)
-        }finally {
-            window.location.href = '/SearchUsers'
-        }
+            window.alert("Email not recognized. Please search again.")
+            window.location.href="/SearchUsers"
+        })
+        
     }
 
     // const handleInputChange = event => {
@@ -57,7 +54,7 @@ const SearchUsers = () => {
     }
 
     const nextPage = () => {
-        window.location.href="/home"
+        window.location.href="/Profile"
     }
 
     return (
@@ -83,7 +80,7 @@ const SearchUsers = () => {
 
 
          <>
-                {checkErr !== false ? <p className="err">This User does not exist, are you sure you entered their email correctly?  </p> : null}
+                {/* {checkErr !== false ? <p className="err">This User does not exist, are you sure you entered their email correctly?  </p> : null} */}
          </>
          </div>
     )
