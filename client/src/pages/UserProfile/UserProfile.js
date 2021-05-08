@@ -1,6 +1,39 @@
 import React, { useState } from 'react'
 import usersAPI from '../../utils/usersAPI'
 import './UserProfile.css'
+import background from "../../img/userProfile.png";
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+const useStyles = makeStyles({
+  root: {
+    minWidth: 275,
+    background: 'rgba(234, 226, 183, .8)',
+    color: '#003049',
+    justifyContent: 'center',
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  },
+  title: {
+    fontSize: 25,
+    color: '#003049',
+  },
+  pos: {
+    marginBottom: 12,
+    color: '#003049',
+  },
+  button: {
+    color: '#003049',
+  },
+});
+
 
 const UserProfile = () => {
 
@@ -44,34 +77,53 @@ const UserProfile = () => {
         .then(res=> setFollowers(res.data.followers))
     }
     
-     
+    const classes = useStyles();
+    const bull = <span className={classes.bullet}>•</span>;
 
     return (
-        <div className="all">
-            <button onClick={stuff}>click</button>
-            <h2>Hi, {name}!</h2>
-            <br/>
-            <br/>
-            <h4>My Shows: </h4>
-            <br/>
-            <h5>{myShows}</h5>
-            <br/>
-            <br/>
-            <h4>My Platforms: </h4>
-            <br/>
-            <h5>{platforms}</h5>
-            <br/>
-            <br/>
-            <h4>Following: </h4>
-            <br/>
-            <h5>{following}</h5>
-            <br/>
-            <br/>
-            <h4>Followers: </h4>
-            <br/>
-            <h5>{followers}</h5>
+        <>
+        <div className="search-users-image" style={{ 
+            backgroundImage: `url(${background})` 
+          }}>
+   
+                  <Card className={classes.root} variant="outlined">
+      <CardContent>
+        <Typography className={classes.title} color="textSecondary" gutterBottom component="h1">
+          Hi, {name}!
+        </Typography>
+        <Typography variant="h5" component="h2">
+        My Shows:
+        </Typography>
+        <Typography className={classes.pos} color="textSecondary">
+        {myShows}
+        </Typography>
+        <Typography variant="body2" component="p">
+        My Platforms:
+          <br />
+          {platforms}
+        </Typography>
+        <br />
+        <Typography variant="body2" component="p">
+        Following:
+          <br />
+          {following}
+        </Typography>
+        <br />
+        <Typography variant="body2" component="p">
+        Followers:
+          <br />
+          {followers}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button onClick={stuff} size="large">Display Info</Button>
+      </CardActions>
+    </Card>
+
         </div>
+        </>
     )
+
 }
 
 export default UserProfile
