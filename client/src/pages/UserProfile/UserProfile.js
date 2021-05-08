@@ -79,7 +79,7 @@ export default function DataDisplayer() {
         getData()
     }, [])
 
-    if(name) {
+    if(done) {
         return <>
         <div className="search-users-image" style={{ 
             backgroundImage: `url(${background})` 
@@ -89,24 +89,34 @@ export default function DataDisplayer() {
         <Typography className={classes.title} color="textSecondary" gutterBottom component="h1">
           Hi, {name}!
         </Typography>
+        </CardContent>
+        <CardContent>
         <Typography variant="h5" component="h2">
         My Shows:
         </Typography>
+        </CardContent>
+        <CardContent>
         <Typography className={classes.pos} color="textSecondary">
         {myShows}
         </Typography>
+        </CardContent>
+        <CardContent>
         <Typography variant="body2" component="p">
         My Platforms:
           <br />
-          {platforms}
+          {platforms.map(() => <li>{platforms}</li>)}
         </Typography>
+        </CardContent>
         <br />
+        <CardContent>
         <Typography variant="body2" component="p">
         Following:
           <br />
           {following}
         </Typography>
+        </CardContent>
         <br />
+        <CardContent>
         <Typography variant="body2" component="p">
         Followers:
           <br />
