@@ -48,12 +48,12 @@ mongoose
         db,
         { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false }
     )
-    .then(() => console.log("MongoDB successfully connected"))
-    .catch(err => console.log(err));
+    // .then(() => console.log("MongoDB successfully connected"))
+    // .catch(err => console.log(err));
 
-    if (process.env.NODE_ENV === 'production') {
-        app.use(express.static('client/build'));
-    }
+    // if (process.env.NODE_ENV === 'production') {
+    //     app.use(express.static('client/build'));
+    // }
 
 app.get('*', (request, response) => {
 	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
