@@ -1,5 +1,39 @@
 import React, { useEffect, useState} from 'react'
 import usersAPI from '../../utils/usersAPI'
+import './UserProfile.css'
+import background from "../../img/userProfile.png";
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+const useStyles = makeStyles({
+  root: {
+    minWidth: 275,
+    background: 'rgba(234, 226, 183, .8)',
+    color: '#003049',
+    justifyContent: 'center',
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  },
+  title: {
+    fontSize: 25,
+    color: '#003049',
+  },
+  pos: {
+    marginBottom: 12,
+    color: '#003049',
+  },
+  button: {
+    color: '#003049',
+  },
+});
+
 
 
 export default function DataDisplayer() {
@@ -9,6 +43,9 @@ export default function DataDisplayer() {
     const [following, setFollowing] = useState()
     const [followers, setFollowers] = useState()
     const [done, setDone] = useState(false)
+
+    const classes = useStyles();
+    const bull = <span className={classes.bullet}>•</span>;
     
     //using token to find user's db id
     let usertoken = localStorage.getItem("token")
@@ -43,18 +80,46 @@ export default function DataDisplayer() {
     }, [])
 
     if(name) {
-        return <div>
-            <h3>Name:</h3><h4>{[name]}</h4>
-            <h3>What I'm Watching:</h3><h4>{myShows}</h4>
-            <h3>What Platforms I Have:</h3>{done == true ? <ul>{platforms.map(() => {
-                <li>{platforms}</li>
-            })}
-            </ul>: null}
-            {platforms}
-            <h3>Following:</h3><h4>{following}</h4>
-            <h3>Followers:</h3><h4>{followers}</h4>
-        </div>
+        return <>
+        <div className="search-users-image" style={{ 
+            backgroundImage: `url(${background})` 
+          }}>
+            <Card className={classes.root} variant="outlined">
+      <CardContent>
+        <Typography className={classes.title} color="textSecondary" gutterBottom component="h1">
+          Hi, {name}!
+        </Typography>
+        <Typography variant="h5" component="h2">
+        My Shows:
+        </Typography>
+        <Typography className={classes.pos} color="textSecondary">
+        {myShows}
+        </Typography>
+        <Typography variant="body2" component="p">
+        My Platforms:
+          <br />
+          {platforms}
+        </Typography>
+        <br />
+        <Typography variant="body2" component="p">
+        Following:
+          <br />
+          {following}
+        </Typography>
+        <br />
+        <Typography variant="body2" component="p">
+        Followers:
+          <br />
+          {followers}
+        </Typography>
+      </CardContent>
+
+    </Card>
+
+        </div></>
+
     } else {
         return null
     }
+
 }

@@ -1,4 +1,7 @@
-/* .all {
-    width: 90vw;
-    height: 200vh;
-} */
+.search-users-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat:no-repeat;
+    height: 95vh;
+    
+}

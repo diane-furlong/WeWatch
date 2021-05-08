@@ -8,6 +8,7 @@ const SearchUsers = () => {
     const [searchVal, setSearchVal] = useState({})
     const [result, setResult] = useState(false)
     const [addedResult, setAddedResult] = useState(false)
+    const [checkErr, setErr] = useState(false)
 
 
     // useEffect(() => {
@@ -19,10 +20,15 @@ const SearchUsers = () => {
         event.preventDefault()
         usersAPI.getUserbyEmail(searchVal)
         .then(res=> setResult(res.data[0]))
-        .catch((err) => {
+        try{
+            if(searchVal === " " ) throw "empty"
+            if(searchVal !== result) throw "Not a User"
+        }catch(err) {
             console.log(err)
-            window.alert("Friend not found. Please search again.")
-        })
+            setErr(err)
+        }finally {
+            window.location.href = '/SearchUsers'
+        }
     }
 
     // const handleInputChange = event => {
@@ -74,6 +80,11 @@ const SearchUsers = () => {
                 { result !== false && addedResult !== false ? <p>You now follow {result.name}! Search for another friend, or click "Begin" to go to your homepage.<br/><button className="begin-btn"onClick={nextPage}>Begin</button></p> : null }
             </ul>
          </div>
+
+
+         <>
+                {checkErr !== false ? <p className="err">This User does not exist, are you sure you entered their email correctly?  </p> : null}
+         </>
          </div>
     )
 }
