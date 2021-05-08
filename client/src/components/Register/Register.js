@@ -83,7 +83,7 @@ function Register() {
                 <div className="Container">
                     <div className="col-sm-12">
                         <h4 className="register-row"> 
-                            <b>Register</b>below
+                            Register below
                     </h4>
                     </div>
                 </div>
