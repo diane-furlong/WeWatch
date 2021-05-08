@@ -6,8 +6,9 @@ import './Watching.css'
 import background from "../../img/watching.png"
 import useWindowSize from "../../utils/useWindowSize"
 
-const Watching = () => {
 
+
+const Watching = () => {
     const [searchVal, setSearchVal] = useState({})
     const [result, setResult] = useState(false)
     const [resultQueue, setResultQueue] = useState()

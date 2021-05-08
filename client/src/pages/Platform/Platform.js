@@ -3,13 +3,14 @@ import React, { useState } from 'react'
 import usersAPI from "../../utils/usersAPI"
 import './Platform.css'
 import background from "../../img/platform.png"
-import useWindowSize from "../../utils/useWindowSize"
+import useWindowSize from '../../utils/useWindowSize'
 
 const _ = require('lodash');
 
 const Platform = () => {
-
+    const {width} = useWindowSize()
     const [networks] = useState([])
+    
 
     //using token to find user's db id
     let usertoken = localStorage.getItem("token")
@@ -54,6 +55,8 @@ const Platform = () => {
             backgroundImage: `url(${background})` 
           }}>
 
+        {width > 500 && (
+        <>
         <div className="form-check">
             <h1 className="platform-text">Let's Get Started!</h1>
             <h2 className="platform-text">What platforms do you use?</h2>
@@ -85,6 +88,7 @@ const Platform = () => {
             </ul>
             <button className="submitPlatform" onClick={event => handleSubmit(event)}>Submit</button>
         </div>
+        </>)}
         </div>
     )
 }
