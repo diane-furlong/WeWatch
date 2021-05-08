@@ -7,6 +7,7 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
@@ -15,6 +16,17 @@ const useStyles = makeStyles({
     background: 'rgba(234, 226, 183, .8)',
     color: '#003049',
     justifyContent: 'center',
+    width: `50%`
+  },
+  top: {
+    minWidth: 275,
+    background: 'rgba(234, 226, 183, .8)',
+    color: '#003049',
+    alignItems: 'center',
+    justify: 'center',
+    justifyContent: 'center',
+    width: `40%`,
+    alignItems:"center"
   },
   bullet: {
     display: 'inline-block',
@@ -40,7 +52,9 @@ export default function DataDisplayer() {
     const [name, setName] = useState([])
     const [myShows, setMyShows] = useState([])
     const [platforms, setPlatforms] = useState()
+    const [followingID, setFollowingID] = useState()
     const [following, setFollowing] = useState()
+    const [followersID, setFollowersID] = useState()
     const [followers, setFollowers] = useState()
     const [done, setDone] = useState(false)
 
@@ -80,53 +94,76 @@ export default function DataDisplayer() {
     }, [])
 
     if(done) {
-        return <>
-        <div className="search-users-image" style={{ 
-            backgroundImage: `url(${background})` 
-          }}>
-            <Card className={classes.root} variant="outlined">
-      <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom component="h1">
-          Hi, {name}!
-        </Typography>
-        </CardContent>
-        <CardContent>
-        <Typography variant="h5" component="h2">
-        My Shows:
-        </Typography>
-        </CardContent>
-        <CardContent>
-        <Typography className={classes.pos} color="textSecondary">
-        {myShows}
-        </Typography>
-        </CardContent>
-        <CardContent>
-        <Typography variant="body2" component="p">
-        My Platforms:
-          <br />
-          {platforms.map(() => <li>{platforms}</li>)}
-        </Typography>
-        </CardContent>
-        <br />
-        <CardContent>
-        <Typography variant="body2" component="p">
-        Following:
-          <br />
-          {following}
-        </Typography>
-        </CardContent>
-        <br />
-        <CardContent>
-        <Typography variant="body2" component="p">
-        Followers:
-          <br />
-          {followers}
-        </Typography>
-      </CardContent>
-
-    </Card>
-
-        </div></>
+        return <div className="userProfDiv">
+            <Grid  container
+                    direction="column"
+                    alignItems="center">
+            <Card className={classes.top} variant="outlined">
+                <Typography className={classes.title} color="textSecondary" gutterBottom component="h1">
+                    Hi, {name}!
+                </Typography>
+            </Card>
+            </Grid>
+            <br/>
+            <Grid>
+                <Card className={classes.root} variant="outlined">
+                    <Typography variant="h5" component="h2">
+                        My shows:
+                    </Typography>
+                </Card>
+                <Card className={classes.root} variant="outlined">
+                    <Typography className={classes.pos} color="textSecondary">
+                        {myShows.map((value, index) => {
+                            return <li key={index}>{value}</li>
+                        })}
+                    </Typography>
+                </Card>
+                <br/>
+                <Card className={classes.root} variant="outlined">
+                    <Typography variant="h5" component="h2">
+                        My platforms:
+                    </Typography>
+                </Card>
+                <Card className={classes.root} variant="outlined">
+                    <Typography variant="body2" component="p">
+                        <br />
+                        {platforms.map((value, index) => {
+                            return <li key={index}>{value}</li>
+                        })}
+                    </Typography>
+                </Card>
+            </Grid>
+            <br />
+            <Grid>
+                <Card className={classes.root} variant="outlined">
+                    <Typography variant="h5" component="h2">
+                        Who I'm following:
+                    </Typography>
+                </Card>
+                <Card className={classes.root} variant="outlined">
+                    <Typography variant="body2" component="p">
+                    <br />
+                    {following.map((value, index) => {
+                        return <li key={index}>{value}</li>
+                    })}
+                    </Typography>
+                </Card>
+                <br />
+                <Card className={classes.root} variant="outlined">
+                    <Typography variant="h5" component="h2">
+                        My followers:
+                    </Typography>
+                </Card>
+                <Card className={classes.root} variant="outlined">
+                    <Typography variant="body2" component="p">
+                    <br />
+                    {followers.map((value, index) => {
+                        return <li key={index}>{value}</li>
+                    })}
+                    </Typography>
+                </Card>
+            </Grid>
+        </div>
 
     } else {
         return null
