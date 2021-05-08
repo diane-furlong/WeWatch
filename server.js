@@ -41,7 +41,7 @@ app.use(passport.session());
 app.use("/api/users", users);
 
 // DB Config
-const db = process.env.REACT_APP_MONGOURI; //server
+const db = process.env.REACT_APP_MONGOURI || 'mongodb://localhost/wewatch5000'; //server
 // Connect to MongoDB
 mongoose
     .connect(
