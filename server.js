@@ -41,7 +41,7 @@ app.use(passport.session());
 app.use("/api/users", users);
 
 // DB Config
-const db = process.env.MONGODB_URI || 'mongodb://localhost/wewatch5000'; //server
+const db = process.env.REACT_APP_MONGOURI; //server
 // Connect to MongoDB
 mongoose
     .connect(
@@ -54,4 +54,3 @@ mongoose
 
 const port = process.env.PORT || 3001; // process.env.port is Heroku's port if you choose to deploy the app there
 app.listen(port, () => console.log(`Server up and running (Hurray!) on port ${port} !`));
-
