@@ -5,7 +5,7 @@ weWatch is a MERN based social media app for sharing what you are watching, stor
 Live link deployed at https://wewatch5000.herokuapp.com/
 
 # Screenshots
-![Alt Text](wewatch3.png)
+![Alt Text](weWatch3.png)
 ![Alt Text](wewatchReg.png)
 ![Alt Text](wewatchPlat.png)
 ![Alt Text](wewatchLog.png)
