@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
-// import { useInput } from '../Register/InputHook'
 import API from "../../utils/usersAPI";
 import background from "../../img/login.png"
 import './Login.css'
