@@ -1,13 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import API from "../../utils/usersAPI"
 import './Nav.css'
-import { AppBar, Typography, Toolbar, Button, Grid } from '@material-ui/core'
+import { AppBar,
+     Typography,
+      Toolbar,
+       Button, 
+       Grid, 
+       createMuiTheme,
+       responsiveFontSizes,
+       MuiThemeProvider,
+     } from '@material-ui/core'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/core/IconButton'
 import { makeStyles } from '@material-ui/styles'
 import { Link } from 'react-router-dom'
 import useStyles from './NavStyle.js'
 import popcorn from '../../img/favicon_popcorn.png'
+
+let theme = createMuiTheme();
+theme = responsiveFontSizes(theme);
 
 const Nav = () => {
 
@@ -46,6 +57,7 @@ const Nav = () => {
 
     return (
         <>
+        <MuiThemeProvider theme={theme}>
         <Grid container direction='column' justify='center'>
         <AppBar className={classes.appBar} position = 'static' color='inherit'>
             <Toolbar className={classes.toolbar}>
@@ -57,7 +69,7 @@ const Nav = () => {
             </Typography>
                      {loggedIn === false ?  <>
                      <Button className={classes.login}>
-                <Link className={classes.login} to='/login'>
+                <Link className={classes.login} variant='h6' to='/login'>
                             Login
                 </Link>
             </Button>
@@ -95,6 +107,7 @@ const Nav = () => {
             </Toolbar>
         </AppBar>
             </Grid>
+        </MuiThemeProvider>
         </>
     )
 }
