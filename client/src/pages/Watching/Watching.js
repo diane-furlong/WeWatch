@@ -64,13 +64,15 @@ const Watching = () => {
 
     return (
         <div
-        className="watching-image" style={{ 
-            backgroundImage: `url(${background})` 
-          }}>
+            className="watchingAll">
         <h2 className="watching-text">What are you currently watching?</h2>
             <form>
                 <input className="watching-search" onChange={event => setSearchVal(event.target.value)}></input>
+                <div className="container">
+                    <div className='col-sm'>
                 <button onClick={search} className="watching-search watching-search-btn">Search</button>
+                    </div>
+                </div>
             </form>
             <ul className="watching-results">
 
