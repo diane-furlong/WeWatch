@@ -1,17 +1,20 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { deepPurple } from '@material-ui/core/colors';
 
+
 export default makeStyles((theme) => ({
     appBar: {
-        // borderRadius: 15,
-        // margin: '30px 0',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '10px 50px',
         background: '#EAE2B7',
-        borderBottom: '8px solid #D62828'
+        borderBottom: '8px solid #D62828',
+        width: 'auto',
+        "@media (max-width: 900px)" : {
+            paddingLeft: 0,
+        }
     },
     heading: {
         color: 'rgba(45, 190, 207, 1)',
@@ -24,7 +27,6 @@ export default makeStyles((theme) => ({
     toolbar: {
         display: 'flex',
         justifyContent: 'flex-end',
-        // width: '400px',
     },
     profile: {
         display: 'flex',
