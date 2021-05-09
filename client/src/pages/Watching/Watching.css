@@ -60,16 +60,12 @@
 .watching-search-btn{
     align-items: center;
     justify-content: center;
-<<<<<<< HEAD
-=======
     display:block;
     background-color: #ffffff;
     color: #003049;
     margin-bottom: 10px;
->>>>>>> 1abd12d2c2d18c42f56f1f0b776b192b40631d43
     margin-left: auto;
     margin-right: auto;
-
 }
 
 .watching-results{
