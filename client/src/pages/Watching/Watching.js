@@ -70,7 +70,7 @@ const Watching = () => {
                 <input className="watching-search" onChange={event => setSearchVal(event.target.value)}></input>
                 <div className="container">
                     <div className='col-sm'>
-                <button onClick={search} className="watching-search watching-search-btn">Search</button>
+                <button onClick={search} className="watching-search-btn">Search</button>
                     </div>
                 </div>
             </form>
