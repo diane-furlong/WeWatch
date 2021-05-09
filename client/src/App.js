@@ -7,9 +7,6 @@ import { BrowserRouter as Router, Route,Switch } from "react-router-dom";
 import Login from './components/Login/Login';
 import Platform from './pages/Platform/Platform';
 import Watching from './pages/Watching/Watching';
-import Connecting from './pages/Connecting/Connecting'
-import Friend from './pages/Connecting/Friend'
-import FriendsList from './pages/Connecting/FriendsList'
 import Footer from './components/Footer/Footer'
 import axios from 'axios'
 import UserContext from './context/userContext'
@@ -69,15 +66,6 @@ function App() {
         <Route exact path="/Watching">
           <Watching/>
         </Route>
-        {/* <Route exact path="/Connecting">
-          <Connecting/>
-        </Route>
-        <Route exact path="/Friend">
-          <Friend/>
-        </Route>
-        <Route exact path="/FriendsList">
-          <FriendsList/>
-        </Route> */}
         <Route exact path="/SearchUsers">
           <SearchUsers/>
         </Route>

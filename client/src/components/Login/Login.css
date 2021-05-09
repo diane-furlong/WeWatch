@@ -1,15 +1,14 @@
 
 .login-image {
-    min-height: 100%;
-    height: 93vh;
-    /* width: 100vw; */
     background-size: cover;
-    background-position: top;
-    position: relative;
+    background-image: url("../../img/login.png");
+    background-repeat: no-repeat;
+    height: 80vh;
 }
 
 .login-container{
-    margin-left: 550px;
+    margin-left: auto;
+    margin-right: auto;
     
 }
 
@@ -19,7 +18,8 @@
 }
 
 .login-form{
-    margin-left: 300px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .login-info{
@@ -31,7 +31,6 @@
 .login-account{
     color: #003049;
     font-size:25px !important;
-    margin-right: 25px !important;
 }
 .login-below{
     color: #003049;
@@ -47,7 +46,8 @@
 }
 
 .register-link{
-    margin-left: 520px; 
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .login-account{
@@ -56,6 +56,6 @@
 
 .register{
     color: #003049;
-    margin-top: -37px;
-    margin-right: 180px;
+    margin-left: auto;
+    margin-right: auto;
 }

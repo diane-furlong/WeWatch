@@ -1,32 +1,43 @@
 import React, { useEffect, useState} from 'react'
 import usersAPI from '../../utils/usersAPI'
 import './UserProfile.css'
-import background from "../../img/userProfile.png";
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
+
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
+    minWidth: 150,
     background: 'rgba(234, 226, 183, .8)',
     color: '#003049',
     justifyContent: 'center',
-    width: `50%`
+    alignItems: 'center',
+    flexGrow: 1,
+    textAlign: 'center',
+    marginLeft: 10,
+    marginRight: 10,
+    marginBottom: 10,
+    width: 100
+  },
+  root2: {
+    minWidth: 150,
+    background: 'rgba(234, 226, 183, .8)',
+    color: '#003049',
+    justifyContent: 'center',
+    flexGrow: 1,
+    marginLeft: 10,
+    marginRight: 10,
+    marginBottom: 10
   },
   top: {
-    minWidth: 275,
+    minWidth: 150,
     background: 'rgba(234, 226, 183, .8)',
     color: '#003049',
-    alignItems: 'center',
-    justify: 'center',
-    justifyContent: 'center',
-    width: `40%`,
-    alignItems:"center"
+    width: `50%`,
+    margin: 10,
+    textAlign: 'center'
   },
   bullet: {
     display: 'inline-block',
@@ -65,15 +76,18 @@ export default function DataDisplayer() {
     let usertoken = localStorage.getItem("token")
     usertoken = usertoken?.split(" ")
     let usertokenArray = []
-    if(usertoken){
-        for(let i =0; i < usertoken.length; i++){
-            usertokenArray.push(usertoken[i])
-            if(i != usertoken.length-1){
-                usertokenArray.push(" ");
-            }
+    for(let i=0; i<usertoken.length; i++){
+        usertokenArray.push(usertoken[i])
+        if(i !== usertoken.length-1){
+            usertokenArray.push(" ");
         }
     }
     const id = usertokenArray[2]
+
+    let arrFollowing=[]
+    let arrFollowingNames=[]
+    let arrFollowers=[]
+    let arrFollowersNames=[]
 
     useEffect(() => {
         const getData = async () => {
@@ -84,84 +98,106 @@ export default function DataDisplayer() {
             const response3 = await usersAPI.getUser(id)
             setPlatforms(response3.data.platforms)
             const response4 = await usersAPI.getUser(id)
-            setFollowing(response4.data.following)
+            setFollowingID(response4.data.following)
             const response5 = await usersAPI.getUser(id)
-            setFollowers(response5.data.followers)
+            setFollowersID(response5.data.followers)
+            
+            //make array of followings' names
+            for(let i=0;i<response4.data.following.length;i++){
+                arrFollowing.push(await usersAPI.getUser(response4.data.following[i]))
+            }
+            for(let i=0;i<arrFollowing.length;i++){
+                arrFollowingNames.push(arrFollowing[i].data.name)
+            }
+            setFollowing(arrFollowingNames)
+
+            //make array of followers' names
+            for(let i=0;i<response5.data.followers.length;i++){
+                arrFollowers.push(await usersAPI.getUser(response5.data.followers[i]))
+            }
+            for(let i=0;i<arrFollowers.length;i++){
+                arrFollowersNames.push(arrFollowers[i].data.name)
+            }
+            setFollowers(arrFollowersNames)
             setDone(true)
         }
-
+        
         getData()
-    }, [])
+    }, [id])
 
     if(done) {
         return <div className="userProfDiv">
-            <Grid  container
-                    direction="column"
-                    alignItems="center">
-            <Card className={classes.top} variant="outlined">
-                <Typography className={classes.title} color="textSecondary" gutterBottom component="h1">
-                    Hi, {name}!
-                </Typography>
-            </Card>
+            <Grid 
+            container 
+            // direction="column" alignItems="center"
+            >
+                <Card className={classes.top} variant="outlined">
+                    <Typography className={classes.title} color="textSecondary" gutterBottom component="h1">
+                        Hi, {name}!
+                    </Typography>
+                </Card>
             </Grid>
             <br/>
-            <Grid>
-                <Card className={classes.root} variant="outlined">
-                    <Typography variant="h5" component="h2">
-                        My shows:
-                    </Typography>
-                </Card>
-                <Card className={classes.root} variant="outlined">
-                    <Typography className={classes.pos} color="textSecondary">
-                        {myShows.map((value, index) => {
-                            return <li key={index}>{value}</li>
-                        })}
-                    </Typography>
-                </Card>
-                <br/>
-                <Card className={classes.root} variant="outlined">
-                    <Typography variant="h5" component="h2">
-                        My platforms:
-                    </Typography>
-                </Card>
-                <Card className={classes.root} variant="outlined">
-                    <Typography variant="body2" component="p">
-                        <br />
-                        {platforms.map((value, index) => {
-                            return <li key={index}>{value}</li>
-                        })}
-                    </Typography>
-                </Card>
+            <Grid container spacing={3}>
+                <Grid item xs={6}>
+                    <Card className={classes.root} variant="outlined">
+                        <Typography variant="h5" component="h2">
+                            My shows:
+                        </Typography>
+                    </Card>
+                    <Card className={classes.root2} variant="outlined">
+                        <Typography className={classes.pos} color="textSecondary">
+                            {myShows.map((value, index) => {
+                                return <li key={index}>{value}</li>
+                            })}
+                        </Typography>
+                    </Card>
+                </Grid>
+                <Grid item xs={6}>
+                    <Card className={classes.root} variant="outlined">
+                        <Typography variant="h5" component="h2">
+                            My platforms:
+                        </Typography>
+                    </Card>
+                    <Card className={classes.root2} variant="outlined">
+                        <Typography variant="body2" component="p">
+                            {platforms.map((value, index) => {
+                                return <li key={index}>{value}</li>
+                            })}
+                        </Typography>
+                    </Card>
+                </Grid>
             </Grid>
             <br />
-            <Grid>
-                <Card className={classes.root} variant="outlined">
-                    <Typography variant="h5" component="h2">
-                        Who I'm following:
-                    </Typography>
-                </Card>
-                <Card className={classes.root} variant="outlined">
-                    <Typography variant="body2" component="p">
-                    <br />
-                    {following.map((value, index) => {
-                        return <li key={index}>{value}</li>
-                    })}
-                    </Typography>
-                </Card>
-                <br />
-                <Card className={classes.root} variant="outlined">
-                    <Typography variant="h5" component="h2">
-                        My followers:
-                    </Typography>
-                </Card>
-                <Card className={classes.root} variant="outlined">
-                    <Typography variant="body2" component="p">
-                    <br />
-                    {followers.map((value, index) => {
-                        return <li key={index}>{value}</li>
-                    })}
-                    </Typography>
-                </Card>
+            <Grid container>
+                <Grid item xs={6}>
+                    <Card className={classes.root} variant="outlined">
+                        <Typography variant="h5" component="h2">
+                            Following:
+                        </Typography>
+                    </Card>
+                    <Card className={classes.root2} variant="outlined">
+                        <Typography variant="body2" component="p">
+                        {following.map((value, index) => {
+                            return <li key={index}>{value}</li>
+                        })}
+                        </Typography>
+                    </Card>
+                </Grid>
+                <Grid item xs={6}>
+                    <Card className={classes.root} variant="outlined">
+                        <Typography variant="h5" component="h2">
+                            Followers:
+                        </Typography>
+                    </Card>
+                    <Card className={classes.root2} variant="outlined">
+                        <Typography variant="body2" component="p">
+                        {followers.map((value, index) => {
+                            return <li key={index}>{value}</li>
+                        })}
+                        </Typography>
+                    </Card>
+                </Grid>
             </Grid>
         </div>
 
