@@ -1,5 +1,6 @@
 .addBtn{
     margin-left: 2%;
+    color: #003049; 
 }
 
 .watchingAll{
@@ -7,18 +8,19 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 100%;
-    height:auto;
-    background-size:100%;
+    width: 100vw;
+    height: 80vh;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 .watching-text{
     color: #003049;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 45px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    font-size: 45px !important;
 }
-
+/* 
 @media screen and (min-width:600px) {
     .watching-text {
         text-align: center;
@@ -44,7 +46,7 @@
     
     }
     
-}
+} */
 
 .watching-search{
     background-color: #ffffff;
@@ -66,16 +68,15 @@
     margin-bottom: 10px;
     margin-left: auto;
     margin-right: auto;
+    font-size: 23px;
 }
 
 .watching-results{
     background-color: rgba(234, 226, 183, 0.8);
     color: #003049;
     font-size: 23px;
-}
-
-.addBtn{
-    color: #003049; 
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .next-btn{
@@ -85,4 +86,6 @@
 
 .add-text{
     font-size: 23px !important;
+    margin-left: auto;
+    margin-right: auto;
 }

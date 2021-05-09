@@ -2,3 +2,20 @@
     width: 100vw;
 }
 
+@media screen and (max-width:600px){
+    .popcornImage {
+        width: 10%;
+        height: 10%;
+        margin-left: 2px !important;
+    }
+
+    .weWatchNav {
+        font-size: 25px;
+        color: '#003049';
+        text-decoration: 'none';
+    }
+
+    .welcomeMsg {
+        font-size: 25px !important;
+    }
+}

@@ -63,8 +63,7 @@ const Watching = () => {
 
 
     return (
-        <div
-            className="watchingAll">
+        <div className="watchingAll">
         <h2 className="watching-text">What are you currently watching?</h2>
             <form>
                 <input className="watching-search" onChange={event => setSearchVal(event.target.value)}></input>
@@ -75,7 +74,6 @@ const Watching = () => {
                 </div>
             </form>
             <ul className="watching-results">
-
                 { result !== false ? <li onChange={event => console.log(event)}>Title: {result}  
                 <br/>Description: {resultQueue}
 
