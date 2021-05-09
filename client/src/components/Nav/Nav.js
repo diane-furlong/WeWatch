@@ -50,8 +50,8 @@ const Nav = () => {
         <AppBar className={classes.appBar} position = 'static' color='inherit'>
             <Toolbar className={classes.toolbar}>
             <Typography className={classes.heading} variant='h3' align='center' className={classes.root}>
-                <img className={classes.image} className="popcornImage" src={popcorn} alt='icon' height='60'></img>
-                <Link className={classes.linkStyle} className="weWatchNav" to ='/'>
+                <img className={classes.image} src={popcorn} alt='icon' height='60'></img>
+                <Link className={classes.linkStyle} to ='/'>
                     weWatch
                 </Link>
             </Typography>
@@ -65,7 +65,7 @@ const Nav = () => {
                 <Link className={classes.navButton} to='/register'>
                                 Register
                 </Link>
-            </Button> </> : <> <Typography variant="h4" className={classes.root} className="welcomeMsg">
+            </Button> </> : <> <Typography variant="h4" className={classes.root}>
                         Welcome, {name}
                 </Typography>
             <Button className={classes.navButton}>
