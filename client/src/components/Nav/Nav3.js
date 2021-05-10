@@ -1,8 +1,7 @@
 import { Navbar,Nav, Button } from 'react-bootstrap'
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import API from "../../utils/usersAPI"
 import './Nav.css'
-import { Link } from 'react-router-dom'
 import popcorn from '../../img/favicon_popcorn.png'
 import 'bootstrap/dist/css/bootstrap.css';
 import './nav3.css'
