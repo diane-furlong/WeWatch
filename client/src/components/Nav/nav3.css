@@ -21,6 +21,7 @@
     border-width: 2px !important;
     padding: 3px !important;
     margin-right: 10px;
+    font-size: 20px !important;
 }
 
 .signOutBtn:hover {
@@ -31,4 +32,5 @@
    color: #D62828 !important;
    margin-left: 10px;
    margin-right: 10px;
+   font-size: 20px !important;
 }
