@@ -89,12 +89,12 @@ export default function DataDisplayer() {
     let arrFollowingNames=[]
     let arrFollowers=[]
     let arrFollowersNames=[]
+    let arrFollowingIDs=[]
     let response
     let response2
     let response3
     let response4
     let response5
-    let arrLS=[]
 
     useEffect(() => {
         const getData = async () => {
@@ -112,17 +112,15 @@ export default function DataDisplayer() {
             //make array of followings' names
             for(let i=0;i<response4.data.following.length;i++){
                 arrFollowing.push(await usersAPI.getUser(response4.data.following[i]))
-                
             }
             let arrFollowingLS=[]
-           
             for(let i=0;i<arrFollowing.length;i++){
                 arrFollowingNames.push(arrFollowing[i].data.name)
+                arrFollowingIDs.push(arrFollowing[i].data._id)
                 arrFollowingLS.push({name: arrFollowing[i].data.name, id: arrFollowing[i].data._id})
-                localStorage.setItem('arrFollowing', JSON.stringify(arrFollowingLS))
-                arrLS=localStorage.getItem('arrFollowing')
-                setFollowing(arrLS)
-            }           
+                localStorage.setItem(arrFollowingLS[i].name, arrFollowingIDs[i])
+            }
+            setFollowing(arrFollowingNames)
             
             //make array of followers' names
             for(let i=0;i<response5.data.followers.length;i++){
@@ -136,22 +134,20 @@ export default function DataDisplayer() {
         }
         
         getData()
+        
     }, [id])
 
     const clickUserFollowing = (event) => {
-        let foo=(localStorage.getItem('arrFollowing'))
-        // console.log(JSON.parse(foo))
-      
-        // console.log(event.target)
-
+        let clickUser= [(event.target)]
+        let getClickVal=clickUser[0].classList.value
+        let getUserID= localStorage.getItem(getClickVal)
+        localStorage.setItem("goToID", getUserID)
+        window.location.href="/profile/"+getUserID
     }
 
     if(done) {
         return <div className="userProfDiv">
-            <Grid 
-            container 
-            // direction="column" alignItems="center"
-            >
+            <Grid container>
                 <Card className={classes.top} variant="outlined">
                     <Typography className={classes.title} color="textSecondary" gutterBottom component="h1">
                         Hi, {name}!
@@ -198,10 +194,10 @@ export default function DataDisplayer() {
                         </Typography>
                     </Card>
                     <Card className={classes.root2} variant="outlined">
-                        <Typography variant="body2" component="p">
-                        {/* {arrLS.map((value, index) => {
-                            return <li key={index} onClick={clickUserFollowing}>{value}</li>
-                        })} */}
+                        <Typography variant="body2" component="section">
+                        {following.map((value) => {
+                            return <p key= {value} className={value} id="otherUserName" onClick={clickUserFollowing}>{value}</p>
+                        })}
                         </Typography>
                     </Card>
                 </Grid>
@@ -212,9 +208,9 @@ export default function DataDisplayer() {
                         </Typography>
                     </Card>
                     <Card className={classes.root2} variant="outlined">
-                        <Typography variant="body2" component="p">
-                        {followers.map((user) => {
-                            return <li>{user}</li>
+                        <Typography variant="body2" component="section">
+                        {followers.map((value) => {
+                            return <p key= {value} className={value} id="otherUserName" onClick={clickUserFollowing}>{value}</p>
                         })}
                         </Typography>
                     </Card>

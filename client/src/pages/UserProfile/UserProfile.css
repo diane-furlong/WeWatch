@@ -5,3 +5,13 @@
     background-repeat: no-repeat;
     height: 100vh;
 }
+
+#otherUserName {
+    /* color: red; */
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#otherUserName:hover {
+    cursor: pointer;
+}
