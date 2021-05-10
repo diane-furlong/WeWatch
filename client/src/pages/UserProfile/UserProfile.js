@@ -89,14 +89,12 @@ export default function DataDisplayer() {
     let arrFollowingNames=[]
     let arrFollowers=[]
     let arrFollowersNames=[]
-    let arrr=[]
     let arrFollowingIDs=[]
     let response
     let response2
     let response3
     let response4
     let response5
-    let foo
 
     useEffect(() => {
         const getData = async () => {
@@ -114,7 +112,6 @@ export default function DataDisplayer() {
             //make array of followings' names
             for(let i=0;i<response4.data.following.length;i++){
                 arrFollowing.push(await usersAPI.getUser(response4.data.following[i]))
-                
             }
             let arrFollowingLS=[]
             for(let i=0;i<arrFollowing.length;i++){
@@ -141,21 +138,16 @@ export default function DataDisplayer() {
     }, [id])
 
     const clickUserFollowing = (event) => {
-        let oj= [(event.target)]
-        let foj=oj
-        let eiei=foj[0].classList.value
-        let lala= localStorage.getItem(eiei)
-        console.log(lala)
-    
-        window.location.href="/profile/"+lala
+        let clickUser= [(event.target)]
+        let getClickVal=clickUser[0].classList.value
+        let getUserID= localStorage.getItem(getClickVal)
+        localStorage.setItem("goToID", getUserID)
+        window.location.href="/profile/"+getUserID
     }
 
     if(done) {
         return <div className="userProfDiv">
-            <Grid 
-            container 
-            // direction="column" alignItems="center"
-            >
+            <Grid container>
                 <Card className={classes.top} variant="outlined">
                     <Typography className={classes.title} color="textSecondary" gutterBottom component="h1">
                         Hi, {name}!
@@ -204,7 +196,7 @@ export default function DataDisplayer() {
                     <Card className={classes.root2} variant="outlined">
                         <Typography variant="body2" component="section">
                         {following.map((value) => {
-                            return <p key= {value} className={value} onClick={clickUserFollowing}>{value}</p>
+                            return <p key= {value} className={value} id="otherUserName" onClick={clickUserFollowing}>{value}</p>
                         })}
                         </Typography>
                     </Card>
@@ -216,9 +208,9 @@ export default function DataDisplayer() {
                         </Typography>
                     </Card>
                     <Card className={classes.root2} variant="outlined">
-                        <Typography variant="body2" component="p">
-                        {followers.map((value, index) => {
-                            return <li key={index}>{value}</li>
+                        <Typography variant="body2" component="section">
+                        {followers.map((value) => {
+                            return <p key= {value} className={value} id="otherUserName" onClick={clickUserFollowing}>{value}</p>
                         })}
                         </Typography>
                     </Card>
