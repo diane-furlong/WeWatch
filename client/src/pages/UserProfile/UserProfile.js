@@ -3,7 +3,6 @@ import usersAPI from '../../utils/usersAPI'
 import './UserProfile.css'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
@@ -65,8 +64,10 @@ export default function DataDisplayer() {
     const [platforms, setPlatforms] = useState()
     const [followingID, setFollowingID] = useState()
     const [following, setFollowing] = useState()
+    const [followingInfo, setFollowingInfo] = useState()
     const [followersID, setFollowersID] = useState()
     const [followers, setFollowers] = useState()
+    
     const [done, setDone] = useState(false)
 
     const classes = useStyles();
@@ -88,29 +89,41 @@ export default function DataDisplayer() {
     let arrFollowingNames=[]
     let arrFollowers=[]
     let arrFollowersNames=[]
+    let response
+    let response2
+    let response3
+    let response4
+    let response5
+    let arrLS=[]
 
     useEffect(() => {
         const getData = async () => {
-            const response = await usersAPI.getUser(id)
+            response = await usersAPI.getUser(id)
             setName(response.data.name)
-            const response2 = await usersAPI.getUser(id)
+            response2 = await usersAPI.getUser(id)
             setMyShows(response2.data.myShows)
-            const response3 = await usersAPI.getUser(id)
+            response3 = await usersAPI.getUser(id)
             setPlatforms(response3.data.platforms)
-            const response4 = await usersAPI.getUser(id)
+            response4 = await usersAPI.getUser(id)
             setFollowingID(response4.data.following)
-            const response5 = await usersAPI.getUser(id)
+            response5 = await usersAPI.getUser(id)
             setFollowersID(response5.data.followers)
             
             //make array of followings' names
             for(let i=0;i<response4.data.following.length;i++){
                 arrFollowing.push(await usersAPI.getUser(response4.data.following[i]))
+                
             }
+            let arrFollowingLS=[]
+           
             for(let i=0;i<arrFollowing.length;i++){
                 arrFollowingNames.push(arrFollowing[i].data.name)
-            }
-            setFollowing(arrFollowingNames)
-
+                arrFollowingLS.push({name: arrFollowing[i].data.name, id: arrFollowing[i].data._id})
+                localStorage.setItem('arrFollowing', JSON.stringify(arrFollowingLS))
+                arrLS=localStorage.getItem('arrFollowing')
+                setFollowing(arrLS)
+            }           
+            
             //make array of followers' names
             for(let i=0;i<response5.data.followers.length;i++){
                 arrFollowers.push(await usersAPI.getUser(response5.data.followers[i]))
@@ -124,6 +137,14 @@ export default function DataDisplayer() {
         
         getData()
     }, [id])
+
+    const clickUserFollowing = (event) => {
+        let foo=(localStorage.getItem('arrFollowing'))
+        // console.log(JSON.parse(foo))
+      
+        // console.log(event.target)
+
+    }
 
     if(done) {
         return <div className="userProfDiv">
@@ -178,9 +199,9 @@ export default function DataDisplayer() {
                     </Card>
                     <Card className={classes.root2} variant="outlined">
                         <Typography variant="body2" component="p">
-                        {following.map((value, index) => {
-                            return <li key={index}>{value}</li>
-                        })}
+                        {/* {arrLS.map((value, index) => {
+                            return <li key={index} onClick={clickUserFollowing}>{value}</li>
+                        })} */}
                         </Typography>
                     </Card>
                 </Grid>
@@ -192,8 +213,8 @@ export default function DataDisplayer() {
                     </Card>
                     <Card className={classes.root2} variant="outlined">
                         <Typography variant="body2" component="p">
-                        {followers.map((value, index) => {
-                            return <li key={index}>{value}</li>
+                        {followers.map((user) => {
+                            return <li>{user}</li>
                         })}
                         </Typography>
                     </Card>

@@ -14,6 +14,8 @@ import SearchUsers from './pages/SearchUsers/SearchUsers'
 import NewsFeed from './pages/NewsFeed/NewsFeed'
 import UserProfile from './pages/UserProfile/UserProfile'
 import Nav2 from './components/Nav/Navbar'
+import GeneralProfile from './pages/UserProfile/GeneralProfile'
+import Nav3 from './components/Nav/Nav3'
 
 
 
@@ -50,7 +52,7 @@ function App() {
       
     <div className="App">
       <UserContext.Provider value={{ userData, setUserData }}>
-      <Nav2 />
+      <Nav3 />
       <Switch>
         <Route exact path="/">
           <Landing />
@@ -75,6 +77,9 @@ function App() {
         </Route> */}
         <Route exact path="/Profile">
           <UserProfile/>
+        </Route>
+        <Route exact path="/Profile/:id">
+          <GeneralProfile/>
         </Route>
       </Switch>
       <Footer />

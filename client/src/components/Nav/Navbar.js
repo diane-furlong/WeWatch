@@ -45,20 +45,20 @@ const Nav2 = () => {
             <img src={popcorn} width="30" height="30" class="d-inline-block align-top" alt=""/>
             weWatch
         </a>
-            <a class="navbar-brand" href="#">Hi, {name}</a>
+            <a class="navbar-brand" href="/profile">Hi, {name}</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="/platform">Platforms</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="/watching">Watching</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="/searchusers">Search Friends</a>
                 </li>
                 </ul>
             </div>

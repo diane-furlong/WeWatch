@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { deepPurple } from '@material-ui/core/colors';
+import { useMediaQuery } from '@material-ui/core';
 
 
 export default makeStyles((theme) => ({
@@ -14,7 +15,8 @@ export default makeStyles((theme) => ({
         width: 'auto',
         "@media (max-width: 500)" : {
             paddingLeft: 0,
-        }
+
+        },
     },
     heading: {
         color: 'rgba(45, 190, 207, 1)',
