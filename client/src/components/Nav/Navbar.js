@@ -1,24 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import API from "../../utils/usersAPI"
 import './Nav.css'
-import { AppBar,
-     Typography,
-      Toolbar,
-       Button, 
-       Grid, 
-       createMuiTheme,
-       responsiveFontSizes,
-       MuiThemeProvider,
-     } from '@material-ui/core'
 import { Link } from 'react-router-dom'
-import useStyles from './NavStyle.js'
 import popcorn from '../../img/favicon_popcorn.png'
 
-
-const Nav = () => {
+const Nav2 = () => {
 
     const [name, setName] = useState()
-    const classes = useStyles();
     const [loggedIn, setLogin] = useState(false)
    
 
@@ -52,6 +40,30 @@ const Nav = () => {
 
     return (
         <>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">
+            <img src={popcorn} width="30" height="30" class="d-inline-block align-top" alt=""/>
+            weWatch
+        </a>
+            <a class="navbar-brand" href="/profile">Hi, {name}</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/platform">Platforms</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/watching">Watching</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/searchusers">Search Friends</a>
+                </li>
+                </ul>
+            </div>
+        </nav>
+        {/* <MuiThemeProvider theme={theme}>
         <Grid container direction='column' justify='center'>
         <AppBar className={classes.appBar} className="navbar" position = 'static' color='inherit'>
             <Toolbar className={classes.toolbar} className="toolbar">
@@ -101,8 +113,9 @@ const Nav = () => {
             </Toolbar>
         </AppBar>
             </Grid>
+        </MuiThemeProvider> */}
         </>
     )
 }
 
-export default Nav
+export default Nav2

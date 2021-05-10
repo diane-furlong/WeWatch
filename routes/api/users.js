@@ -27,14 +27,18 @@ router.route("/:id/platforms")
 router.route("/email/:email")
 .get(usersController.findByEmail)
 
-//matches with '/api/users/following/:id
+//matches with '/api/users/following/:id'
 router.route("/following/:id")
 .put(usersController.addFollowing)
 .get(usersController.allFollowing)
 
-//matches with '/api/users/addfollower/:id
+//matches with '/api/users/addfollower/:id'
 router.route("/addfollower/:id")
 .put(usersController.addFollower)
+
+//matches with '/api/users/profile/:id'
+router.route("/profile/:id")
+.get(usersController.findById)
 
 //--------------------------------------------------------------------
 

@@ -13,6 +13,9 @@ import UserContext from './context/userContext'
 import SearchUsers from './pages/SearchUsers/SearchUsers'
 import NewsFeed from './pages/NewsFeed/NewsFeed'
 import UserProfile from './pages/UserProfile/UserProfile'
+import Nav2 from './components/Nav/Navbar'
+import GeneralProfile from './pages/UserProfile/GeneralProfile'
+import Nav3 from './components/Nav/Nav3'
 
 
 
@@ -20,7 +23,7 @@ import UserProfile from './pages/UserProfile/UserProfile'
 
 function App() {
 
-  const [ userData, setUserData] = useState({
+  const [ userData, setUserData ] = useState({
     token: undefined,
     user: undefined
     });
@@ -49,7 +52,7 @@ function App() {
       
     <div className="App">
       <UserContext.Provider value={{ userData, setUserData }}>
-      <Nav />
+      <Nav3 />
       <Switch>
         <Route exact path="/">
           <Landing />
@@ -74,6 +77,9 @@ function App() {
         </Route> */}
         <Route exact path="/Profile">
           <UserProfile/>
+        </Route>
+        <Route exact path="/Profile/:id">
+          <GeneralProfile/>
         </Route>
       </Switch>
       <Footer />
