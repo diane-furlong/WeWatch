@@ -47,7 +47,7 @@ const Nav3 = () => {
             <div className="row">
                 <div className="col-md-12">
 
-                    <Navbar bg="dark" variant="dark" expand="md" sticky="top">
+                    <Navbar className='backgoundColor'  expand="md" sticky="top">
                         <img src={popcorn} width="30" height="30" className="d-inline-block align-top" alt="popcorn-container" />
                             <Navbar.Brand href="/">weWatch</Navbar.Brand>
                         {loggedIn == false ? <> <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -65,7 +65,7 @@ const Nav3 = () => {
                             <Nav.Link href="/Platform">Platforms</Nav.Link>
                             <Nav.Link href="/Watching">Watching</Nav.Link>
                             <Nav.Link href="/SearchUsers">Find Friends</Nav.Link>
-                            <Nav.Link href="/Profile">My Profiel</Nav.Link>
+                            <Nav.Link href="/Profile">My Profile</Nav.Link>
                         <Button className="signOutBtn" onClick={handleSignOut}>
                             Sign Out
                         </Button>
