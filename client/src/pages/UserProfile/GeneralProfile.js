@@ -144,7 +144,7 @@ export default function DataDisplayer() {
         let clickUser= [(event.target)]
         let getClickVal=clickUser[0].classList.value
         let getUserID= localStorage.getItem(getClickVal)
-    
+        localStorage.setItem("goToID", getUserID)
         window.location.href="/profile/"+getUserID
     }
 
@@ -153,7 +153,7 @@ export default function DataDisplayer() {
             <Grid container>
                 <Card className={classes.top} variant="outlined">
                     <Typography className={classes.title} color="textSecondary" gutterBottom component="h1">
-                        Hi, {name}!
+                        Hi, I'm {name}!
                     </Typography>
                 </Card>
             </Grid>
