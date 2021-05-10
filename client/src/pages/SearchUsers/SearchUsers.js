@@ -45,26 +45,24 @@ const SearchUsers = () => {
     }
 
     return (
-            <div className="all">
-            <h2 className="user-search-text">Search for friends by email address:</h2>
-                <form>
-                    <input className="email-search" onChange={event => setSearchVal(event.target.value)}></input>
-                    <button className="email-search-btn" onClick={search}>Search</button>
-                </form>
-                <ul className="friend-results">
-                    { result !== false ? <li onChange={event => console.log(event)}>Name: {result.name}  
-                    <br/>Email address: {result.email}
+        <div className="all">
+        <h2 className="user-search-text">Search for friends by email address:</h2>
+            <form>
+                <input className="email-search" onChange={event => setSearchVal(event.target.value)}></input>
+                <button className="email-search-btn" onClick={search}>Search</button>
+            </form>
+            <ul className="friend-results">
+                { result !== false ? <li onChange={event => console.log(event)}>Name: {result.name}  
+                <br/>Email address: {result.email}
 
-                    <button className="addBtn" onClick={addFriend}>Add</button></li> : null }
+                <button className="addBtn" onClick={addFriend}>Add</button></li> : null }
 
-                    { result !== false && addedResult !== false ? <p>You now follow {result.name}! Search for another friend, or click "Begin" to go to your homepage.<br/><button className="begin-btn"onClick={nextPage}>Begin</button></p> : null }
-                </ul>
-                 {/* <div>
+                { result !== false && addedResult !== false ? <p>You now follow {result.name}! Search for another friend, or click "Begin" to go to your homepage.<br/><button className="begin-btn"onClick={nextPage}>Begin</button></p> : null }
+            </ul>
+            {/* <div>
             {checkErr !== false ? <p className="err">This user does not exist. Please check the email you entered.</p> : null}
             </div> */}
-            </div>
-           
-
+        </div>
     )
 }
 

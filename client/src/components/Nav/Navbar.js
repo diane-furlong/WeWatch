@@ -1,29 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import API from "../../utils/usersAPI"
 import './Nav.css'
-import { AppBar,
-     Typography,
-      Toolbar,
-       Button, 
-       Grid, 
-       createMuiTheme,
-       responsiveFontSizes,
-       MuiThemeProvider,
-     } from '@material-ui/core'
-import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/core/IconButton'
-import { makeStyles } from '@material-ui/styles'
 import { Link } from 'react-router-dom'
-import useStyles from './NavStyle.js'
 import popcorn from '../../img/favicon_popcorn.png'
 
-let theme = createMuiTheme();
-theme = responsiveFontSizes(theme);
-
-const Nav = () => {
+const Nav2 = () => {
 
     const [name, setName] = useState()
-    const classes = useStyles();
     const [loggedIn, setLogin] = useState(false)
    
 
@@ -57,7 +40,30 @@ const Nav = () => {
 
     return (
         <>
-        <MuiThemeProvider theme={theme}>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">
+            <img src={popcorn} width="30" height="30" class="d-inline-block align-top" alt=""/>
+            weWatch
+        </a>
+            <a class="navbar-brand" href="#">Hi, {name}</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                </ul>
+            </div>
+        </nav>
+        {/* <MuiThemeProvider theme={theme}>
         <Grid container direction='column' justify='center'>
         <AppBar className={classes.appBar} className="navbar" position = 'static' color='inherit'>
             <Toolbar className={classes.toolbar} className="toolbar">
@@ -107,9 +113,9 @@ const Nav = () => {
             </Toolbar>
         </AppBar>
             </Grid>
-        </MuiThemeProvider>
+        </MuiThemeProvider> */}
         </>
     )
 }
 
-export default Nav
+export default Nav2

@@ -53,8 +53,6 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 function Login(){
-    // const { value: email, bind: bindEmail, reset: resetEmail } = useInput("")
-    // const { value: password, bind: bindPassword, reset: resetPassword } = useInput("")
 
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()

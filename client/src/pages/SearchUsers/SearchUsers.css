@@ -1,10 +1,11 @@
 .all {
-    font-size: 22px;    
+    font-size: 22px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 80vh;
-    background-image: url("../../img/searchUsers2.png")
+    height: 100vh;
+    background-image: url("../../img/searchUsers2.png");
+    margin-right: 0px;
 }
 
 .email-search-btn{
