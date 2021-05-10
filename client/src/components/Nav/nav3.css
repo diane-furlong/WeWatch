@@ -34,3 +34,7 @@
    margin-right: 10px;
    font-size: 20px !important;
 }
+
+.nav-link:hover {
+    color: #F77F00 !important;
+} 
