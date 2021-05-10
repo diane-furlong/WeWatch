@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import Nav from './components/Nav/Nav';
 import Landing from './components/Landing/Landing';
 import Register from './components/Register/Register';
 import { BrowserRouter as Router, Route,Switch } from "react-router-dom";
@@ -13,7 +12,6 @@ import UserContext from './context/userContext'
 import SearchUsers from './pages/SearchUsers/SearchUsers'
 import NewsFeed from './pages/NewsFeed/NewsFeed'
 import UserProfile from './pages/UserProfile/UserProfile'
-import Nav2 from './components/Nav/Navbar'
 import GeneralProfile from './pages/UserProfile/GeneralProfile'
 import Nav3 from './components/Nav/Nav3'
 
