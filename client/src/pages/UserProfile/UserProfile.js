@@ -89,12 +89,14 @@ export default function DataDisplayer() {
     let arrFollowingNames=[]
     let arrFollowers=[]
     let arrFollowersNames=[]
+    let arrr=[]
+    let arrFollowingIDs=[]
     let response
     let response2
     let response3
     let response4
     let response5
-    let arrLS=[]
+    let foo
 
     useEffect(() => {
         const getData = async () => {
@@ -115,14 +117,13 @@ export default function DataDisplayer() {
                 
             }
             let arrFollowingLS=[]
-           
             for(let i=0;i<arrFollowing.length;i++){
                 arrFollowingNames.push(arrFollowing[i].data.name)
+                arrFollowingIDs.push(arrFollowing[i].data._id)
                 arrFollowingLS.push({name: arrFollowing[i].data.name, id: arrFollowing[i].data._id})
-                localStorage.setItem('arrFollowing', JSON.stringify(arrFollowingLS))
-                arrLS=localStorage.getItem('arrFollowing')
-                setFollowing(arrLS)
-            }           
+                localStorage.setItem('arrFollowing'+arrFollowingLS[i].name, arrFollowingIDs[i])
+            }
+            setFollowing(arrFollowingNames)
             
             //make array of followers' names
             for(let i=0;i<response5.data.followers.length;i++){
@@ -136,14 +137,15 @@ export default function DataDisplayer() {
         }
         
         getData()
+        
     }, [id])
 
     const clickUserFollowing = (event) => {
-        let foo=(localStorage.getItem('arrFollowing'))
-        // console.log(JSON.parse(foo))
-      
-        // console.log(event.target)
-
+        let oj= [(event.target)]
+        let foj=oj[0]
+        localStorage.setItem("idk", foj)
+        let sje=JSON.stringify(foj)
+        console.log(sje)
     }
 
     if(done) {
@@ -198,10 +200,10 @@ export default function DataDisplayer() {
                         </Typography>
                     </Card>
                     <Card className={classes.root2} variant="outlined">
-                        <Typography variant="body2" component="p">
-                        {/* {arrLS.map((value, index) => {
-                            return <li key={index} onClick={clickUserFollowing}>{value}</li>
-                        })} */}
+                        <Typography variant="body2" component="section">
+                        {following.map((value) => {
+                            return <p key= {value} className={value} onClick={clickUserFollowing}>{value}</p>
+                        })}
                         </Typography>
                     </Card>
                 </Grid>
@@ -213,8 +215,8 @@ export default function DataDisplayer() {
                     </Card>
                     <Card className={classes.root2} variant="outlined">
                         <Typography variant="body2" component="p">
-                        {followers.map((user) => {
-                            return <li>{user}</li>
+                        {followers.map((value, index) => {
+                            return <li key={index}>{value}</li>
                         })}
                         </Typography>
                     </Card>
