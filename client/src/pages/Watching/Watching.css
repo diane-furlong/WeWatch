@@ -1,15 +1,12 @@
-.addBtn{
-    margin-left: 2%;
-}
 
 .watchingAll{
     background-image: url('../../img/watching.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 100%;
-    height:auto;
-    background-size:100%;
+    width: 100vw;
+    height:100vh;
+    overflow: hidden;
 }
 
 .watching-text{
@@ -24,10 +21,11 @@
         text-align: center;
     }
     .watchingAll{
-        width:auto;
-        height:auto;
+        width:100vw;
+        height:100vw;
         background-position: center;
         background-repeat: no-repeat;
+        overflow:hidden;
     }
     
 }
@@ -72,6 +70,10 @@
     background-color: rgba(234, 226, 183, 0.8);
     color: #003049;
     font-size: 23px;
+}
+
+.addBtn{
+    margin-left: 2%;
 }
 
 .addBtn{
