@@ -121,7 +121,7 @@ export default function DataDisplayer() {
                 arrFollowingNames.push(arrFollowing[i].data.name)
                 arrFollowingIDs.push(arrFollowing[i].data._id)
                 arrFollowingLS.push({name: arrFollowing[i].data.name, id: arrFollowing[i].data._id})
-                localStorage.setItem('arrFollowing'+arrFollowingLS[i].name, arrFollowingIDs[i])
+                localStorage.setItem(arrFollowingLS[i].name, arrFollowingIDs[i])
             }
             setFollowing(arrFollowingNames)
             
@@ -142,10 +142,12 @@ export default function DataDisplayer() {
 
     const clickUserFollowing = (event) => {
         let oj= [(event.target)]
-        let foj=oj[0]
-        localStorage.setItem("idk", foj)
-        let sje=JSON.stringify(foj)
-        console.log(sje)
+        let foj=oj
+        let eiei=foj[0].classList.value
+        let lala= localStorage.getItem(eiei)
+        console.log(lala)
+    
+        window.location.href="/profile/"+lala
     }
 
     if(done) {
