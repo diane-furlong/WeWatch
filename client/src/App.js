@@ -1,21 +1,19 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import Nav from './components/Nav/Nav';
 import Landing from './components/Landing/Landing';
 import Register from './components/Register/Register';
 import { BrowserRouter as Router, Route,Switch } from "react-router-dom";
 import Login from './components/Login/Login';
 import Platform from './pages/Platform/Platform';
 import Watching from './pages/Watching/Watching';
-import Connecting from './pages/Connecting/Connecting'
-import Friend from './pages/Connecting/Friend'
-import FriendsList from './pages/Connecting/FriendsList'
 import Footer from './components/Footer/Footer'
 import axios from 'axios'
 import UserContext from './context/userContext'
 import SearchUsers from './pages/SearchUsers/SearchUsers'
 import NewsFeed from './pages/NewsFeed/NewsFeed'
 import UserProfile from './pages/UserProfile/UserProfile'
+import GeneralProfile from './pages/UserProfile/GeneralProfile'
+import Nav3 from './components/Nav/Nav3'
 
 
 
@@ -23,7 +21,7 @@ import UserProfile from './pages/UserProfile/UserProfile'
 
 function App() {
 
-  const [ userData, setUserData] = useState({
+  const [ userData, setUserData ] = useState({
     token: undefined,
     user: undefined
     });
@@ -52,7 +50,7 @@ function App() {
       
     <div className="App">
       <UserContext.Provider value={{ userData, setUserData }}>
-      <Nav />
+      <Nav3 />
       <Switch>
         <Route exact path="/">
           <Landing />
@@ -69,15 +67,6 @@ function App() {
         <Route exact path="/Watching">
           <Watching/>
         </Route>
-        {/* <Route exact path="/Connecting">
-          <Connecting/>
-        </Route>
-        <Route exact path="/Friend">
-          <Friend/>
-        </Route>
-        <Route exact path="/FriendsList">
-          <FriendsList/>
-        </Route> */}
         <Route exact path="/SearchUsers">
           <SearchUsers/>
         </Route>
@@ -86,6 +75,9 @@ function App() {
         </Route> */}
         <Route exact path="/Profile">
           <UserProfile/>
+        </Route>
+        <Route exact path="/Profile/:id">
+          <GeneralProfile/>
         </Route>
       </Switch>
       <Footer />

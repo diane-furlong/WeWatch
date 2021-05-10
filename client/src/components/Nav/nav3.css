@@ -1,0 +1,40 @@
+.headerRow {
+    background-color: rgb(234,226,183);
+    border-bottom:#D62828 4px solid;
+}
+
+
+.navbar {
+    background-color:rgb(234,226,183);
+}
+
+.navbar-brand {
+    text-transform: none;
+    color: #003049 !important;
+    padding:10px;
+}
+
+.signOutBtn {
+    background-color: rgb(234,226,183) !important;
+    border-color: #003049 !important;
+    color: #003049 !important;
+    border-width: 2px !important;
+    padding: 3px !important;
+    margin-right: 10px;
+    font-size: 20px !important;
+}
+
+.signOutBtn:hover {
+    background-color: ivory !important;
+}
+
+.nav-link  {
+   color: #D62828 !important;
+   margin-left: 10px;
+   margin-right: 10px;
+   font-size: 20px !important;
+}
+
+.nav-link:hover {
+    color: #F77F00 !important;
+} 

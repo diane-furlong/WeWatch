@@ -84,6 +84,9 @@ export default function DataDisplayer() {
         }
     }
     const id = usertokenArray[2]
+    console.log(id)
+    let id2=(localStorage.getItem("goToID"))
+    console.log(id2)
 
     let arrFollowing=[]
     let arrFollowingNames=[]
@@ -98,15 +101,15 @@ export default function DataDisplayer() {
 
     useEffect(() => {
         const getData = async () => {
-            response = await usersAPI.getUser(id)
+            response = await usersAPI.getUser(id2)
             setName(response.data.name)
-            response2 = await usersAPI.getUser(id)
+            response2 = await usersAPI.getUser(id2)
             setMyShows(response2.data.myShows)
-            response3 = await usersAPI.getUser(id)
+            response3 = await usersAPI.getUser(id2)
             setPlatforms(response3.data.platforms)
-            response4 = await usersAPI.getUser(id)
+            response4 = await usersAPI.getUser(id2)
             setFollowingID(response4.data.following)
-            response5 = await usersAPI.getUser(id)
+            response5 = await usersAPI.getUser(id2)
             setFollowersID(response5.data.followers)
             
             //make array of followings' names
@@ -150,7 +153,7 @@ export default function DataDisplayer() {
             <Grid container>
                 <Card className={classes.top} variant="outlined">
                     <Typography className={classes.title} color="textSecondary" gutterBottom component="h1">
-                        Hi, {name}!
+                        Hi, I'm {name}!
                     </Typography>
                 </Card>
             </Grid>
