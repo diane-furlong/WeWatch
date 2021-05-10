@@ -10,15 +10,10 @@ import { AppBar,
        responsiveFontSizes,
        MuiThemeProvider,
      } from '@material-ui/core'
-import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/core/IconButton'
-import { makeStyles } from '@material-ui/styles'
 import { Link } from 'react-router-dom'
 import useStyles from './NavStyle.js'
 import popcorn from '../../img/favicon_popcorn.png'
 
-let theme = createMuiTheme();
-theme = responsiveFontSizes(theme);
 
 const Nav = () => {
 
@@ -57,7 +52,6 @@ const Nav = () => {
 
     return (
         <>
-        <MuiThemeProvider theme={theme}>
         <Grid container direction='column' justify='center'>
         <AppBar className={classes.appBar} className="navbar" position = 'static' color='inherit'>
             <Toolbar className={classes.toolbar} className="toolbar">
@@ -107,7 +101,6 @@ const Nav = () => {
             </Toolbar>
         </AppBar>
             </Grid>
-        </MuiThemeProvider>
         </>
     )
 }
