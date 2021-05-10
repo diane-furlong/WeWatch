@@ -16,37 +16,10 @@
 
 .watching-text{
     color: #003049;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    text-align: center;
     font-size: 45px !important;
 }
-/* 
-@media screen and (min-width:600px) {
-    .watching-text {
-        text-align: center;
-    }
-    .watchingAll{
-        width:auto;
-        height:auto;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-    
-}
 
-@media screen and (min-width:360px) {
-    .watching-text {
-        text-align: center;
-    }
-    .watchingAll{
-        width:auto;
-        height:auto;
-        background-position: center;
-        background-repeat: no-repeat;
-    
-    }
-    
-} */
 
 .watching-search{
     background-color: #ffffff;
