@@ -5,10 +5,13 @@ weWatch is a MERN based social media app for sharing what you are watching, stor
 Live link deployed at https://wewatch5000.herokuapp.com/
 
 # Screenshots
-![Alt Text](weWatch3.png)
-![Alt Text](wewatchReg.png)
-![Alt Text](wewatchPlat.png)
-![Alt Text](wewatchLog.png)
+![Alt Text](weWatchHome1.png)
+![Alt Text](wewatchRegister.png)
+![Alt Text](loginDeploy.png)
+![Alt Text](profilePage.png)
+![Alt Text](watchingSearch.png)
+![Alt Text](searchUser.png)
+![Alt Text](platformPage.png)
 
 # User Story
 As an avid consumer of movies and television, I would like an app that allows me to share what I am watching with a group of friends.  I would like for my friends to be able to see what I am watching and on what platform so that I can further discuss and interact with them about the movie or show.
