@@ -5,14 +5,20 @@ body{
     font-family: 'DM Serif Display', serif;
 }
 
-.all {
-    height: 90vh;
-    width: 90vw;
-}
-.search-users-image {
+.userProfDiv {
+    background-image: url("../../img/userProfile.png");
     background-size: cover;
     background-position: center;
-    background-repeat:no-repeat;
-    height: 95vh;
-    
+    background-repeat: no-repeat;
+    width: 100vw;
 }
+
+#otherUserName {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#otherUserName:hover {
+    cursor: pointer;
+}
+

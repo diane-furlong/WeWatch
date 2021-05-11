@@ -5,7 +5,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import useWindowSize from "../../utils/useWindowSize"
 
 const useStyles = makeStyles({
   root: {
@@ -19,7 +18,7 @@ const useStyles = makeStyles({
     marginLeft: 10,
     marginRight: 10,
     marginBottom: 10,
-    width: 100,
+    width: 100
   },
   root2: {
     minWidth: 150,
@@ -29,7 +28,7 @@ const useStyles = makeStyles({
     flexGrow: 1,
     marginLeft: 10,
     marginRight: 10,
-    marginBottom: 10,
+    marginBottom: 10
   },
   top: {
     minWidth: 150,
@@ -57,6 +56,8 @@ const useStyles = makeStyles({
   },
 });
 
+
+
 export default function DataDisplayer() {
     const [name, setName] = useState([])
     const [myShows, setMyShows] = useState([])
@@ -83,6 +84,9 @@ export default function DataDisplayer() {
         }
     }
     const id = usertokenArray[2]
+    console.log(id)
+    let id2=(localStorage.getItem("goToID"))
+    console.log(id2)
 
     let arrFollowing=[]
     let arrFollowingNames=[]
@@ -97,15 +101,15 @@ export default function DataDisplayer() {
 
     useEffect(() => {
         const getData = async () => {
-            response = await usersAPI.getUser(id)
+            response = await usersAPI.getUser(id2)
             setName(response.data.name)
-            response2 = await usersAPI.getUser(id)
+            response2 = await usersAPI.getUser(id2)
             setMyShows(response2.data.myShows)
-            response3 = await usersAPI.getUser(id)
+            response3 = await usersAPI.getUser(id2)
             setPlatforms(response3.data.platforms)
-            response4 = await usersAPI.getUser(id)
+            response4 = await usersAPI.getUser(id2)
             setFollowingID(response4.data.following)
-            response5 = await usersAPI.getUser(id)
+            response5 = await usersAPI.getUser(id2)
             setFollowersID(response5.data.followers)
             
             //make array of followings' names
@@ -146,19 +150,15 @@ export default function DataDisplayer() {
 
     if(done) {
         return <div className="userProfDiv">
-
-            <Grid 
-            container spacing={24}
-            >
-                <Card className={classes.top} variant="outlined" >
-
+            <Grid container>
+                <Card className={classes.top} variant="outlined">
                     <Typography className={classes.title} color="textSecondary" gutterBottom component="h1">
-                        Hi, {name}!
+                        Hi, I'm {name}!
                     </Typography>
                 </Card>
             </Grid>
             <br/>
-            <Grid container spacing={24}>
+            <Grid container spacing={3}>
                 <Grid item xs={6}>
                     <Card className={classes.root} variant="outlined">
                         <Typography variant="h5" component="h2">

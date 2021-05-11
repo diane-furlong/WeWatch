@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const keys2 = require("../../config/keys2");
 // Load input validation
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
@@ -28,14 +27,18 @@ router.route("/:id/platforms")
 router.route("/email/:email")
 .get(usersController.findByEmail)
 
-//matches with '/api/users/following/:id
+//matches with '/api/users/following/:id'
 router.route("/following/:id")
 .put(usersController.addFollowing)
 .get(usersController.allFollowing)
 
-//matches with '/api/users/addfollower/:id
+//matches with '/api/users/addfollower/:id'
 router.route("/addfollower/:id")
 .put(usersController.addFollower)
+
+//matches with '/api/users/profile/:id'
+router.route("/profile/:id")
+.get(usersController.findById)
 
 //--------------------------------------------------------------------
 
@@ -102,7 +105,7 @@ router.post("/login", (req, res) => {
                 // Sign token
                 jwt.sign(
                     payload,
-                    keys2.secretOrKey,
+                    process.env.REACT_APP_SECRETORKEY,
                     {
                         expiresIn: 31556926 // 1 year in seconds
                     },

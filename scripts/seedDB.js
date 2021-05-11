@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const model = require('../models')
 
-const db = require("./config/keys2").mongoURI;
+const db = process.env.REACT_APP_MONGOURI;
 mongoose
     .connect(
         db,

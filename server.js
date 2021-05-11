@@ -9,7 +9,7 @@ const bodyParser = require("body-parser"); //express
 const passport = require("passport");
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
-
+const path = require('path')
 const users = require("./routes/api/users"); //routes-express 
 const app = express(); //express
 
@@ -41,7 +41,7 @@ app.use(passport.session());
 app.use("/api/users", users);
 
 // DB Config
-const db = require("./config/keys2").mongoURI; //server
+const db = process.env.MONGODB_URI || 'mongodb://localhost/wewatch5000'; //server
 // Connect to MongoDB
 mongoose
     .connect(
@@ -51,7 +51,12 @@ mongoose
     .then(() => console.log("MongoDB successfully connected"))
     .catch(err => console.log(err));
 
+    if (process.env.NODE_ENV === 'production') {
+        app.use(express.static('client/build'));
+    }
 
+app.get('*', (request, response) => {
+	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 const port = process.env.PORT || 3001; // process.env.port is Heroku's port if you choose to deploy the app there
 app.listen(port, () => console.log(`Server up and running (Hurray!) on port ${port} !`));
-
