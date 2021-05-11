@@ -61,12 +61,16 @@ const Watching = () => {
         window.location.href="/SearchUsers"
     }
 
+    const searchAnother = () => {
+        setAddedResult(false)
+    }
+
 
     return (
         <div className="watchingAll">
         <h2 className="watching-text">What are you currently watching?</h2>
             <form>
-                <input className="watching-search" onChange={event => setSearchVal(event.target.value)}></input>
+                <input className="watching-search" onChange={event => setSearchVal(event.target.value)} onClick={ result !== false && addedResult !== false ? searchAnother:null}></input>
                 <div className="container">
                     <div className='col-sm'>
                 <button onClick={search} className="watching-search-btn">Search</button>

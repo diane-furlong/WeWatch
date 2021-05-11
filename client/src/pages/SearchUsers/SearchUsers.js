@@ -44,11 +44,15 @@ const SearchUsers = () => {
         window.location.href="/Profile"
     }
 
+    const searchAnother = () => {
+        setAddedResult(false)
+    }
+
     return (
         <div className="all">
         <h2 className="user-search-text">Search for friends by email address:</h2>
             <form>
-                <input className="email-search" onChange={event => setSearchVal(event.target.value)}></input>
+                <input className="email-search" onChange={event => setSearchVal(event.target.value)} onClick={ result !== false && addedResult !== false ? searchAnother:null}></input>
                 <button className="email-search-btn" onClick={search}>Search</button>
             </form>
             <ul className="friend-results">
