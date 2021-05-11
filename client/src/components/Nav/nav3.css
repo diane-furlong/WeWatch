@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap'); /*Input text font*/
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap'); /*Header text font*/
+
 .headerRow {
     background-color: rgb(234,226,183);
     border-bottom:#D62828 4px solid;
@@ -22,6 +25,7 @@
     padding: 3px !important;
     margin-right: 10px;
     font-size: 20px !important;
+    font-family: 'DM Serif Display', serif;
 }
 
 .signOutBtn:hover {
@@ -33,4 +37,5 @@
    margin-left: 10px;
    margin-right: 10px;
    font-size: 20px !important;
+   font-family: 'DM Serif Display', serif;
 }

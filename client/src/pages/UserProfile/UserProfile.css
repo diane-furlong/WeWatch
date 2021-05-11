@@ -1,15 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap'); /*Input text font*/
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap'); /*Header text font*/
+
 .userProfDiv {
     background-image: url("../../img/userProfile.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    width: 100vw;
 }
 
 #otherUserName {
     text-decoration: underline;
     font-weight: bold;
+    font-family: 'DM Serif Display', serif;
 }
 
 #otherUserName:hover {
     cursor: pointer;
+    font-family: 'DM Serif Display', serif;
 }

@@ -61,7 +61,7 @@ function Login(){
             .then(res => { 
                 console.log(res)
                 if (res.data.success===true){
-                    window.location.href='/Platforms'
+                    window.location.href='/Platform'
                     localStorage.setItem("token", res.data.token)
                 }
             })

@@ -155,7 +155,7 @@ export default function DataDisplayer() {
                 </Card>
             </Grid>
             <br/>
-            <Grid container spacing={3}>
+            <Grid container spacing={24}>
                 <Grid item xs={6}>
                     <Card className={classes.root} variant="outlined">
                         <Typography variant="h5" component="h2">

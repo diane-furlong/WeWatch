@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap'); /*Input text font*/
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap'); /*Header text font*/
+
 .landing-center {
     display: flex;
     justify-content: center;
@@ -16,19 +19,23 @@
      margin-left: 120px;
      font-size: 33px !important;
      background-color: #003049 !important;
+     font-family: 'Source Code Pro', monospace;
  }
 
 .landing-text{
     margin-top: 10%;
     color: #D62828;
+    font-family: 'Source Code Pro', monospace;  
 }
 .weWatch{
     font-size: 100px !important;
     font-weight: bold !important;
+    font-family: 'DM Serif Display', serif; 
 }
 .share{
      font-size: 40px !important;
      font-weight: bolder !important;
+     font-family: 'Source Code Pro', monospace;
  }
 
 .landing-image{
