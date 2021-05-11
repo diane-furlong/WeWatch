@@ -37,6 +37,7 @@ ul {
 .form-check-label{
     margin-left: auto !important;
     margin-right: auto !important;
+    background-color: rgba(234, 226, 183, 0.8);
 }
 
 .form-check-input{

@@ -16,7 +16,7 @@
  }
 
 .landing-text{
-    margin-top: 10%;
+    margin-top: 1.2%;
     color: #D62828;
     font-family: 'Source Code Pro', monospace;  
 }
@@ -33,10 +33,10 @@
 
  @media screen and (max-width: 800px) {
      .weWatch {
-         font-size: 60px !important;
+         font-size: 70px !important;
      }
      .share {
-         font-size: 22px i !important;
+         font-size: 35px i !important;
      }
      
  }
