@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap'); /*Input text font*/
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap'); /*Header text font*/
+
 .register-row  {
     margin-left: center;
     justify-content: center;
@@ -9,6 +12,7 @@
     justify-content: center;
     align-items: center;
     height: 25px; */
+    font-family: 'DM Serif Display', serif;
 }
 
 .register {
@@ -16,6 +20,7 @@
    display: flex;
    justify-content: center;
    align-items: center;
+   font-family: 'DM Serif Display', serif;
    
 }
 
@@ -24,12 +29,13 @@
     color:  #003049;
     margin-left: 50%;
     font-size: 30px;
+    font-family: 'Source Code Pro', monospace;
 }
 
 .btn {
     color: #003049 !important;  
     background-color:  #D62828 !important;
-
+    font-family: 'Source Code Pro', monospace;
 }
 
 .register-image {
@@ -44,6 +50,7 @@
     color: #003049;
     background-color: white;
     font-size: 30px;
+    font-family: 'Source Code Pro', monospace;
 }
 
 .err {
@@ -58,4 +65,5 @@
     flex-direction: column;
     justify-content: center;
     width: 25%;
+    font-family: 'DM Serif Display', serif;
 }

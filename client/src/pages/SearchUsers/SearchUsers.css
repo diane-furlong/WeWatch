@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap'); /*Input text font*/
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap'); /*Header text font*/
+
 .all {
     font-size: 22px;
     background-size: cover;
@@ -12,29 +15,33 @@
     color: #003049;
     margin-left: auto;
     margin-right: auto;
-    display:block;
+    display: block;
+    font-family: 'DM Serif Display', serif;
 }
 
 .user-search-text{
+    font-family: 'DM Serif Display', serif;
     font-size: 35px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-
+    margin-bottom: 5%;
 }
 
 .email-search{
     margin-top: 20px;
     color: #003049;
+    font-family: 'Source Code Pro', monospace;
     margin-left: auto;
     margin-right: auto;
     display: block;
-    margin-bottom:20px !important;
+    margin-bottom: 5%;
 }
 
 .friend-results{
     color: #003049;
     font-size: 25px;
+    font-family: 'DM Serif Display', serif;
     text-align:center;
     background-color: rgba(234, 226, 183, 0.8);
 }
