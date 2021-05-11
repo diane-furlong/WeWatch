@@ -6,7 +6,7 @@ Live link deployed at https://wewatch5000.herokuapp.com/
 
 # Screenshots
 ![Alt Text](weWatchHome1.png)
-![Alt Text](wewatchRegister.png)
+![Alt Text](weWatchRegister.png)
 ![Alt Text](loginDeploy.png)
 ![Alt Text](profilePage.png)
 ![Alt Text](watchingSearch.png)
