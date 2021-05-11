@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap'); /*Input text font*/
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap'); /*Header text font*/
+
 .footer {
     background-color: #EAE2B7;
     color: #D62828;
@@ -6,6 +9,7 @@
     padding-top: 5px;
     padding-bottom: 34px;
     margin-bottom: 2px;
+    font-family: 'DM Serif Display', serif;
 }
 
 p{

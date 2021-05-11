@@ -1,6 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap'); /*Input text font*/
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap'); /*Header text font*/
+
 .addBtn{
     margin-left: 2%;
     color: #003049; 
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 .watchingAll{
@@ -16,10 +22,12 @@
 
 .watching-text{
     color: #003049;
-    text-align: center;
+    font-family: 'DM Serif Display', serif;
+    margin-left: auto !important;
+    margin-right: auto !important;
     font-size: 45px !important;
+    text-align: center;
 }
-
 
 .watching-search{
     background-color: #ffffff;
@@ -29,12 +37,15 @@
     margin-bottom: 20px;
     margin-top: 20px; 
     font-size: 20px;
+    font-family: 'Source Code Pro', monospace;
     display: block;
+    text-align: center;
 }
 
 .watching-search-btn{
     align-items: center;
     justify-content: center;
+    font-family: 'DM Serif Display', serif;
     display:block;
     background-color: #ffffff;
     color: #003049;
@@ -48,17 +59,25 @@
     background-color: rgba(234, 226, 183, 0.8);
     color: #003049;
     font-size: 23px;
+    font-family: 'DM Serif Display', serif;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 
 .next-btn{
     color: #003049; 
     font-size: 23px;
+    font-family: 'DM Serif Display', serif;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 .add-text{
     font-size: 23px !important;
+    font-family: 'DM Serif Display', serif;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
