@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     marginLeft: 10,
     marginRight: 10,
     marginBottom: 10,
-    width: 100
+    width: 100,
   },
   root2: {
     minWidth: 150,
@@ -28,7 +28,7 @@ const useStyles = makeStyles({
     flexGrow: 1,
     marginLeft: 10,
     marginRight: 10,
-    marginBottom: 10
+    marginBottom: 10,
   },
   top: {
     minWidth: 150,
@@ -147,8 +147,12 @@ export default function DataDisplayer() {
 
     if(done) {
         return <div className="userProfDiv">
-            <Grid container>
-                <Card className={classes.top} variant="outlined">
+
+            <Grid 
+            container spacing={24}
+            >
+                <Card className={classes.top} variant="outlined" >
+
                     <Typography className={classes.title} color="textSecondary" gutterBottom component="h1">
                         Hi, {name}!
                     </Typography>

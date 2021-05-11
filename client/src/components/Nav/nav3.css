@@ -6,7 +6,6 @@
     border-bottom:#D62828 4px solid;
 }
 
-
 .navbar {
     background-color:rgb(234,226,183);
 }
@@ -29,7 +28,7 @@
 }
 
 .signOutBtn:hover {
-    background-color: ivory !important;
+    background-color: #FCBF49 !important;
 }
 
 .nav-link  {
@@ -39,3 +38,7 @@
    font-size: 20px !important;
    font-family: 'DM Serif Display', serif;
 }
+
+.nav-link:hover {
+    color: #F77F00 !important;
+} 

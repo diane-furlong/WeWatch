@@ -48,7 +48,7 @@ const Nav3 = () => {
                     <Navbar className='color-nav'  variant='light' expand="md" sticky="top">
                         <img src={popcorn} width="30" height="30" className="d-inline-block align-top" alt="popcorn-container" />
                             <Navbar.Brand href="/">weWatch</Navbar.Brand>
-                        {loggedIn == false ? <> <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        {loggedIn === false ? <> <Navbar.Toggle aria-controls="basic-navbar-nav" />
                             <Navbar.Collapse id="basic-navbar-nav">
                                 <Nav className="mr-auto">
                                     <Nav.Link href="/login">Login</Nav.Link>

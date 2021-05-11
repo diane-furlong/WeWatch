@@ -4,15 +4,8 @@
 .landing-center {
     display: flex;
     justify-content: center;
-    /* align-items: center; */
     height: 100vh;
 
-    /* margin: 0;
-    position: absolute;
-    /* top: 40%;
-    left: 40%; */ 
-    /* -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%); */
 }
  .landing-btn{
     margin-bottom: 40px;
@@ -23,7 +16,7 @@
  }
 
 .landing-text{
-    margin-top: 10%;
+    margin-top: 1.2%;
     color: #D62828;
     font-family: 'Source Code Pro', monospace;  
 }
@@ -36,6 +29,16 @@
      font-size: 40px !important;
      font-weight: bolder !important;
      font-family: 'Source Code Pro', monospace;
+ }
+
+ @media screen and (max-width: 800px) {
+     .weWatch {
+         font-size: 70px !important;
+     }
+     .share {
+         font-size: 35px i !important;
+     }
+     
  }
 
 .landing-image{
