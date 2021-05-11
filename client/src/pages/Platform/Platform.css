@@ -1,10 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap'); /*Input text font*/
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap'); /*Header text font*/
+
 ul {
     list-style-type: none;
 }
 
 .form-check{
-   margin-left: 500px;
+   margin-left: auto !important;
+   margin-right: auto !important;
    font-size: 20px;  
+   font-family: 'Source Code Pro', monospace;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   text-align: center;
+}
+
+.platform-text{
+    font-family: 'DM Serif Display', serif;
+    text-align: center;
 }
 
 .platform-image {
@@ -15,14 +29,17 @@ ul {
 }
 
 .submitPlatform{
-    margin-left: 80px;
+    font-family: 'DM Serif Display', serif;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 .form-check-label{
-    margin-left: 50px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    background-color: rgba(234, 226, 183, 0.8);
 }
 
 .form-check-input{
-    margin-left: 30px !important;
     margin-top: 10px !important;
 }

@@ -1,41 +1,53 @@
-.all {
-    height: 90vh;
-    width: 90vw;
-}
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap'); /*Input text font*/
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap'); /*Header text font*/
 
-.search-users-image {
+.all {
+    font-size: 22px;
     background-size: cover;
     background-position: center;
-    background-repeat:no-repeat;
-    height: 90vh;
-    
-}
-
-.all{
-    margin-left: 55vh;
-    font-size: 22px;
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-image: url("../../img/searchUsers2.png");
+    margin-right: 0px;
 }
 
 .email-search-btn{
     color: #003049;
-    margin-left: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    font-family: 'DM Serif Display', serif;
 }
 
 .user-search-text{
-    font-size: 35px; 
+    font-family: 'DM Serif Display', serif;
+    font-size: 35px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-bottom: 5%;
 }
 
 .email-search{
     margin-top: 20px;
     color: #003049;
-    margin-left: 30px;
+    font-family: 'Source Code Pro', monospace;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-bottom: 5%;
 }
 
 .friend-results{
     color: #003049;
     font-size: 25px;
+    font-family: 'DM Serif Display', serif;
+    text-align:center;
+    background-color: rgba(234, 226, 183, 0.8);
 }
 
 .begin-btn{
-    margin-left: 340px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }

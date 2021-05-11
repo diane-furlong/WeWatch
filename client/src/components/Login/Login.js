@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
-// import { useInput } from '../Register/InputHook'
 import API from "../../utils/usersAPI";
 import background from "../../img/login.png"
 import './Login.css'
@@ -20,30 +18,39 @@ const useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
       justifyContent: 'center',
+      marginLeft: 'auto',
+      marginRight: 'auto'
     },
     margin: {
       margin: theme.spacing(1),
+      background: 'rgba(234, 226, 183, 1)',
+      width: '30%',
+      marginLeft: 'auto',
+      marginRight: 'auto'
     },
     withoutLabel: {
       marginTop: theme.spacing(3),
     },
     textField: {
       background: 'rgba(234, 226, 183, 1)',
-      width: '40%',
+      width: '50%',
+      display: 'flex',
+      justifyContent: 'center',
+      marginLeft: 'auto',
+      marginRight: 'auto'
     },
     button: {
       background: 'rgba(234, 226, 183, 1)',
-      width: '81.5%',
+      width: '50%',
       display: 'flex',
       justifyContent: 'center',
-      marginLeft: '8px',
+      marginLeft: 'auto',
+      marginRight: 'auto'
 
     }
   }));
 
 function Login(){
-    // const { value: email, bind: bindEmail, reset: resetEmail } = useInput("")
-    // const { value: password, bind: bindPassword, reset: resetPassword } = useInput("")
 
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
@@ -54,7 +61,7 @@ function Login(){
             .then(res => { 
                 console.log(res)
                 if (res.data.success===true){
-                    window.location.href='/Watching'
+                    window.location.href='/Platform'
                     localStorage.setItem("token", res.data.token)
                 }
             })
@@ -82,66 +89,51 @@ function Login(){
       };
 
     return (
-        <div className="login-image" style={{ 
-            backgroundImage: `url(${background})` 
-          }}>
+    <div className="login-image" style={{ 
+        backgroundImage: `url(${background})` 
+        }}>
 
-            <div className="row justify-content-center login-container"> 
-                <div>
-                    <h4 className="login-below">
-                        <b>Login</b> below
-                    </h4>
-                  </div>
-            </div>
-            <form className="login-form" >
-            <TextField
-                        label="Email"
-                        id="outlined-start-adornment"
-                        className={clsx(classes.margin, classes.textField)}
-                        variant="outlined"
-                        onChange={event => setEmail(event.target.value)} type="text" 
-                        />
-                {/* <label className="login-info">
-                    Email:
-                    <input onChange={event => setEmail(event.target.value)} type="text" 
-                    // {...bindEmail} 
-                    />
-                </label> */}
-                <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
-                                    <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-                                    <OutlinedInput
-                                        id="outlined-adornment-password"
-                                        type={values.showPassword ? 'text' : 'password'}
-                                        value={password}
-                                        onChange={event => setPassword(event.target.value)} 
-                                        endAdornment={
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                            aria-label="toggle password visibility"
-                                            onClick={handleClickShowPassword}
-                                            onMouseDown={handleMouseDownPassword}
-                                            edge="end"
-                                            >
-                                            {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                                            </IconButton>
-                                        </InputAdornment>
-                                        }
-                                        labelWidth={70}
-                                    />
-                                    </FormControl>
+      <div className="row justify-content-center login-container"> 
+        <div>
+          <h4 className="login-below">
+            <b>Login</b> below
+          </h4>
+          </div>
+      </div>
+      <form className="login-form" >
+        <TextField
+          label="Email"
+          id="outlined-start-adornment"
+          className={clsx(classes.margin, classes.textField)}
+          variant="outlined"
+          onChange={event => setEmail(event.target.value)} type="text" 
+          />
+        <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            type={values.showPassword ? 'text' : 'password'}
+            value={password}
+            onChange={event => setPassword(event.target.value)} 
+            endAdornment={
+            <InputAdornment position="end">
+                <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+                edge="end"
+                >
+                {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+            </InputAdornment>
+            }
+            labelWidth={70}
+          />
+        </FormControl>
 
-                {/* <label className="login-info">
-                    Password:
-                    <input onChange={event => setPassword(event.target.value)} type="password" 
-                    // {...bindPassword} 
-                    />
-                  </label> */}
-
-<Button onClick={handleSubmit} className={clsx(classes.button)} type="submit" value="Submit" variant="contained">Login</Button>
-                {/* <button type="submit" value="Submit" onClick={handleSubmit} className="login-btn">Login</button> */}
-
-            </form>
-        </div>
+        <Button onClick={handleSubmit} className={clsx(classes.button)} type="submit" value="Submit" variant="contained">Login</Button>
+      </form>
+    </div>
       
     )
 }

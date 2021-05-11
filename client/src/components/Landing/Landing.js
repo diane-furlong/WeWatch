@@ -130,12 +130,11 @@ const Landing = () => {
       </div>
         <div className="container landing-center">
             <div className = "row">
-                <div className = "col-sm-12 center-align">
                     <div className="landing-text">
                         <h1 className="weWatch">weWatch</h1> <h4 className="share">Share what you are watching!</h4>
                     </div>
                 </div>
-            </div>
+           
             </div>
         </div>
    </div>

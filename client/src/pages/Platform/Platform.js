@@ -47,6 +47,9 @@ const Platform = () => {
         window.location.href='/Watching'
     }
 
+   
+
+
     return (
         <div className="platform-image" style={{ 
             backgroundImage: `url(${background})` 

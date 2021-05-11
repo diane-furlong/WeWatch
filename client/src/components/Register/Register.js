@@ -56,7 +56,7 @@ function Register() {
             resetEmail();
             resetPassword();
             resetPassword2();
-            window.location.href='/Platform'
+            window.location.href='/login'
         }).catch(err => {
             setErr(err)
         })
