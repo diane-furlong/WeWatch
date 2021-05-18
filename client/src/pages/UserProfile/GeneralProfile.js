@@ -6,6 +6,7 @@ import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
+
 const useStyles = makeStyles({
   root: {
     minWidth: 150,
@@ -67,6 +68,8 @@ export default function DataDisplayer() {
     const [followingInfo, setFollowingInfo] = useState()
     const [followersID, setFollowersID] = useState()
     const [followers, setFollowers] = useState()
+    const [result, setResult] = useState()
+    // const [addedResult, setAddedResult] = useState(false)
     
     const [done, setDone] = useState(false)
 
@@ -148,14 +151,23 @@ export default function DataDisplayer() {
         window.location.href="/profile/"+getUserID
     }
 
+    //follow button function
+    const addFriend = event => {
+        event.preventDefault()
+        usersAPI.putFollowing(id, {following: id2})
+        // setAddedResult()
+        usersAPI.putFollower(id2, {followers: id})
+    }
+
     if(done) {
         return <div className="userProfDiv">
             <Grid container>
                 <Card className={classes.top} variant="outlined">
                     <Typography className={classes.title} color="textSecondary" gutterBottom component="h1">
-                        Hi, I'm {name}!
+                        Hi, I'm {name}! <button onClick={addFriend}>Follow</button>
                     </Typography>
                 </Card>
+                
             </Grid>
             <br/>
             <Grid container spacing={24}>
