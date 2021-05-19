@@ -93,9 +93,13 @@ export default function DataDisplayer() {
 
     let arrFollowing=[]
     let arrFollowingNames=[]
+    let arrFollowingIDs=[]
+    let arrFollowersIDs=[]
     let arrFollowers=[]
     let arrFollowersNames=[]
-    let arrFollowingIDs=[]
+    let arrFollowingLS=[]
+    let arrFollowerLS=[]
+
     let response
     let response2
     let response3
@@ -119,7 +123,7 @@ export default function DataDisplayer() {
             for(let i=0;i<response4.data.following.length;i++){
                 arrFollowing.push(await usersAPI.getUser(response4.data.following[i]))
             }
-            let arrFollowingLS=[]
+          
             for(let i=0;i<arrFollowing.length;i++){
                 arrFollowingNames.push(arrFollowing[i].data.name)
                 arrFollowingIDs.push(arrFollowing[i].data._id)
@@ -128,12 +132,16 @@ export default function DataDisplayer() {
             }
             setFollowing(arrFollowingNames)
             
-            //make array of followers' names
+           //make array of followers' names
             for(let i=0;i<response5.data.followers.length;i++){
                 arrFollowers.push(await usersAPI.getUser(response5.data.followers[i]))
             }
+            
             for(let i=0;i<arrFollowers.length;i++){
                 arrFollowersNames.push(arrFollowers[i].data.name)
+                arrFollowersIDs.push(arrFollowers[i].data._id)
+                arrFollowerLS.push({name: arrFollowers[i].data.name, id: arrFollowers[i].data._id})
+                localStorage.setItem(arrFollowerLS[i].name, arrFollowerLS[i].id)
             }
             setFollowers(arrFollowersNames)
             setDone(true)
@@ -170,7 +178,7 @@ export default function DataDisplayer() {
                 
             </Grid>
             <br/>
-            <Grid container spacing={24}>
+            <Grid container spacing={1}>
                 <Grid item xs={6}>
                     <Card className={classes.root} variant="outlined">
                         <Typography variant="h5" component="h2">

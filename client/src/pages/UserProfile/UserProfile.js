@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import { authorize } from 'passport';
 
 const useStyles = makeStyles({
   root: {
@@ -32,11 +33,15 @@ const useStyles = makeStyles({
   },
   top: {
     minWidth: 150,
-    background: 'rgba(234, 226, 183, .8)',
-    color: '#003049',
+    background: 'rgba(0, 48, 73, 0)',
+    color: 'rgba(234, 226, 183, 1)',
     width: `50%`,
     margin: 10,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontSize: 34,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    border: 'none',
   },
   bullet: {
     display: 'inline-block',
@@ -44,8 +49,15 @@ const useStyles = makeStyles({
     transform: 'scale(0.8)',
   },
   title: {
+    width: 150,
     fontSize: 25,
     color: '#003049',
+    background: 'rgba(234, 226, 183, .8)',
+    flexGrow: 1,
+    marginLeft: 10,
+    marginRight: 10,
+    marginBottom: 10,
+    justifyContent: 'center',
   },
   pos: {
     marginBottom: 12,
@@ -89,7 +101,11 @@ export default function DataDisplayer() {
     let arrFollowingNames=[]
     let arrFollowers=[]
     let arrFollowersNames=[]
+    let arrFollowersIDs=[]
     let arrFollowingIDs=[]
+    let arrFollowingLS=[]
+    let arrFollowerLS=[]
+
     let response
     let response2
     let response3
@@ -113,7 +129,7 @@ export default function DataDisplayer() {
             for(let i=0;i<response4.data.following.length;i++){
                 arrFollowing.push(await usersAPI.getUser(response4.data.following[i]))
             }
-            let arrFollowingLS=[]
+            
             for(let i=0;i<arrFollowing.length;i++){
                 arrFollowingNames.push(arrFollowing[i].data.name)
                 arrFollowingIDs.push(arrFollowing[i].data._id)
@@ -128,6 +144,9 @@ export default function DataDisplayer() {
             }
             for(let i=0;i<arrFollowers.length;i++){
                 arrFollowersNames.push(arrFollowers[i].data.name)
+                arrFollowersIDs.push(arrFollowers[i].data._id)
+                arrFollowerLS.push({name: arrFollowers[i].data.name, id: arrFollowers[i].data._id})
+                localStorage.setItem(arrFollowerLS[i].name, arrFollowerLS[i].id)
             }
             setFollowers(arrFollowersNames)
             setDone(true)
@@ -149,19 +168,19 @@ export default function DataDisplayer() {
         return <div className="userProfDiv">
 
             <Grid 
-            container spacing={24}
+            container spacing={1}
             >
                 <Card className={classes.top} variant="outlined" >
 
-                    <Typography className={classes.title} color="textSecondary" gutterBottom component="h1">
+                    {/* <Typography className={classes.title} color="textSecondary" gutterBottom component="h1"> */}
                         Hi, {name}!
-                    </Typography>
+                    {/* </Typography> */}
                 </Card>
             </Grid>
             <br/>
-            <Grid container spacing={24}>
+            <Grid container spacing={1}>
                 <Grid item xs={6}>
-                    <Card className={classes.root} variant="outlined">
+                    <Card className={classes.title} variant="outlined">
                         <Typography variant="h5" component="h2">
                             My shows:
                         </Typography>
@@ -175,7 +194,7 @@ export default function DataDisplayer() {
                     </Card>
                 </Grid>
                 <Grid item xs={6}>
-                    <Card className={classes.root} variant="outlined">
+                    <Card className={classes.title} variant="outlined">
                         <Typography variant="h5" component="h2">
                             My platforms:
                         </Typography>
