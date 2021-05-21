@@ -18,10 +18,18 @@ router.route("/:id")
 .get(usersController.findById)
 .put(usersController.updateShows)
 
+//matches with '/api/users/myShows/:id'
+router.route("/myshows/:id")
+.put(usersController.removeShow)
+
 //matches with '/api/users/:id/platforms'
 router.route("/:id/platforms")
 .get(usersController.findById)
 .put(usersController.updatePlatforms)
+
+//matches with '/api/users/platforms/:id'
+router.route("/platforms/:id")
+.put(usersController.removePlatform)
 
 //matches with '/api/users/email/:email'
 router.route("/email/:email")

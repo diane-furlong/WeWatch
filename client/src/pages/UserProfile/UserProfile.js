@@ -155,6 +155,18 @@ export default function DataDisplayer() {
 
     const delItem=(event)=> {
         event.preventDefault()
+        const delShow=event.target.parentNode.children[0].innerText
+        console.log(delShow)
+        usersAPI.removeShow(id, {myShows: delShow})
+        .then(window.location.href="/profile/")
+    }
+
+    const delPlatform=(event)=> {
+        event.preventDefault()
+        const delPlat=event.target.parentNode.children[0].innerText
+        console.log(delPlatform)
+        usersAPI.removePlatform(id, {platforms: delPlat})
+        .then(window.location.href="/profile/")
     }
 
     if(done) {
@@ -194,7 +206,7 @@ export default function DataDisplayer() {
                     <Card className={classes.root2} variant="outlined">
                         <Typography className={classes.pos} color="textSecondary" component="h2"> 
                             {platforms.map((value, index) => {
-                                return <span><p key={index} className='liShows'>{value}</p><Tooltip title="click to delete this platform"><p className='delBtn' onClick={delItem}> &#10006;</p></Tooltip><br/></span>
+                                return <span><p key={index} className='liShows'>{value}</p><Tooltip title="click to delete this platform"><p className='delBtn' onClick={delPlatform}> &#10006;</p></Tooltip><br/></span>
                             })}
                         </Typography> 
                     </Card>

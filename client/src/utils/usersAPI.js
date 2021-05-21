@@ -59,7 +59,7 @@ export default {
 
     //PUT new followee to follower's db
     putFollowing: function(id, result) {
-        return axios.put(`api/users/following/${id}`, result)
+        return axios.put(`/api/users/following/${id}`, result)
     },
 
     //GET all followee's from user's db
@@ -69,6 +69,16 @@ export default {
 
     //PUT new follower to followee's db
     putFollower: function(id, followerID) {
-        return axios.put(`api/users/addfollower/${id}`, followerID)
+        return axios.put(`/api/users/addfollower/${id}`, followerID)
+    },
+
+    //DELETE a show from user's db
+    removeShow: function(id, myShows) {
+        return axios.put(`/api/users/myshows/${id}`, myShows)
+    },
+
+    //DELETE a platforms from user's db
+    removePlatform: function(id, platforms) {
+        return axios.put(`/api/users/platforms/${id}`, platforms)
     }
 }
