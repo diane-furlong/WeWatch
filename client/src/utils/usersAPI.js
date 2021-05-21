@@ -59,7 +59,7 @@ export default {
 
     //PUT new followee to follower's db
     putFollowing: function(id, result) {
-        return axios.put(`api/users/following/${id}`, result)
+        return axios.put(`/api/users/following/${id}`, result)
     },
 
     //GET all followee's from user's db
@@ -69,6 +69,6 @@ export default {
 
     //PUT new follower to followee's db
     putFollower: function(id, followerID) {
-        return axios.put(`api/users/addfollower/${id}`, followerID)
+        return axios.put(`/api/users/addfollower/${id}`, followerID)
     }
 }

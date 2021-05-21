@@ -6,6 +6,7 @@ import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
+
 const useStyles = makeStyles({
   root: {
     minWidth: 150,
@@ -67,6 +68,8 @@ export default function DataDisplayer() {
     const [followingInfo, setFollowingInfo] = useState()
     const [followersID, setFollowersID] = useState()
     const [followers, setFollowers] = useState()
+    const [result, setResult] = useState()
+    // const [addedResult, setAddedResult] = useState(false)
     
     const [done, setDone] = useState(false)
 
@@ -90,9 +93,13 @@ export default function DataDisplayer() {
 
     let arrFollowing=[]
     let arrFollowingNames=[]
+    let arrFollowingIDs=[]
+    let arrFollowersIDs=[]
     let arrFollowers=[]
     let arrFollowersNames=[]
-    let arrFollowingIDs=[]
+    let arrFollowingLS=[]
+    let arrFollowerLS=[]
+
     let response
     let response2
     let response3
@@ -116,7 +123,7 @@ export default function DataDisplayer() {
             for(let i=0;i<response4.data.following.length;i++){
                 arrFollowing.push(await usersAPI.getUser(response4.data.following[i]))
             }
-            let arrFollowingLS=[]
+          
             for(let i=0;i<arrFollowing.length;i++){
                 arrFollowingNames.push(arrFollowing[i].data.name)
                 arrFollowingIDs.push(arrFollowing[i].data._id)
@@ -125,12 +132,16 @@ export default function DataDisplayer() {
             }
             setFollowing(arrFollowingNames)
             
-            //make array of followers' names
+           //make array of followers' names
             for(let i=0;i<response5.data.followers.length;i++){
                 arrFollowers.push(await usersAPI.getUser(response5.data.followers[i]))
             }
+            
             for(let i=0;i<arrFollowers.length;i++){
                 arrFollowersNames.push(arrFollowers[i].data.name)
+                arrFollowersIDs.push(arrFollowers[i].data._id)
+                arrFollowerLS.push({name: arrFollowers[i].data.name, id: arrFollowers[i].data._id})
+                localStorage.setItem(arrFollowerLS[i].name, arrFollowerLS[i].id)
             }
             setFollowers(arrFollowersNames)
             setDone(true)
@@ -148,17 +159,26 @@ export default function DataDisplayer() {
         window.location.href="/profile/"+getUserID
     }
 
+    //follow button function
+    const addFriend = event => {
+        event.preventDefault()
+        usersAPI.putFollowing(id, {following: id2})
+        // setAddedResult()
+        usersAPI.putFollower(id2, {followers: id})
+    }
+
     if(done) {
         return <div className="userProfDiv">
             <Grid container>
                 <Card className={classes.top} variant="outlined">
                     <Typography className={classes.title} color="textSecondary" gutterBottom component="h1">
-                        Hi, I'm {name}!
+                        Hi, I'm {name}! <button onClick={addFriend}>Follow</button>
                     </Typography>
                 </Card>
+                
             </Grid>
             <br/>
-            <Grid container spacing={24}>
+            <Grid container spacing={1}>
                 <Grid item xs={6}>
                     <Card className={classes.root} variant="outlined">
                         <Typography variant="h5" component="h2">
