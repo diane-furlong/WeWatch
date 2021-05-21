@@ -13,6 +13,8 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { GoogleLogin } from 'react-google-login';
+import Icon from './icon';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -46,8 +48,17 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: 'center',
       marginLeft: 'auto',
       marginRight: 'auto'
-
-    }
+    },
+   buttonGoogle: {
+      background: '#D62828',
+      width: '50%',
+      display: 'flex',
+      justifyContent: 'center',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      marginTop: '1%',
+      color: 'rgb(234,226,183)'
+},
   }));
 
 function Login(){
@@ -132,6 +143,23 @@ function Login(){
         </FormControl>
 
         <Button onClick={handleSubmit} className={clsx(classes.button)} type="submit" value="Submit" variant="contained">Login</Button>
+
+          <GoogleLogin
+            clientId='660891343423-bf25c65irnt4b1q1mc519tjlebukqtqk.apps.googleusercontent.com'
+            render={(renderProps) => (
+              <Button className={clsx(classes.buttonGoogle)}
+                type="submit"
+                variant='contained'
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+                startIcon={<Icon />}>
+                Login with Google
+              </Button>
+            )}
+            // onSuccess={googleSuccess}
+            // onFailure={googleFailure}
+            cookiePolicy='single_host_origin'
+          />
       </form>
     </div>
       
