@@ -5,12 +5,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import Tooltip from '@material-ui/core/Tooltip'
 import { authorize } from 'passport';
+
+
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 150,
-    background: 'rgba(234, 226, 183, .8)',
+    minWidth: 175,
+    background: 'rgba(234, 226, 183, .9)',
     color: '#003049',
     justifyContent: 'center',
     alignItems: 'center',
@@ -20,6 +23,7 @@ const useStyles = makeStyles({
     marginRight: 10,
     marginBottom: 10,
     width: 100,
+    borderRadius: 30,
   },
   root2: {
     minWidth: 150,
@@ -48,24 +52,10 @@ const useStyles = makeStyles({
     margin: '0 2px',
     transform: 'scale(0.8)',
   },
-  title: {
-    width: 150,
-    fontSize: 25,
-    color: '#003049',
-    background: 'rgba(234, 226, 183, .8)',
-    flexGrow: 1,
-    marginLeft: 10,
-    marginRight: 10,
-    marginBottom: 10,
-    justifyContent: 'center',
-  },
   pos: {
     marginBottom: 12,
     color: '#003049',
-  },
-  button: {
-    color: '#003049',
-  },
+  }
 });
 
 
@@ -83,7 +73,6 @@ export default function DataDisplayer() {
     const [done, setDone] = useState(false)
 
     const classes = useStyles();
-    const bull = <span className={classes.bullet}>•</span>;
     
     //using token to find user's db id
     let usertoken = localStorage.getItem("token")
@@ -164,9 +153,12 @@ export default function DataDisplayer() {
         window.location.href="/profile/"+getUserID
     }
 
+    const delItem=(event)=> {
+        event.preventDefault()
+    }
+
     if(done) {
         return <div className="userProfDiv">
-
             <Grid 
             container spacing={1}
             >
@@ -180,31 +172,31 @@ export default function DataDisplayer() {
             <br/>
             <Grid container spacing={1}>
                 <Grid item xs={6}>
-                    <Card className={classes.title} variant="outlined">
+                    <Card className={classes.root} variant="outlined">
                         <Typography variant="h5" component="h2">
                             My shows:
                         </Typography>
                     </Card>
                     <Card className={classes.root2} variant="outlined">
-                        <Typography className={classes.pos} color="textSecondary">
+                        <Typography className={classes.pos} color="textSecondary" component="h2">
                             {myShows.map((value, index) => {
-                                return <li key={index}>{value}</li>
+                                return <span><p key={index} className='liShows'>{value}</p><Tooltip title="click to delete this show"><p className='delBtn' onClick={delItem}> &#10006;</p></Tooltip><br/></span>
                             })}
                         </Typography>
                     </Card>
                 </Grid>
                 <Grid item xs={6}>
-                    <Card className={classes.title} variant="outlined">
+                    <Card className={classes.root} variant="outlined">
                         <Typography variant="h5" component="h2">
                             My platforms:
                         </Typography>
                     </Card>
                     <Card className={classes.root2} variant="outlined">
-                        <Typography variant="body2" component="p">
+                        <Typography className={classes.pos} color="textSecondary" component="h2"> 
                             {platforms.map((value, index) => {
-                                return <li key={index}>{value}</li>
+                                return <span><p key={index} className='liShows'>{value}</p><Tooltip title="click to delete this platform"><p className='delBtn' onClick={delItem}> &#10006;</p></Tooltip><br/></span>
                             })}
-                        </Typography>
+                        </Typography> 
                     </Card>
                 </Grid>
             </Grid>
@@ -217,10 +209,10 @@ export default function DataDisplayer() {
                         </Typography>
                     </Card>
                     <Card className={classes.root2} variant="outlined">
-                        <Typography variant="body2" component="section">
-                        {following.map((value) => {
-                            return <p key= {value} className={value} id="otherUserName" onClick={clickUserFollowing}>{value}</p>
-                        })}
+                        <Typography className={classes.pos} color="textSecondary" component="h2">
+                            {following.map((value) => {
+                                return <p key= {value} className={value} id="otherUserName" onClick={clickUserFollowing}>{value}</p>
+                            })}
                         </Typography>
                     </Card>
                 </Grid>
@@ -231,10 +223,10 @@ export default function DataDisplayer() {
                         </Typography>
                     </Card>
                     <Card className={classes.root2} variant="outlined">
-                        <Typography variant="body2" component="section">
-                        {followers.map((value) => {
-                            return <p key= {value} className={value} id="otherUserName" onClick={clickUserFollowing}>{value}</p>
-                        })}
+                        <Typography className={classes.pos} color="textSecondary" component="h2">
+                            {followers.map((value) => {
+                                return <p key= {value} className={value} id="otherUserName" onClick={clickUserFollowing}>{value}</p>
+                            })}
                         </Typography>
                     </Card>
                 </Grid>
