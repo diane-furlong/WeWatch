@@ -19,11 +19,17 @@ module.exports = {
           .catch(err =>{ console.log(req.body.platforms) 
             return res.status(422).json(err)});
     },
-    remove: function(req, res) {
-        db.User.findById({ _id: req.params.id })
-        .then(dbUser => dbUser.remove())
-        .then(dbUser => res.json(dbUser))
-        .catch(err => res.status(422).json(err));
+    removeShow: function(req, res) {
+        // console.log(req.body.myShows)
+        db.User.findByIdAndUpdate({ _id: req.params.id }, {$pull: {myShows: req.body.myShows}})
+        .then(res => console.log(res))
+        // .then(dbUser => dbUser.remove())
+        // .then(dbUser => res.json(dbUser))
+        // .catch(err => res.status(422).json(err));
+    },
+    removePlatform: function(req, res) {
+        db.User.findByIdAndUpdate({ _id: req.params.id }, {$pull: {platforms: req.body.platforms}})
+        .then(res=>console.log(res))
     },
     findAll: function(req, res) {
         db.User.find()

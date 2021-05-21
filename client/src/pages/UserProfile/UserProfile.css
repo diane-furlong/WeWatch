@@ -20,3 +20,19 @@
     cursor: pointer;
     font-family: 'DM Serif Display', serif;
 }
+
+.delBtn {
+    visibility: hidden;
+    background-color: rgba(234, 226, 183, 0);
+    border: none;
+    display: inline;
+}
+
+.liShows {
+    display: inline;
+}
+
+.liShows:hover + .delBtn, .delBtn:hover {
+    visibility: visible;
+    cursor: pointer;
+}
