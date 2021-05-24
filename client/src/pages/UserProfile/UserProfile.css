@@ -7,6 +7,7 @@
     background-position: center;
     background-repeat: no-repeat;
     width: 100vw;
+    min-height: 70vh;
 }
 
 
@@ -19,4 +20,20 @@
 #otherUserName:hover {
     cursor: pointer;
     font-family: 'DM Serif Display', serif;
+}
+
+.delBtn {
+    visibility: hidden;
+    background-color: rgba(234, 226, 183, 0);
+    border: none;
+    display: inline;
+}
+
+.liShows {
+    display: inline;
+}
+
+.liShows:hover + .delBtn, .delBtn:hover {
+    visibility: visible;
+    cursor: pointer;
 }

@@ -18,10 +18,21 @@ router.route("/:id")
 .get(usersController.findById)
 .put(usersController.updateShows)
 
+//matches with '/api/users/myShows/:id'
+router.route("/myshows/:id")
+.put(usersController.removeShow)
+.post(usersController.replaceShow)
+
 //matches with '/api/users/:id/platforms'
 router.route("/:id/platforms")
 .get(usersController.findById)
 .put(usersController.updatePlatforms)
+.post(usersController.replacePlatforms)
+
+//matches with '/api/users/platforms/:id'
+router.route("/platforms/:id")
+.put(usersController.removePlatform)
+.get(usersController.allPlatforms)
 
 //matches with '/api/users/email/:email'
 router.route("/email/:email")
@@ -31,14 +42,28 @@ router.route("/email/:email")
 router.route("/following/:id")
 .put(usersController.addFollowing)
 .get(usersController.allFollowing)
+.post(usersController.replaceFollowing)
+
+//matches with '/api/users/followers/:id'
+router.route("/followers/:id")
+.get(usersController.allFollowers)
 
 //matches with '/api/users/addfollower/:id'
 router.route("/addfollower/:id")
 .put(usersController.addFollower)
+.post(usersController.replaceFollowers)
 
 //matches with '/api/users/profile/:id'
 router.route("/profile/:id")
 .get(usersController.findById)
+
+//matches with '/api/users/unfollow/:id'
+router.route("/unfollow/:id")
+.put(usersController.unfollow)
+
+//matches with '/api/users/unfollower/:id'
+router.route("/unfollower/:id")
+.put(usersController.unfollower)
 
 //--------------------------------------------------------------------
 

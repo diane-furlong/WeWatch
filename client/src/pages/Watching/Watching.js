@@ -3,7 +3,6 @@ import usersAPI from '../../utils/usersAPI'
 // import watchModeAPI from '../../utils/watchModeAPI'
 import axios from "axios"
 import './Watching.css'
-import background from "../../img/watching.png"
 
 
 const Watching = () => {
@@ -28,6 +27,7 @@ const Watching = () => {
     }
     const id = usertokenArray[2]
 
+    //search button
     const search = (event) => {
         event.preventDefault()
         
@@ -48,17 +48,39 @@ const Watching = () => {
         })
     }
 
-    const addingShow = (event) => {
+    //submit button
+    async function addingShow(event) {
         event.preventDefault()
-        myShows.push(resultQueue)
-         //2. PUT myShows to the user's profile in the database- need to figure out how to add on instead of overwrite. make myShows an array of objects with id and title?
-        usersAPI.putShow(id, {myShows: result})
-        setAddedResult()
+        myShows.push(result)
+        const userInfo = await usersAPI.getUser(id)
+        const userShows = userInfo.data.myShows
+        mergeArrays()
+
+        //make sure the show being added is unique
+        function mergeArrays(){
+            const arr=[userShows, myShows]
+            let jointArray=[]
+            arr.forEach(array => {
+                jointArray = [ ...jointArray, ...array]
+            })
+            const newSet= [...new Set([...jointArray])]
+            console.log(newSet)
+
+            //3. add API request to PUT the selected show to the users API
+            usersAPI.postShow(id, {myShows: newSet})
+            setAddedResult(true)
+        }
     }
 
     //route to next page when user is done
-    const nextPage = () => {
-        window.location.href="/SearchUsers"
+    async function nextPage() {
+        const userInfo = await usersAPI.getUser(id)
+        const userFollowing = userInfo.data.following
+        if(userFollowing.length === 0){
+            window.location.href="/SearchUsers"
+        } else {
+            window.location.href="/Profile"
+        }
     }
 
     const searchAnother = () => {
@@ -83,7 +105,7 @@ const Watching = () => {
 
                 <button className="addBtn" onClick={addingShow}>Add</button></li> : null }
                 <br/>
-                { result !== false && addedResult !== false ? <p className="add-text">{result} has been added to your watching list! Search for another title, or click "Next" to start following your friends.<br/><button className="next-btn"onClick={nextPage}>Next</button></p> : null }
+                { result !== false && addedResult !== false ? <p className="add-text">{result} has been added to your watching list! Search for another title, or click "Next".<br/><button className="next-btn"onClick={nextPage}>Next</button></p> : null }
             </ul>
          </div>
     )

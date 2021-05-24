@@ -52,41 +52,43 @@ const useStyles = makeStyles((theme) => ({
 
 function Login(){
 
-    const [email, setEmail] = useState()
-    const [password, setPassword] = useState()
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        API.postLogin({ email: userData.email.toLowerCase(), password: userData.password })
-            .then(res => { 
-                console.log(res)
-                if (res.data.success===true){
-                    window.location.href='/Platform'
-                    localStorage.setItem("token", res.data.token)
-                }
-            })
-        console.log(userData)
-    }
+  const handleSubmit = (event) => {
+      event.preventDefault();
+      if (!email || !password){
+        alert("Please enter your email and password. If you do not have a login, please register.")
+      } else {
+      API.postLogin({ email: userData.email.toLowerCase(), password: userData.password })
+          .then(res => { 
+              console.log(res)
+              if (res.data.success===true){
+                  window.location.href='/Platform'
+                  localStorage.setItem("token", res.data.token)
+              }
+          })
+      }
+  }
 
+  const userData = {
+      email: email,
+      password: password
+  };
 
-    const userData = {
-        email: email,
-        password: password
+  const classes = useStyles();
+
+  const [values, setValues] = React.useState({
+      showPassword: false,
+    });
+  
+    const handleClickShowPassword = () => {
+      setValues({ ...values, showPassword: !values.showPassword });
     };
-
-    const classes = useStyles();
-
-    const [values, setValues] = React.useState({
-        showPassword: false,
-      });
-    
-      const handleClickShowPassword = () => {
-        setValues({ ...values, showPassword: !values.showPassword });
-      };
-    
-      const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-      };
+  
+    const handleMouseDownPassword = (event) => {
+      event.preventDefault();
+    };
 
     return (
     <div className="login-image" style={{ 
