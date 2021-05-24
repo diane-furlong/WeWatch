@@ -57,6 +57,10 @@ export default {
         return axios.put(`/api/users/${id}`, myShows)
     },
 
+    postShow: function(id, myShows) {
+        return axios.post(`/api/users/myshows/${id}`, myShows)
+    },
+
     //GET shows that the user is watching
     getShows: function(id) {
         return axios.get(`/api/users/${id}`)

@@ -49,7 +49,7 @@ const Platform = () => {
         mergeArrays()
 
         
-        //make sure the new platform being added is unique
+        //make sure the platform being added is unique
         function mergeArrays(){
             const arr=[userPlatforms, networks]
             let jointArray=[]

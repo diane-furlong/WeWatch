@@ -23,6 +23,10 @@ module.exports = {
         db.User.findByIdAndUpdate({ _id: req.params.id }, {$pull: {myShows: req.body.myShows}})
         .then(res => console.log(res))
     },
+    replaceShow: function(req, res) {
+        db.User.findByIdAndUpdate({ _id: req.params.id }, {myShows: req.body.myShows})
+        .then(dbUser => res.json(dbUser))
+    },
     allPlatforms: function(req, res) {
         db.User.findById(req.params.id)
         .then(dbUser => console.log(dbUser))

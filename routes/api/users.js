@@ -21,6 +21,7 @@ router.route("/:id")
 //matches with '/api/users/myShows/:id'
 router.route("/myshows/:id")
 .put(usersController.removeShow)
+.post(usersController.replaceShow)
 
 //matches with '/api/users/:id/platforms'
 router.route("/:id/platforms")
