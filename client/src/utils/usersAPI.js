@@ -32,14 +32,14 @@ export default {
         return axios.get("/api/users/" + id)
     },
 
-     //GET user information by email
-     getUserbyEmail: function(email) {
+    //GET user information by email
+    getUserbyEmail: function(email) {
         return axios.get(`/api/users/email/${email}`)
     },
 
     //PUT platforms chosen by the user
-    putPlatforms:function(id, platforms) {
-        return axios.put(`/api/users/${id}/platforms`, platforms)
+    postPlatforms:function(id, platforms) {
+        return axios.post(`/api/users/${id}/platforms`, platforms)
     },
 
     //GET platforms chosen by the user
@@ -47,9 +47,18 @@ export default {
         return axios.get(`/api/users/${id}`)
     },
 
+    //GET all platforms in user's db
+    getAllPlatforms: function(id) {
+        return axios.get(`/api/platforms/${id}`)
+    },
+
     //PUT shows selected by user into user's myShows
     putShow: function(id, myShows) {
         return axios.put(`/api/users/${id}`, myShows)
+    },
+
+    postShow: function(id, myShows) {
+        return axios.post(`/api/users/myshows/${id}`, myShows)
     },
 
     //GET shows that the user is watching
@@ -60,6 +69,11 @@ export default {
     //PUT new followee to follower's db
     putFollowing: function(id, result) {
         return axios.put(`/api/users/following/${id}`, result)
+    },
+
+    //POST followee to follower's db
+    postFollowing: function(id, result) {
+        return axios.post(`/api/users/following/${id}`, result)
     },
 
     //GET all followee's from user's db
@@ -75,6 +89,11 @@ export default {
     //PUT new follower to followee's db
     putFollower: function(id, followerID) {
         return axios.put(`/api/users/addfollower/${id}`, followerID)
+    },
+
+    //POST follower to followee's db
+    postFollower: function(id, result) {
+        return axios.post(`/api/users/addfollower/${id}`, result)
     },
 
     //DELETE a show from user's db

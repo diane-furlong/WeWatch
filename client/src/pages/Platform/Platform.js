@@ -8,6 +8,8 @@ const _ = require('lodash');
 const Platform = () => {
 
     const [networks] = useState([])
+    const [existingPlatform, setExistingPlatform] = useState(false)
+    const [nonexistingPlatform, setNonexistingPlatform] = useState(false)
 
     //using token to find user's db id
     let usertoken = localStorage.getItem("token")
@@ -38,13 +40,33 @@ const Platform = () => {
     }
 
     //submit button
-    const handleSubmit = (event) => {
+    async function handleSubmit(event){
         event.preventDefault()
-        console.log(`submitted ${networks} for ${id}`)
-        //2. add API request to PUT the selected platforms to the users API
-        usersAPI.putPlatforms(id, {platforms: networks})
-        //3. route to next page
-        window.location.href='/Watching'
+        //2. check that platform is not already in user's db
+        const userInfo = await usersAPI.getUser(id)
+        const userPlatforms = userInfo.data.platforms
+        const userShows = userInfo.data.myShows
+        mergeArrays()
+
+        
+        //make sure the platform being added is unique
+        function mergeArrays(){
+            const arr=[userPlatforms, networks]
+            let jointArray=[]
+            arr.forEach(array => {
+                jointArray = [ ...jointArray, ...array]
+            })
+            const newSet= [...new Set([...jointArray])]
+            console.log(newSet)
+            //3. add API request to PUT the selected platforms to the users API
+            usersAPI.postPlatforms(id, {platforms: newSet})
+            //4. route to next page
+            if(userShows.length === 0){
+                window.location.href='/Watching'
+            } else {
+                window.location.href='/Profile'
+            }
+        }
     }
 
    
