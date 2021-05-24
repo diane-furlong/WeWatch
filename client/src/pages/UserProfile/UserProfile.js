@@ -26,14 +26,19 @@ const useStyles = makeStyles({
     borderRadius: 30,
   },
   root2: {
-    minWidth: 150,
+    display: 'flex',
+    minWidth: 125,
+    height: '70%',
     background: 'rgba(234, 226, 183, .8)',
     color: '#003049',
-    justifyContent: 'center',
     flexGrow: 1,
+    padding: '2%',
     marginLeft: 10,
     marginRight: 10,
     marginBottom: 10,
+    flexGrow: 1,
+    overflow: 'auto',
+    flexShrink: 0,
   },
   top: {
     minWidth: 150,
@@ -110,13 +115,20 @@ export default function DataDisplayer() {
             response3 = await usersAPI.getUser(id)
             setPlatforms(response3.data.platforms)
             response4 = await usersAPI.getUser(id)
-            setFollowingID(response4.data.following)
+            if(response4 != null){
+                setFollowingID(response4.data.following)
+            }
             response5 = await usersAPI.getUser(id)
-            setFollowersID(response5.data.followers)
+            if(response5 != null) {
+                setFollowersID(response5.data.followers)
+            }
             
             //make array of followings' names
             for(let i=0;i<response4.data.following.length;i++){
-                arrFollowing.push(await usersAPI.getUser(response4.data.following[i]))
+                const followingResult=await usersAPI.getUser(response4.data.following[i])
+                if(followingResult.data){
+                    arrFollowing.push(followingResult)
+                }
             }
             
             for(let i=0;i<arrFollowing.length;i++){
@@ -129,7 +141,10 @@ export default function DataDisplayer() {
             
             //make array of followers' names
             for(let i=0;i<response5.data.followers.length;i++){
-                arrFollowers.push(await usersAPI.getUser(response5.data.followers[i]))
+                const followerResult=await usersAPI.getUser(response5.data.followers[i])
+                if(followerResult.data){
+                     arrFollowers.push(followerResult)
+                }
             }
             for(let i=0;i<arrFollowers.length;i++){
                 arrFollowersNames.push(arrFollowers[i].data.name)
@@ -171,15 +186,10 @@ export default function DataDisplayer() {
 
     if(done) {
         return <div className="userProfDiv">
-            <Grid 
-            container spacing={1}
-            >
-                <Card className={classes.top} variant="outlined" >
-
-                    {/* <Typography className={classes.title} color="textSecondary" gutterBottom component="h1"> */}
+            <Grid container spacing={1}>
+                <Grid className={classes.top} variant="outlined" >
                         Hi, {name}!
-                    {/* </Typography> */}
-                </Card>
+                </Grid>
             </Grid>
             <br/>
             <Grid container spacing={1}>
