@@ -68,7 +68,6 @@ function Login(){
                   localStorage.setItem("token", res.data.token)
               }
           })
-      console.log(userData)
       }
   }
 
