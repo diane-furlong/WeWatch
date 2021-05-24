@@ -20,12 +20,8 @@ module.exports = {
             return res.status(422).json(err)});
     },
     removeShow: function(req, res) {
-        // console.log(req.body.myShows)
         db.User.findByIdAndUpdate({ _id: req.params.id }, {$pull: {myShows: req.body.myShows}})
         .then(res => console.log(res))
-        // .then(dbUser => dbUser.remove())
-        // .then(dbUser => res.json(dbUser))
-        // .catch(err => res.status(422).json(err));
     },
     removePlatform: function(req, res) {
         db.User.findByIdAndUpdate({ _id: req.params.id }, {$pull: {platforms: req.body.platforms}})
@@ -58,5 +54,17 @@ module.exports = {
     allFollowing: function(req, res) {
         db.User.findById({ _id: req.params.id})
         .then(dbUser => res.json(dbUser.following))
+    },
+    allFollowers: function(req, res) {
+        db.User.findById({ _id: req.params.id})
+        .then(dbUser => res.json(dbUser.followers))
+    },
+    unfollow: function(req, res) {
+        db.User.findOneAndUpdate({ _id: req.params.id }, {$pull: {following: req.body.following}})
+        .then(res=>console.log(res))
+    },
+    unfollower: function(req, res) {
+        db.User.findOneAndUpdate({ _id: req.params.id }, {$pull: {followers: req.body.followers}})
+        .then(res=>console.log(res))
     }
 }

@@ -40,6 +40,10 @@ router.route("/following/:id")
 .put(usersController.addFollowing)
 .get(usersController.allFollowing)
 
+//matches with '/api/users/followers/:id'
+router.route("/followers/:id")
+.get(usersController.allFollowers)
+
 //matches with '/api/users/addfollower/:id'
 router.route("/addfollower/:id")
 .put(usersController.addFollower)
@@ -47,6 +51,14 @@ router.route("/addfollower/:id")
 //matches with '/api/users/profile/:id'
 router.route("/profile/:id")
 .get(usersController.findById)
+
+//matches with '/api/users/unfollow/:id'
+router.route("/unfollow/:id")
+.put(usersController.unfollow)
+
+//matches with '/api/users/unfollower/:id'
+router.route("/unfollower/:id")
+.put(usersController.unfollower)
 
 //--------------------------------------------------------------------
 

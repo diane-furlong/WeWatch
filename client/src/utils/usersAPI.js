@@ -67,6 +67,11 @@ export default {
         return axios.get(`/api/users/following/${id}`)
     },
 
+    //GET all followers from user's db
+    getFollowers: function(id) {
+        return axios.get(`/api/users/followers/${id}`)
+    },
+
     //PUT new follower to followee's db
     putFollower: function(id, followerID) {
         return axios.put(`/api/users/addfollower/${id}`, followerID)
@@ -80,5 +85,15 @@ export default {
     //DELETE a platforms from user's db
     removePlatform: function(id, platforms) {
         return axios.put(`/api/users/platforms/${id}`, platforms)
+    },
+
+    //DELETE someone from "following"
+    unfollowing: function(id, result) {
+        return axios.put(`/api/users/unfollow/${id}`, result)
+    },
+
+    //DELETE someone from "followers"
+    unfollower: function(id, result) {
+        return axios.put(`/api/users/unfollower/${id}`, result)
     }
 }
