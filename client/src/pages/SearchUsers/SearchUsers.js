@@ -33,11 +33,42 @@ const SearchUsers = () => {
     const id = usertokenArray[2] 
 
     //submit button function
-    const addFriend = event => {
+    async function addFriend(event) {
         event.preventDefault()
-        usersAPI.putFollowing(id, {following: result._id})
-        setAddedResult()
-        usersAPI.putFollower(result._id, {followers: id})
+        const id2 = [result._id]
+        const userInfo = await usersAPI.getUser(id)
+        const userFollowing = userInfo.data.following
+        mergeArrays()
+        const userInfo2 = await usersAPI.getUser(id2)
+        const user2Followers = userInfo2.data.followers
+        mergeArrays2()
+
+        //make sure the user being added is unique
+        function mergeArrays(){
+            const arr=[userFollowing, id2]
+            let jointArray=[]
+            arr.forEach(array => {
+                jointArray = [ ...jointArray, ...array]
+            })
+            const newSet= [...new Set([...jointArray])]
+
+            //3. add API request to PUT the selected followee to the users API
+            usersAPI.postFollowing(id, {following: newSet})
+            setAddedResult(true)
+        }
+
+        //make sure users id is unique to followee's followers list
+        function mergeArrays2(){
+            const arr=[user2Followers, [id]]
+            let jointArray=[]
+            arr.forEach(array => {
+                jointArray = [ ...jointArray, ...array]
+            })
+            const newSet= [...new Set([...jointArray])]
+            
+            //add selected follower to followee's db
+            usersAPI.postFollower(id2, {followers: newSet})
+        }
     }
 
     const nextPage = () => {

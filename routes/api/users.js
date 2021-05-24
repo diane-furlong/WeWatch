@@ -42,6 +42,7 @@ router.route("/email/:email")
 router.route("/following/:id")
 .put(usersController.addFollowing)
 .get(usersController.allFollowing)
+.post(usersController.replaceFollowing)
 
 //matches with '/api/users/followers/:id'
 router.route("/followers/:id")
@@ -50,6 +51,7 @@ router.route("/followers/:id")
 //matches with '/api/users/addfollower/:id'
 router.route("/addfollower/:id")
 .put(usersController.addFollower)
+.post(usersController.replaceFollowers)
 
 //matches with '/api/users/profile/:id'
 router.route("/profile/:id")

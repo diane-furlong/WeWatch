@@ -59,6 +59,10 @@ module.exports = {
         db.User.findOneAndUpdate({_id: req.params.id}, {$push: {following: req.body.following}})
         .then(dbUser => res.json(dbUser))
     },
+    replaceFollowing: function(req, res) {
+        db.User.findByIdAndUpdate({ _id: req.params.id }, {following: req.body.following})
+        .then(dbUser => res.json(dbUser))
+    },
     addFollower: function(req, res) {
         db.User.findOneAndUpdate({_id: req.params.id}, {$push: {followers: req.body.followers}})
         .then(dbUser => res.json(dbUser))
@@ -70,6 +74,10 @@ module.exports = {
     allFollowers: function(req, res) {
         db.User.findById({ _id: req.params.id})
         .then(dbUser => res.json(dbUser.followers))
+    },
+    replaceFollowers: function(req, res) {
+        db.User.findByIdAndUpdate({ _id: req.params.id }, {followers: req.body.followers})
+        .then(dbUser => res.json(dbUser))
     },
     unfollow: function(req, res) {
         db.User.findOneAndUpdate({ _id: req.params.id }, {$pull: {following: req.body.following}})

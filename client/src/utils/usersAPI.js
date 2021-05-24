@@ -71,6 +71,11 @@ export default {
         return axios.put(`/api/users/following/${id}`, result)
     },
 
+    //POST followee to follower's db
+    postFollowing: function(id, result) {
+        return axios.post(`/api/users/following/${id}`, result)
+    },
+
     //GET all followee's from user's db
     getFollowing: function(id) {
         return axios.get(`/api/users/following/${id}`)
@@ -84,6 +89,11 @@ export default {
     //PUT new follower to followee's db
     putFollower: function(id, followerID) {
         return axios.put(`/api/users/addfollower/${id}`, followerID)
+    },
+
+    //POST follower to followee's db
+    postFollower: function(id, result) {
+        return axios.post(`/api/users/addfollower/${id}`, result)
     },
 
     //DELETE a show from user's db

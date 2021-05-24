@@ -54,7 +54,6 @@ const Watching = () => {
         myShows.push(result)
         const userInfo = await usersAPI.getUser(id)
         const userShows = userInfo.data.myShows
-        const userFollowing = userInfo.data.following
         mergeArrays()
 
         //make sure the show being added is unique
@@ -67,7 +66,7 @@ const Watching = () => {
             const newSet= [...new Set([...jointArray])]
             console.log(newSet)
 
-            //3. add API request to PUT the selected platforms to the users API
+            //3. add API request to PUT the selected show to the users API
             usersAPI.postShow(id, {myShows: newSet})
             setAddedResult(true)
         }
