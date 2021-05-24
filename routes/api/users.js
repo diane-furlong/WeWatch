@@ -26,10 +26,12 @@ router.route("/myshows/:id")
 router.route("/:id/platforms")
 .get(usersController.findById)
 .put(usersController.updatePlatforms)
+.post(usersController.replacePlatforms)
 
 //matches with '/api/users/platforms/:id'
 router.route("/platforms/:id")
 .put(usersController.removePlatform)
+.get(usersController.allPlatforms)
 
 //matches with '/api/users/email/:email'
 router.route("/email/:email")

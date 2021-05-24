@@ -32,19 +32,24 @@ export default {
         return axios.get("/api/users/" + id)
     },
 
-     //GET user information by email
-     getUserbyEmail: function(email) {
+    //GET user information by email
+    getUserbyEmail: function(email) {
         return axios.get(`/api/users/email/${email}`)
     },
 
     //PUT platforms chosen by the user
-    putPlatforms:function(id, platforms) {
-        return axios.put(`/api/users/${id}/platforms`, platforms)
+    postPlatforms:function(id, platforms) {
+        return axios.post(`/api/users/${id}/platforms`, platforms)
     },
 
     //GET platforms chosen by the user
     getPlatforms: function(id) {
         return axios.get(`/api/users/${id}`)
+    },
+
+    //GET all platforms in user's db
+    getAllPlatforms: function(id) {
+        return axios.get(`/api/platforms/${id}`)
     },
 
     //PUT shows selected by user into user's myShows
