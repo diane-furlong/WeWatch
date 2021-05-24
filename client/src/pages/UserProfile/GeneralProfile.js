@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 175,
+    minWidth: 125,
     background: 'rgba(234, 226, 183, .9)',
     color: '#003049',
     justifyContent: 'center',
@@ -19,8 +19,7 @@ const useStyles = makeStyles({
     marginLeft: 10,
     marginRight: 10,
     marginBottom: 10,
-    width: 100,
-    borderRadius: 30,
+    borderRadius: 30
   },
   root2: {
     display: 'flex',
@@ -214,7 +213,7 @@ export default function DataDisplayer() {
             <Grid container spacing={1}>
                 <Grid item xs={6}>
                     <Card className={classes.root} variant="outlined">
-                        <Typography variant="h5" component="h2">
+                        <Typography variant="h6" component="h2">
                             My shows:
                         </Typography>
                     </Card>
@@ -228,7 +227,7 @@ export default function DataDisplayer() {
                 </Grid>
                 <Grid item xs={6}>
                     <Card className={classes.root} variant="outlined">
-                        <Typography variant="h5" component="h2">
+                        <Typography variant="h6" component="h2">
                             My platforms:
                         </Typography>
                     </Card>
@@ -245,7 +244,7 @@ export default function DataDisplayer() {
             <Grid container>
                 <Grid item xs={6}>
                     <Card className={classes.root} variant="outlined">
-                        <Typography variant="h5" component="h2">
+                        <Typography variant="h6" component="h2">
                             Following:
                         </Typography>
                     </Card>
@@ -259,7 +258,7 @@ export default function DataDisplayer() {
                 </Grid>
                 <Grid item xs={6}>
                     <Card className={classes.root} variant="outlined">
-                        <Typography variant="h5" component="h2">
+                        <Typography variant="h6" component="h2">
                             Followers:
                         </Typography>
                     </Card>
