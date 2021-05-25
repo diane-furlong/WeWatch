@@ -13,6 +13,7 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import usersAPI from '../../utils/usersAPI';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -48,26 +49,71 @@ const useStyles = makeStyles((theme) => ({
       marginRight: 'auto'
 
     }
-  }));
+}));
 
 function Login(){
 
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
 
-  const handleSubmit = (event) => {
+  function handleSubmit (event) {
       event.preventDefault();
       if (!email || !password){
         alert("Please enter your email and password. If you do not have a login, please register.")
       } else {
       API.postLogin({ email: userData.email.toLowerCase(), password: userData.password })
           .then(res => { 
-              console.log(res)
               if (res.data.success===true){
-                  window.location.href='/Platform'
-                  localStorage.setItem("token", res.data.token)
+                localStorage.setItem("token", res.data.token)
+                // let usertoken = localStorage.getItem("token")
+                // usertoken = usertoken?.split(" ")
+                // let usertokenArray = []
+                // if(usertoken){
+                //     for(let i =0; i < usertoken.length; i++){
+                //         usertokenArray.push(usertoken[i])
+                //         if(i !== usertoken.length-1){
+                //             usertokenArray.push(" ");
+                //         }
+                //     }
+                // }
+                // const id = usertokenArray[2]
+                
+                // const userInfo = await usersAPI.getUser(id)
+                // const userPlatforms = userInfo
+                // if(userPlatforms.length === 0){
+                //   // window.location.href="/Platform"
+                //   console.log(userInfo)
+                // } else {
+                //   // window.location.href="/Profile"
+                //   console.log(userInfo)
+                // }
               }
-          })
+          }
+        )
+        .then(nextPage)
+        
+        async function nextPage(){
+          let usertoken = localStorage.getItem("token")
+            usertoken = usertoken?.split(" ")
+            let usertokenArray = []
+            if(usertoken){
+                for(let i =0; i < usertoken.length; i++){
+                    usertokenArray.push(usertoken[i])
+                    if(i !== usertoken.length-1){
+                        usertokenArray.push(" ");
+                    }
+                }
+            }
+            const id = usertokenArray[2]
+            
+            const userInfo = await usersAPI.getUser(id)
+            const userPlatforms = userInfo.data.platforms
+            if(userPlatforms.length === 0){
+              window.location.href="/Platform"
+            } else {
+              window.location.href="/Profile"
+            }
+        }
       }
   }
 
