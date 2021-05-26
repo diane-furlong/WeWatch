@@ -31,7 +31,7 @@ function App() {
     if(token === null){
     token = "";
     }
-    const tokenResponse = await axios.post('http://localhost:3000/api/users/tokenIsValid', null, {headers: {"x-auth-token": token}});
+    const tokenResponse = await axios.post('http://localhost:3000/api/users/tokenIsValid'||'http://wewatch5000.herokuapp.com/api/users/tokenIsValid', null, {headers: {"x-auth-token": token}});
     if (tokenResponse.data) {
     const userRes = await axios.get("http://localhost:3000/api/users/", {
     headers: { "x-auth-token": token },
