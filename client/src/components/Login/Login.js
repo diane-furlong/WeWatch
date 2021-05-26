@@ -65,28 +65,6 @@ function Login(){
           .then(res => { 
               if (res.data.success===true){
                 localStorage.setItem("token", res.data.token)
-                // let usertoken = localStorage.getItem("token")
-                // usertoken = usertoken?.split(" ")
-                // let usertokenArray = []
-                // if(usertoken){
-                //     for(let i =0; i < usertoken.length; i++){
-                //         usertokenArray.push(usertoken[i])
-                //         if(i !== usertoken.length-1){
-                //             usertokenArray.push(" ");
-                //         }
-                //     }
-                // }
-                // const id = usertokenArray[2]
-                
-                // const userInfo = await usersAPI.getUser(id)
-                // const userPlatforms = userInfo
-                // if(userPlatforms.length === 0){
-                //   // window.location.href="/Platform"
-                //   console.log(userInfo)
-                // } else {
-                //   // window.location.href="/Profile"
-                //   console.log(userInfo)
-                // }
               }
           }
         )
